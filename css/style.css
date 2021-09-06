@@ -57,27 +57,199 @@ img {
     --color-secondary:           hsla(30, 100%, 50%,1);
     --color-secondary-variant:   hsla(30, 100%, 30%,1);
 
-    --color-background:          hsla(180, 50%, 50%,1);
-    --color-surface:             hsla(180, 50%, 50%,1);
-    --color-error:               hsla(180, 50%, 50%,1);
+    --color-background:          hsla(180, 100%, 95%,1);
+    --color-surface:             hsla(180, 75%, 85%,1);
+    --color-error:               hsla(345, 70%, 50%,1);
 
-    --color-on-primary:          hsla(180, 50%, 50%,1);
-    --color-on-secondary:        hsla(180, 50%, 50%,1);
-    --color-on-background:       hsla(180, 50%, 50%,1);
-    --color-on-surface:          hsla(180, 50%, 50%,1);
-    --color-on-error:            hsla(180, 50%, 50%,1);
+    --color-on-primary:          hsla(180, 100%, 90%,1);
+    --color-on-secondary:        hsla(30, 100%, 10%,1);
+    --color-on-background:       hsla(180, 50%, 70%,1);
+    --color-on-surface:          hsla(180, 100%, 30%,1);
+    --color-on-error:            hsla(345, 70%, 90%,1);
 }
+body{
+    background-color: var(--color-background);
+}
+.nav{
+    position: fixed;
+    width: 100%;
+    bottom: 0;
+    color: var(--color-on-primary);
+    background-color: var(--color-primary);
+    padding: 0.5rem;
+}
+.logo{
+    font-size: 2rem;
+    color: var(--color-on-primary);
+    display: none;
+    align-items: center;
+}
+.logo i{
+    font-size: 3rem;
+    padding: 0 0.5rem;
+}
+.menu{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+.menu li{
+    font-size: 24px;
+    padding: 12px;
+    cursor: pointer;
+}
+.menu-active{
+    color: var(--color-primary-variant);
+}
+.title{
+    color: var(--color-primary-variant);
+    /* font-weight: bold; */
+    font-size: 1.5rem;
+    margin: 0.5rem 0;
+    padding-top: 1rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 2px solid var(--color-primary-variant);
+}
+.task{
+    /* border: 1px solid black; */
+    margin-top: 2rem;
+}
+.task h2{
+    text-transform: uppercase;
+    margin-bottom: 0.5rem;
+    color: var(--color-on-background);
+}
+.task-completed{
+    text-transform: uppercase;
+
+    /* border: 1px solid black; */
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    color: var(--color-on-surface);
+    background-color: var(--color-surface);
+    border-radius: 0.5rem;
+    text-align: center;
+    padding: 1.25rem;
+    font-size: 0.75rem;
+    
+}
+.task-completed p{
+    font-size: 1.5rem;
+    font-weight: bold;
+    padding-bottom: 0.25rem;
+}
+.surface{
+    width: 100%;
+    color: var(--color-on-surface);
+    background-color: var(--color-surface);
+    padding: 0.75rem;
+    border-radius: 0.5rem;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+.surface-left{
+    width: 50%;
+    /* background-color: var(--color-surface); */
+    border-right: 2px solid var(--color-on-primary);
+    padding: 0.5rem 0;
+}
+.surface-right{
+    width: 50%;
+    /* background-color: var(--color-surface); */
+    border-left: 2px solid var(--color-on-primary);
+    padding: 0.5rem 0;
+}
+
+.task-clocks li{
+    display: inline-block;
+    width: 0.5rem;
+    height: 0.5rem;
+    border: 1px solid var(--color-on-surface);
+    /* background-color: var(--color-on-surface); */
+    border-radius: 0.5rem;
+    margin-right: 0.5rem;
+    margin-top: 0.5rem;
+    margin-bottom: 0.5rem;
+}
+.task-title{
+    flex: 1;
+    margin: 0 0.25rem;
+}
+.task-clocks > .over{
+    /* border: none; */
+    background-color: var(--color-on-surface);
+}
+.btn{
+    color: var(--color-on-surface);
+    background-color: unset;
+    border: none;
+    font-size: 24px;
+    padding: 0.25rem;
+    cursor: pointer;
+}
+.clock{
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 0.5rem;
+}
+.clock-player li{
+    display: inline-block;
+    margin-right: 0.75rem;
+}
+.clock-timer{
+    font-size: 1.5rem;
+    padding: 0.25rem 0.5rem;
+    border-radius: 0.5rem;
+    border: 1px solid var(--color-on-surface);
+}
+.task-complete{
+    width: 100%;
+    background-color: var(--color-primary-variant);
+    color: var(--color-on-primary);
+    border: none;
+    border-radius: 0.5rem;
+    padding: 0.375rem;
+    margin-top: 0.5rem;
+    text-transform: uppercase;
+    cursor: pointer;
+}
+.task-list li{
+    margin-bottom: 0.5rem;
+}
+
+
+
+/*! RWD SET */
 .container{
     width: 100%;
-    border: 1px solid black;
+    margin: auto;
+    padding: 0 0.75rem;
 }
 .row{
     display: flex;
-    justify-content: center;
+    justify-content: space-between;
     align-items: center;
     padding-right: -0.5rem;
     padding-left: -0.5rem;
     flex-wrap: wrap;
+}
+.col{
+    /* padding-right: 0.5rem;
+    padding-left: 0.5rem; */
+}
+.col-1{
+    width: calc(100%/12*1);
+    padding-right: 0.5rem;
+    padding-left: 0.5rem;
+}
+.col-2{
+    width: calc(100%/12*2);
+    padding-right: 0.5rem;
+    padding-left: 0.5rem;
 }
 .col-3{
     width: calc(100%/12*3);
@@ -90,35 +262,42 @@ img {
     padding-left: 0.5rem;
 }
 .col-6{
-    width: calc(100%/12*6);
+    width: 100%;
     padding-right: 0.5rem;
     padding-left: 0.5rem;
 }
-.card{
-    height: 5rem;
-    border-radius: 0.5rem;
-    margin-top: 0.5rem;
-    /* border: 1px solid black; */
+.col-9{
+    width: calc(100%/12*9);
+    padding-right: 0.5rem;
+    padding-left: 0.5rem;
 }
-.primary{
-    color: var(--color-primary);
-    background-color: var(--color-primary);
+.col-10{
+    width: calc(100%/12*10);
+    padding-right: 0.5rem;
+    padding-left: 0.5rem;
 }
-.primary-variant{
-    color: var(--color-primary-variant);
-    background-color: var(--color-primary-variant);
+.col-11{
+    width: calc(100%/12*11);
+    padding-right: 0.5rem;
+    padding-left: 0.5rem;
 }
-.secondary{
-    color: var(--color-secondary);
-    background-color: var(--color-secondary);
-}
-.secondary-variant{
-    color: var(--color-secondary-variant);
-    background-color: var(--color-secondary-variant);
-}
+
+
+
+
 /** Responsive Web Design */
 /* ? mobile first */
 @media screen and (min-width:768px){
+    .nav{
+        top: 0;
+        bottom: auto;
+    }
+    .logo{
+        display: flex;
+    }
+    .col-6{
+        width: calc(100%/12*6);
+    }
     .container{
         max-width: 720px;
     }

@@ -5,55 +5,174 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css">
     <link rel="stylesheet" href="./css/style.css">
     <title>TODO Clock</title>
 </head>
 
-<body>
+<body class="background">
+    <nav class="nav">
+        <div class="container row">
+            <div class="col-6">
+                <a href="index.html" class="logo"><i class="fas fa-clock"></i>TODO CLOCK</a>
+            </div>
+            <ul class="menu col-6">
+                <li class="menu-active"><i class="fas fa-house-user"></i></li>
+                <li><i class="fas fa-list"></i></li>
+                <li><i class="fas fa-plus-circle"></i></li>
+                <li><i class="fas fa-chart-bar"></i></li>
+                <li><i class="fas fa-cog"></i></li>
+            </ul>
+        </div>
+    </nav>
+    <!--? {{position}} -->
     <div class="container">
         <div class="row">
-            <div class="col-3">
-                <div class="card primary"> </div>
-            </div>
-            <div class="col-3">
-                <div class="card primary-variant"> </div>
-            </div>
-            <div class="col-3">
-                <div class="card secondary"> </div>
-            </div>
-            <div class="col-3">
-                <div class="card secondary-variant"> </div>
-            </div>
-        </div>
+            <div class="col-6"></div>
+            <div class="col-6">
+                <h1 class="title">TODO CLOCK</h1>
+                <div class="task">
+                    <h2>complete task</h2>
+                    <div class="task-completed">
+                        <div class="surface-left">
+                            <p>8</p>
+                            <span>Today</span>
+                        </div>
+                        <div class="surface-right">
+                            <p>24</p>
+                            <span>WEEK</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="task">
+                    <h2>working task</h2>
+                    <div class="surface">
+                        <div class="task-title">
+                            <h3 class="task-text">Task Title</h3>
+                            <ul class="task-clocks">
+                                <li class="over"></li>
+                                <li class="over"></li>
+                                <li class="over"></li>
+                                <li class="over"></li>
+                                <li class=""></li>
+                                <li class=""></li>
+                                <li class=""></li>
+                                <li class=""></li>
+                            </ul>
+                        </div>
+                        <button class="btn"><i class="fas fa-ellipsis-h"></i></button>
 
-        <div class="row">
-            <div class="col-4">
-                <div class="card background"> </div>
-            </div>
-            <div class="col-4">
-                <div class="card surface"> </div>
-            </div>
-            <div class="col-4">
-                <div class="card error"> </div>
-            </div>
-            <div class="col-6">
-                <div class="card on-primary"> </div>
-            </div>
-            <div class="col-6">
-                <div class="card on-secondaty"> </div>
-            </div>
-            <div class="col-4">
-                <div class="card on-background"> </div>
-            </div>
-            <div class="col-4">
-                <div class="card on-surface"> </div>
-            </div>
-            <div class="col-4">
-                <div class="card on-error"> </div>
+                        <div class="clock">
+                            <ul class="clock-player">
+                                <li class="btn"><i class="bi bi-stop-circle-fill"></i></li>
+                                <li class="btn"><i class="bi bi-play-circle-fill"></i></li>
+                                <!-- <li class="btn"><i class="bi bi-pause-circle-fill"></i></li> -->
+                                <li class="btn"><i class="bi bi-skip-end-circle-fill"></i></li>
+                            </ul>
+                            <div class="clock-timer">
+                                <p>00:00</p>
+                            </div>
+                        </div>
+                        <button class="task-complete">
+                            Task complete
+                            <i class="bi bi-check-circle-fill"></i>
+                        </button>
+                    </div>
+                </div>
+                <div class="task">
+                    <h2>Newest task</h2>
+                    <ul class="task-list">
+                        <li class="surface">
+                            <button class="btn"><i class="bi bi-play-circle-fill"></i></button>
+                            <div class="task-title">
+                                <h3 class="task-text">Task Title</h3>
+                                <ul class="task-clocks">
+                                    <li class="over"></li>
+                                    <li class="over"></li>
+                                    <li class="over"></li>
+                                    <li class="over"></li>
+                                    <li class=""></li>
+                                    <li class=""></li>
+                                    <li class=""></li>
+                                    <li class=""></li>
+                                </ul>
+                            </div>
+                            <button class="btn"><i class="fas fa-ellipsis-h"></i></button>
+                        </li>
+                        <li class="surface">
+                            <button class="btn"><i class="bi bi-play-circle-fill"></i></button>
+                            <div class="task-title">
+                                <h3 class="task-text">Task Title</h3>
+                                <ul class="task-clocks">
+                                    <li class="over"></li>
+                                    <li class="over"></li>
+                                    <li class="over"></li>
+                                    <li class="over"></li>
+                                    <li class=""></li>
+                                    <li class=""></li>
+                                    <li class=""></li>
+                                    <li class=""></li>
+                                </ul>
+                            </div>
+                            <button class="btn"><i class="fas fa-ellipsis-h"></i></button>
+                        </li>
+                        <li class="surface">
+                            <button class="btn"><i class="bi bi-play-circle-fill"></i></button>
+                            <div class="task-title">
+                                <h3 class="task-text">Task Title</h3>
+                                <ul class="task-clocks">
+                                    <li class="over"></li>
+                                    <li class="over"></li>
+                                    <li class="over"></li>
+                                    <li class="over"></li>
+                                    <li class=""></li>
+                                    <li class=""></li>
+                                    <li class=""></li>
+                                    <li class=""></li>
+                                </ul>
+                            </div>
+                            <button class="btn"><i class="fas fa-ellipsis-h"></i></button>
+                        </li>
+                        <li class="surface">
+                            <button class="btn"><i class="bi bi-play-circle-fill"></i></button>
+                            <div class="task-title">
+                                <h3 class="task-text">Task Title</h3>
+                                <ul class="task-clocks">
+                                    <li class="over"></li>
+                                    <li class="over"></li>
+                                    <li class="over"></li>
+                                    <li class="over"></li>
+                                    <li class=""></li>
+                                    <li class=""></li>
+                                    <li class=""></li>
+                                    <li class=""></li>
+                                </ul>
+                            </div>
+                            <button class="btn"><i class="fas fa-ellipsis-h"></i></button>
+                        </li>
+                        <li class="surface">
+                            <button class="btn"><i class="bi bi-play-circle-fill"></i></button>
+                            <div class="task-title">
+                                <h3 class="task-text">Task Title</h3>
+                                <ul class="task-clocks">
+                                    <li class="over"></li>
+                                    <li class="over"></li>
+                                    <li class="over"></li>
+                                    <li class="over"></li>
+                                    <li class=""></li>
+                                    <li class=""></li>
+                                    <li class=""></li>
+                                    <li class=""></li>
+                                </ul>
+                            </div>
+                            <button class="btn"><i class="fas fa-ellipsis-h"></i></button>
+                        </li>
+                    </ul>
+                </div>
             </div>
         </div>
     </div>
-
     <script src="https://unpkg.com/vue@next"></script>
     <script src="./js/app.js"></script>
 </body>
