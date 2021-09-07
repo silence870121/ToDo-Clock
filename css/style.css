@@ -95,8 +95,9 @@ body{
     color: var(--color-on-primary);
 }
 .logo i{
-    font-size: 3rem;
-    padding: 0 0.5rem;
+    height: 3rem;
+    font-size: 2.5rem;
+    padding:0.25rem;
 }
 .menu{
     width: 100%;
@@ -105,10 +106,11 @@ body{
     align-items: center;
 }
 
-.menu li{
+.menu li a{
+    display: block;
     font-size: 24px;
     padding: 12px;
-    width: 3rem;
+    /* width: 3rem; */
     height: 3rem;
     cursor: pointer;
 }
@@ -119,18 +121,56 @@ body{
     color: var(--color-primary-variant);
 }
 .title{
+    padding-top: 0.5rem;
+    padding-bottom: 0.5rem;
+}
+.title h1{
     height: 3rem;
-    color: var(--color-primary-variant);
-    font-size: 1.5rem;
-    margin: 0.5rem 0;
     padding-top: 1rem;
     padding-bottom: 0.5rem;
+    color: var(--color-primary-variant);
+    font-size: 1.5rem;
     text-transform: uppercase;
     border-bottom: 2px solid var(--color-primary-variant);
 }
+/*? clock */
+.clock{
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 0.5rem;
+}
+.clock-player li{
+    display: inline-block;
+    margin-right: 0.75rem;
+}
+.clock-timer{
+    font-size: 1.5rem;
+    padding: 0.25rem 0.5rem;
+    border-radius: 0.5rem;
+    border: 1px solid var(--color-on-surface);
+}
+.clock-complete{
+    width: 100%;
+    background-color: var(--color-primary-variant);
+    color: var(--color-on-primary);
+    border: none;
+    border-radius: 0.5rem;
+    padding: 0.375rem;
+    margin-top: 0.5rem;
+    text-transform: uppercase;
+    cursor: pointer;
+}
+/*? Task */
 .task{
     /* border: 1px solid black; */
-    margin-top: 1rem;
+    margin-top: 1.5rem;
+    margin-bottom: 2rem;
+}
+.task-plus{
+    /* border: 1px solid black; */
+    margin-top: 3rem;
     margin-bottom: 2rem;
 }
 .task h2{
@@ -160,6 +200,7 @@ body{
 }
 .surface{
     width: 100%;
+    border: unset;
     color: var(--color-on-surface);
     background-color: var(--color-surface);
     padding: 0.75rem;
@@ -224,35 +265,8 @@ body{
     width: 100%;
     text-align: right;
 }
-/*? clock */
-.clock{
-    width: 100%;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-top: 0.5rem;
-}
-.clock-player li{
-    display: inline-block;
-    margin-right: 0.75rem;
-}
-.clock-timer{
-    font-size: 1.5rem;
-    padding: 0.25rem 0.5rem;
-    border-radius: 0.5rem;
-    border: 1px solid var(--color-on-surface);
-}
-.task-complete{
-    width: 100%;
-    background-color: var(--color-primary-variant);
-    color: var(--color-on-primary);
-    border: none;
-    border-radius: 0.5rem;
-    padding: 0.375rem;
-    margin-top: 0.5rem;
-    text-transform: uppercase;
-    cursor: pointer;
-}
+
+
 .task-list li{
     margin-bottom: 0.5rem;
 }
@@ -262,7 +276,7 @@ body{
     align-items: center;
     border-radius: 0.5rem;
     background-color: var(--color-surface);
-    margin-bottom: 1rem;
+    margin-bottom: 1.5rem;
 }
 .filter-btn{
     width: 50%;
@@ -280,6 +294,80 @@ body{
     background-color: var(--color-primary-variant);
     color: var(--color-on-primary);
 }
+.task input{
+    color: var(--color-primary-variant);
+    background-color: var(--color-surface);
+    padding: 0.25rem 0.75rem;
+    border: unset;
+    border-radius: 0.25rem;
+}
+.input-text{
+    width: 100%;
+    font-size: 1.25rem;
+}
+.task input[type=checkbox]{
+    display: none;
+}
+.task input[type=checkbox]+span {
+    display: block;
+    max-width: 100%;
+    width: 100%;
+    height: 1rem;
+    margin: 0;
+    border-radius: 0.25rem;
+    background-color: var(--color-surface);
+}
+.task input[type=checkbox]:checked+span {
+    background-color: var(--color-primary-variant);
+}
+.input-group{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.input-group label{
+    width: calc(100%/8);
+    padding:0 0.25rem;
+}
+.input-date{
+    width: calc(100%/3);
+    text-align: center;
+    margin: 0 0.25rem;
+}
+.task-edit{
+    width: 100%;
+    border: unset;
+    border-radius: 0.25rem;
+    color: var(--color-on-primary);
+    background-color: var(--color-primary-variant);
+    font-size: 1rem;
+    padding: 0.5rem;
+    margin-top: 3rem;
+    cursor: pointer;
+}
+/*? Analysis */
+.chart-date{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-bottom: 0.25rem;
+    border-bottom: 2px solid var(--color-on-primary);
+}
+.chart-date > *{
+    padding:0 0.5rem;
+    border: unset;
+}
+.chart-body{
+    height: 5rem;
+}
+
+
+
+
+
+
+
 
 /*! RWD SET */
 .min-h-100{
