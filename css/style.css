@@ -79,17 +79,22 @@ body{
     background-color: var(--color-primary);
     padding: 0.5rem;
 }
-.logo{
-    font-size: 2rem;
-    color: var(--color-on-primary);
+.logo {
+    width: 50%;
     display: none;
+}
+.logo a{
+    font-size: 2rem;
+    display: flex;
     align-items: center;
+    color: var(--color-on-primary);
 }
 .logo i{
     font-size: 3rem;
     padding: 0 0.5rem;
 }
 .menu{
+    width: 100%;
     display: flex;
     justify-content: space-around;
     align-items: center;
@@ -269,6 +274,9 @@ body{
 }
 
 /*! RWD SET */
+.min-h-100{
+    min-height: 100vh;
+}
 .container{
     width: 100%;
     margin: auto;
@@ -278,53 +286,41 @@ body{
     display: flex;
     justify-content: space-between;
     /* align-items: center; */
-    padding-right: -0.5rem;
-    padding-left: -0.5rem;
+    margin-left: -0.5rem;
+    margin-right: -0.5rem;
     flex-wrap: wrap;
 }
-.col{
-    /* padding-right: 0.5rem;
-    padding-left: 0.5rem; */
+.col, .col-1, .col-2, .col-3, .col-4, .col-5, .col-6,
+.col-7, .col-8, .col-9, .col-10, .col-11, .col-12 {
+    padding-right: 0.5rem;
+    padding-left: 0.5rem;
 }
 .col-1{
     width: calc(100%/12*1);
-    padding-right: 0.5rem;
-    padding-left: 0.5rem;
 }
 .col-2{
     width: calc(100%/12*2);
-    padding-right: 0.5rem;
-    padding-left: 0.5rem;
 }
 .col-3{
     width: calc(100%/12*3);
-    padding-right: 0.5rem;
-    padding-left: 0.5rem;
 }
 .col-4{
     width: calc(100%/12*4);
-    padding-right: 0.5rem;
-    padding-left: 0.5rem;
 }
 .col-6{
     width: 100%;
-    padding-right: 0.5rem;
-    padding-left: 0.5rem;
 }
 .col-9{
     width: calc(100%/12*9);
-    padding-right: 0.5rem;
-    padding-left: 0.5rem;
 }
 .col-10{
     width: calc(100%/12*10);
-    padding-right: 0.5rem;
-    padding-left: 0.5rem;
 }
 .col-11{
     width: calc(100%/12*11);
-    padding-right: 0.5rem;
-    padding-left: 0.5rem;
+}
+.col-12{
+    width: calc(100%/12*12);
 }
 
 
@@ -342,6 +338,9 @@ body{
     }
     .logo{
         display: flex;
+    }
+    .menu{
+        width: 50%;
     }
     .col-6{
         width: calc(100%/12*6);
