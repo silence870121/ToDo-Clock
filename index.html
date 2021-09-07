@@ -30,10 +30,10 @@
                         <a href="#plus"><i class="fas fa-plus-circle"></i></a>
                     </li>
                     <li>
-                        <a href="#home"><i class="fas fa-chart-bar"></i></a>
+                        <a href="#analysis"><i class="fas fa-chart-bar"></i></a>
                     </li>
                     <li>
-                        <a href="#home"><i class="fas fa-cog"></i></a>
+                        <a href="#setting"><i class="fas fa-cog"></i></a>
                     </li>
                 </ul>
             </div>
@@ -44,7 +44,9 @@
         <div class="row">
             <!--? Home Page -->
             <div class="col-6 min-h-100" id="home">
-                <h1 class="title">TODO CLOCK</h1>
+                <div class="title">
+                    <h1> TODO clock </h1>
+                </div>
                 <div class="task">
                     <h2>complete task</h2>
                     <div class="task-completed">
@@ -76,7 +78,6 @@
                             </ul>
                         </div>
                         <button class="task-btn"><i class="fas fa-ellipsis-h"></i></button>
-
                         <div class="clock">
                             <ul class="clock-player">
                                 <li class="task-btn"><i class="bi bi-stop-circle-fill"></i></li>
@@ -88,7 +89,7 @@
                                 <p>00:00</p>
                             </div>
                         </div>
-                        <button class="task-complete">
+                        <button class="clock-complete">
                             Task complete
                             <i class="bi bi-check-circle-fill"></i>
                         </button>
@@ -194,7 +195,9 @@
 
             <!--? List Page -->
             <div class="col-6 min-h-100" id="list">
-                <h1 class="title">TODO List</h1>
+                <div class="title">
+                    <h1> TODO list </h1>
+                </div>
                 <div class="task">
                     <div class="task-filter">
                         <button class="filter-btn filter-btn-active">ToDo</button>
@@ -405,8 +408,93 @@
             </div>
             <!--? Plus Page -->
             <div class="col-6 min-h-100" id="plus">
-                <h1 class="title">Add new task</h1>
+                <div class="title">
+                    <h1> Add new task </h1>
+                </div>
+                <div class="task">
+                    <h2>task title</h2>
+                    <input type="text" placeholder="Task title" class="input-text">
+                </div>
+                <div class="task task-plus">
+                    <h2>expect clock</h2>
+                    <div class="input-group">
+                        <label> <input type="checkbox" value="1" checked>
+                            <span></span> </label>
+                        <label> <input type="checkbox" value="2">
+                            <span></span> </label>
+                        <label> <input type="checkbox" value="3">
+                            <span></span> </label>
+                        <label> <input type="checkbox" value="4">
+                            <span></span> </label>
+                        <label> <input type="checkbox" value="5">
+                            <span></span> </label>
+                        <label> <input type="checkbox" value="6">
+                            <span></span> </label>
+                        <label> <input type="checkbox" value="7">
+                            <span></span> </label>
+                        <label> <input type="checkbox" value="8">
+                            <span></span> </label>
+                    </div>
+                </div>
+                <div class="task task-plus">
+                    <h2>limit time</h2>
+                    <div class="input-group">
+                        <input type="text" class="input-date" value="2021">
+                        <input type="text" class="input-date" value="09">
+                        <input type="text" class="input-date" value="07">
+                    </div>
+                </div>
+                <button class="task-edit">ADD Task</button>
                 <!--? Plus Page End -->
+            </div>
+            <!--? Analysis Page -->
+            <div class="col-6 min-h-100" id="analysis">
+                <div class="title">
+                    <h1> Analysis </h1>
+                </div>
+                <div class="task">
+                    <div class="task-filter">
+                        <button class="filter-btn filter-btn-active">Day</button>
+                        <button class="filter-btn">Week</button>
+                    </div>
+                    <div class="task">
+                        <h2>completed</h2>
+                        <div class="task-completed">
+                            <div class="surface-left">
+                                <p>8</p>
+                                <span>task</span>
+                            </div>
+                            <div class="surface-right">
+                                <p>24</p>
+                                <span>clock</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="task">
+                        <!--? CHART -->
+                        <div class="task-chart">
+                            <div class="surface">
+                                <div class="chart-date">
+                                    <button>&lt;</button>
+                                    <p>2021 <span>08/29</span> - <span>09/04</span></p>
+                                    <button>&gt;</button>
+                                </div>
+                                <div class="chart-body">
+                                    ...
+                                </div>
+                            </div>
+                            <!--? CHART END -->
+                        </div>
+                    </div>
+                </div>
+                <!--? Analysis Page End -->
+            </div>
+            <!--? Setting Page -->
+            <div class="col-6 min-h-100" id="setting">
+                <div class="title">
+                    <h1> Setting </h1>
+                </div>
+                <!--? Setting Page End -->
             </div>
         </div>
         <!--? Content End -->
