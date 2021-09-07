@@ -14,182 +14,78 @@
 <body class="background">
     <!--? Navigation Bar -->
     <nav class="nav">
-        <div class="container row">
-            <div class="col-6">
-                <a href="index.html" class="logo"><i class="fas fa-clock"></i>TODO CLOCK</a>
+        <div class="container">
+            <div class="row">
+                <div class="logo">
+                    <a href="index.html"><i class="fas fa-clock"></i>TODO CLOCK</a>
+                </div>
+                <ul class="menu">
+                    <li class="menu-active"><i class="fas fa-house-user"></i></li>
+                    <li><i class="fas fa-list"></i></li>
+                    <li><i class="fas fa-plus-circle"></i></li>
+                    <li><i class="fas fa-chart-bar"></i></li>
+                    <li><i class="fas fa-cog"></i></li>
+                </ul>
             </div>
-            <ul class="menu col-6">
-                <li class="menu-active"><i class="fas fa-house-user"></i></li>
-                <li><i class="fas fa-list"></i></li>
-                <li><i class="fas fa-plus-circle"></i></li>
-                <li><i class="fas fa-chart-bar"></i></li>
-                <li><i class="fas fa-cog"></i></li>
-            </ul>
         </div>
     </nav>
     <!--? Content -->
-    <!--? Home Page -->
     <div class="container">
-        <h1 class="title">TODO CLOCK</h1>
-        <div class="task">
-            <h2>complete task</h2>
-            <div class="task-completed">
-                <div class="surface-left">
-                    <p>8</p>
-                    <span>Today</span>
+        <div class="row">
+            <!--? Home Page -->
+            <div class="col-6 min-h-100">
+                <h1 class="title">TODO CLOCK</h1>
+                <div class="task">
+                    <h2>complete task</h2>
+                    <div class="task-completed">
+                        <div class="surface-left">
+                            <p>8</p>
+                            <span>Today</span>
+                        </div>
+                        <div class="surface-right">
+                            <p>24</p>
+                            <span>WEEK</span>
+                        </div>
+                    </div>
                 </div>
-                <div class="surface-right">
-                    <p>24</p>
-                    <span>WEEK</span>
-                </div>
-            </div>
-        </div>
-        <div class="task">
-            <h2>working task</h2>
-            <div class="surface">
-                <div class="task-title">
-                    <h3 class="task-text">Task Title</h3>
-                    <!--? expect clocks -->
-                    <ul class="task-expect">
-                        <li class="over"></li>
-                        <li class="over"></li>
-                        <li class="over"></li>
-                        <li class="over"></li>
-                        <li class=""></li>
-                        <li class=""></li>
-                        <li class=""></li>
-                        <li class=""></li>
-                    </ul>
-                </div>
-                <button class="task-btn"><i class="fas fa-ellipsis-h"></i></button>
+                <div class="task">
+                    <h2>working task</h2>
+                    <div class="surface">
+                        <div class="task-title">
+                            <h3 class="task-text">Task Title</h3>
+                            <!--? expect clocks -->
+                            <ul class="task-expect">
+                                <li class="over"></li>
+                                <li class="over"></li>
+                                <li class="over"></li>
+                                <li class="over"></li>
+                                <li class=""></li>
+                                <li class=""></li>
+                                <li class=""></li>
+                                <li class=""></li>
+                            </ul>
+                        </div>
+                        <button class="task-btn"><i class="fas fa-ellipsis-h"></i></button>
 
-                <div class="clock">
-                    <ul class="clock-player">
-                        <li class="task-btn"><i class="bi bi-stop-circle-fill"></i></li>
-                        <li class="task-btn"><i class="bi bi-play-circle-fill"></i></li>
-                        <!-- <li class="task-btn"><i class="bi bi-pause-circle-fill"></i></li> -->
-                        <li class="task-btn"><i class="bi bi-skip-end-circle-fill"></i></li>
-                    </ul>
-                    <div class="clock-timer">
-                        <p>00:00</p>
+                        <div class="clock">
+                            <ul class="clock-player">
+                                <li class="task-btn"><i class="bi bi-stop-circle-fill"></i></li>
+                                <li class="task-btn"><i class="bi bi-play-circle-fill"></i></li>
+                                <!-- <li class="task-btn"><i class="bi bi-pause-circle-fill"></i></li> -->
+                                <li class="task-btn"><i class="bi bi-skip-end-circle-fill"></i></li>
+                            </ul>
+                            <div class="clock-timer">
+                                <p>00:00</p>
+                            </div>
+                        </div>
+                        <button class="task-complete">
+                            Task complete
+                            <i class="bi bi-check-circle-fill"></i>
+                        </button>
                     </div>
                 </div>
-                <button class="task-complete">
-                    Task complete
-                    <i class="bi bi-check-circle-fill"></i>
-                </button>
-            </div>
-        </div>
-        <div class="task">
-            <h2>Newest task</h2>
-            <ul class="task-list">
-                <!--? task item -->
-                <li class="surface">
-                    <button class="task-btn"><i class="bi bi-play-circle-fill"></i></button>
-                    <div class="task-title">
-                        <h3 class="task-text">Task Title</h3>
-                        <ul class="task-expect">
-                            <li class="over"></li>
-                            <li class="over"></li>
-                            <li class="over"></li>
-                            <li class="over"></li>
-                            <li class=""></li>
-                            <li class=""></li>
-                            <li class=""></li>
-                            <li class=""></li>
-                        </ul>
-                    </div>
-                    <button class="task-btn"><i class="fas fa-ellipsis-h"></i></button>
-                </li>
-                <!--? task item -->
-                <li class="surface">
-                    <button class="task-btn"><i class="bi bi-play-circle-fill"></i></button>
-                    <div class="task-title">
-                        <h3 class="task-text">Task Title</h3>
-                        <ul class="task-expect">
-                            <li class="over"></li>
-                            <li class="over"></li>
-                            <li class="over"></li>
-                            <li class="over"></li>
-                            <li class=""></li>
-                            <li class=""></li>
-                            <li class=""></li>
-                            <li class=""></li>
-                        </ul>
-                    </div>
-                    <button class="task-btn"><i class="fas fa-ellipsis-h"></i></button>
-                </li>
-                <!--? task item -->
-                <li class="surface">
-                    <button class="task-btn"><i class="bi bi-play-circle-fill"></i></button>
-                    <div class="task-title">
-                        <h3 class="task-text">Task Title</h3>
-                        <ul class="task-expect">
-                            <li class="over"></li>
-                            <li class="over"></li>
-                            <li class="over"></li>
-                            <li class="over"></li>
-                            <li class=""></li>
-                            <li class=""></li>
-                            <li class=""></li>
-                            <li class=""></li>
-                        </ul>
-                    </div>
-                    <button class="task-btn"><i class="fas fa-ellipsis-h"></i></button>
-                </li>
-                <!--? task item -->
-                <li class="surface">
-                    <button class="task-btn"><i class="bi bi-play-circle-fill"></i></button>
-                    <div class="task-title">
-                        <h3 class="task-text">Task Title</h3>
-                        <ul class="task-expect">
-                            <li class="over"></li>
-                            <li class="over"></li>
-                            <li class="over"></li>
-                            <li class="over"></li>
-                            <li class=""></li>
-                            <li class=""></li>
-                            <li class=""></li>
-                            <li class=""></li>
-                        </ul>
-                    </div>
-                    <button class="task-btn"><i class="fas fa-ellipsis-h"></i></button>
-                </li>
-                <!--? task item -->
-                <li class="surface">
-                    <button class="task-btn"><i class="bi bi-play-circle-fill"></i></button>
-                    <div class="task-title">
-                        <h3 class="task-text">Task Title</h3>
-                        <ul class="task-expect">
-                            <li class="over"></li>
-                            <li class="over"></li>
-                            <li class="over"></li>
-                            <li class="over"></li>
-                            <li class=""></li>
-                            <li class=""></li>
-                            <li class=""></li>
-                            <li class=""></li>
-                        </ul>
-                    </div>
-                    <button class="task-btn"><i class="fas fa-ellipsis-h"></i></button>
-                </li>
-            </ul>
-        </div>
-        <!--? Home Page End -->
-    </div>
-
-    <!--? List Page -->
-    <div class="container">
-        <h1 class="title">TODO List</h1>
-        <div class="task">
-            <div class="task-filter">
-                <button class="filter-btn filter-btn-active">ToDo</button>
-                <button class="filter-btn">Done</button>
-            </div>
-            <!--? filtered list -->
-            <div class="row">
-                <!--? TODO list -->
-                <div class="col-6">
+                <div class="task">
+                    <h2>Newest task</h2>
                     <ul class="task-list">
                         <!--? task item -->
                         <li class="surface">
@@ -208,10 +104,6 @@
                                 </ul>
                             </div>
                             <button class="task-btn"><i class="fas fa-ellipsis-h"></i></button>
-                            <div class="task-date">
-                                <p>Create: 2021/09/07</p>
-                                <p>Create: 2021/09/07</p>
-                            </div>
                         </li>
                         <!--? task item -->
                         <li class="surface">
@@ -286,116 +178,229 @@
                             <button class="task-btn"><i class="fas fa-ellipsis-h"></i></button>
                         </li>
                     </ul>
-
                 </div>
-                <!--? DONE List -->
-                <div class="col-6">
-                    <ul class="task-list">
-                        <!--? task item -->
-                        <li class="surface">
-                            <button class="task-btn"><i class="bi bi-check-circle-fill"></i></button>
-                            <div class="task-title">
-                                <h3 class="task-text">Task Title</h3>
-                                <ul class="task-expect">
-                                    <li class="over"></li>
-                                    <li class="over"></li>
-                                    <li class="over"></li>
-                                    <li class="over"></li>
-                                    <li class=""></li>
-                                    <li class=""></li>
-                                    <li class=""></li>
-                                    <li class=""></li>
-                                </ul>
-                            </div>
-                            <button class="task-btn"><i class="fas fa-reply"></i></button>
-                            <button class="task-btn"><i class="fas fa-ellipsis-h"></i></button>
-                            <div class="task-date">
-                                <!-- <p>Create: 2021/09/07</p> -->
-                                <p class="task-done">Complete on 2021/09/07</p>
-                            </div>
-                        </li>
-                        <!--? task item -->
-                        <li class="surface">
-                            <button class="task-btn"><i class="bi bi-check-circle-fill"></i></button>
-                            <div class="task-title">
-                                <h3 class="task-text">Task Title</h3>
-                                <ul class="task-expect">
-                                    <li class="over"></li>
-                                    <li class="over"></li>
-                                    <li class="over"></li>
-                                    <li class="over"></li>
-                                    <li class=""></li>
-                                    <li class=""></li>
-                                    <li class=""></li>
-                                    <li class=""></li>
-                                </ul>
-                            </div>
-                            <button class="task-btn"><i class="fas fa-reply"></i></button>
-                            <button class="task-btn"><i class="fas fa-ellipsis-h"></i></button>
-                        </li>
-                        <li class="surface">
-                            <button class="task-btn"><i class="bi bi-check-circle-fill"></i></button>
-                            <div class="task-title">
-                                <h3 class="task-text">Task Title</h3>
-                                <ul class="task-expect">
-                                    <li class="over"></li>
-                                    <li class="over"></li>
-                                    <li class="over"></li>
-                                    <li class="over"></li>
-                                    <li class=""></li>
-                                    <li class=""></li>
-                                    <li class=""></li>
-                                    <li class=""></li>
-                                </ul>
-                            </div>
-                            <button class="task-btn"><i class="fas fa-reply"></i></button>
-                            <button class="task-btn"><i class="fas fa-ellipsis-h"></i></button>
-                        </li>
-                        <li class="surface">
-                            <button class="task-btn"><i class="bi bi-check-circle-fill"></i></button>
-                            <div class="task-title">
-                                <h3 class="task-text">Task Title</h3>
-                                <ul class="task-expect">
-                                    <li class="over"></li>
-                                    <li class="over"></li>
-                                    <li class="over"></li>
-                                    <li class="over"></li>
-                                    <li class=""></li>
-                                    <li class=""></li>
-                                    <li class=""></li>
-                                    <li class=""></li>
-                                </ul>
-                            </div>
-                            <button class="task-btn"><i class="fas fa-reply"></i></button>
-                            <button class="task-btn"><i class="fas fa-ellipsis-h"></i></button>
-                        </li>
-                        <li class="surface">
-                            <button class="task-btn"><i class="bi bi-check-circle-fill"></i></button>
-                            <div class="task-title">
-                                <h3 class="task-text">Task Title</h3>
-                                <ul class="task-expect">
-                                    <li class="over"></li>
-                                    <li class="over"></li>
-                                    <li class="over"></li>
-                                    <li class="over"></li>
-                                    <li class=""></li>
-                                    <li class=""></li>
-                                    <li class=""></li>
-                                    <li class=""></li>
-                                </ul>
-                            </div>
-                            <button class="task-btn"><i class="fas fa-reply"></i></button>
-                            <button class="task-btn"><i class="fas fa-ellipsis-h"></i></button>
-                        </li>
+                <!--? Home Page End -->
+            </div>
 
-                    </ul>
-
+            <!--? List Page -->
+            <div class="col-6 min-h-100">
+                <h1 class="title">TODO List</h1>
+                <div class="task">
+                    <div class="task-filter">
+                        <button class="filter-btn filter-btn-active">ToDo</button>
+                        <button class="filter-btn">Done</button>
+                    </div>
+                    <!--? filtered list -->
+                    <div class="row">
+                        <!--? TODO list -->
+                        <div class="col-12">
+                            <ul class="task-list">
+                                <!--? task item -->
+                                <li class="surface">
+                                    <button class="task-btn"><i class="bi bi-play-circle-fill"></i></button>
+                                    <div class="task-title">
+                                        <h3 class="task-text">Todo Task Title</h3>
+                                        <ul class="task-expect">
+                                            <li class="over"></li>
+                                            <li class="over"></li>
+                                            <li class="over"></li>
+                                            <li class="over"></li>
+                                            <li class=""></li>
+                                            <li class=""></li>
+                                            <li class=""></li>
+                                            <li class=""></li>
+                                        </ul>
+                                    </div>
+                                    <button class="task-btn"><i class="fas fa-ellipsis-h"></i></button>
+                                    <div class="task-date">
+                                        <p>Create: 2021/09/07</p>
+                                        <p>Limit: 2021/09/07</p>
+                                    </div>
+                                </li>
+                                <!--? task item -->
+                                <li class="surface">
+                                    <button class="task-btn"><i class="bi bi-play-circle-fill"></i></button>
+                                    <div class="task-title">
+                                        <h3 class="task-text">Task Title</h3>
+                                        <ul class="task-expect">
+                                            <li class="over"></li>
+                                            <li class="over"></li>
+                                            <li class="over"></li>
+                                            <li class="over"></li>
+                                            <li class=""></li>
+                                            <li class=""></li>
+                                            <li class=""></li>
+                                            <li class=""></li>
+                                        </ul>
+                                    </div>
+                                    <button class="task-btn"><i class="fas fa-ellipsis-h"></i></button>
+                                </li>
+                                <li class="surface">
+                                    <button class="task-btn"><i class="bi bi-play-circle-fill"></i></button>
+                                    <div class="task-title">
+                                        <h3 class="task-text">Task Title</h3>
+                                        <ul class="task-expect">
+                                            <li class="over"></li>
+                                            <li class="over"></li>
+                                            <li class="over"></li>
+                                            <li class="over"></li>
+                                            <li class=""></li>
+                                            <li class=""></li>
+                                            <li class=""></li>
+                                            <li class=""></li>
+                                        </ul>
+                                    </div>
+                                    <button class="task-btn"><i class="fas fa-ellipsis-h"></i></button>
+                                </li>
+                                <li class="surface">
+                                    <button class="task-btn"><i class="bi bi-play-circle-fill"></i></button>
+                                    <div class="task-title">
+                                        <h3 class="task-text">Task Title</h3>
+                                        <ul class="task-expect">
+                                            <li class="over"></li>
+                                            <li class="over"></li>
+                                            <li class="over"></li>
+                                            <li class="over"></li>
+                                            <li class=""></li>
+                                            <li class=""></li>
+                                            <li class=""></li>
+                                            <li class=""></li>
+                                        </ul>
+                                    </div>
+                                    <button class="task-btn"><i class="fas fa-ellipsis-h"></i></button>
+                                </li>
+                                <li class="surface">
+                                    <button class="task-btn"><i class="bi bi-play-circle-fill"></i></button>
+                                    <div class="task-title">
+                                        <h3 class="task-text">Task Title</h3>
+                                        <ul class="task-expect">
+                                            <li class="over"></li>
+                                            <li class="over"></li>
+                                            <li class="over"></li>
+                                            <li class="over"></li>
+                                            <li class=""></li>
+                                            <li class=""></li>
+                                            <li class=""></li>
+                                            <li class=""></li>
+                                        </ul>
+                                    </div>
+                                    <button class="task-btn"><i class="fas fa-ellipsis-h"></i></button>
+                                </li>
+                            </ul>
+                        </div>
+                        <!--? DONE List -->
+                        <div class="col-12">
+                            <ul class="task-list">
+                                <!--? task item -->
+                                <li class="surface">
+                                    <button class="task-btn"><i class="bi bi-check-circle-fill"></i></button>
+                                    <div class="task-title">
+                                        <h3 class="task-text">Done Task Title</h3>
+                                        <ul class="task-expect">
+                                            <li class="over"></li>
+                                            <li class="over"></li>
+                                            <li class="over"></li>
+                                            <li class="over"></li>
+                                            <li class=""></li>
+                                            <li class=""></li>
+                                            <li class=""></li>
+                                            <li class=""></li>
+                                        </ul>
+                                    </div>
+                                    <button class="task-btn"><i class="fas fa-reply"></i></button>
+                                    <button class="task-btn"><i class="fas fa-ellipsis-h"></i></button>
+                                    <div class="task-date">
+                                        <!-- <p>Create: 2021/09/07</p> -->
+                                        <p class="task-done">Complete on 2021/09/07</p>
+                                    </div>
+                                </li>
+                                <!--? task item -->
+                                <li class="surface">
+                                    <button class="task-btn"><i class="bi bi-check-circle-fill"></i></button>
+                                    <div class="task-title">
+                                        <h3 class="task-text">Task Title</h3>
+                                        <ul class="task-expect">
+                                            <li class="over"></li>
+                                            <li class="over"></li>
+                                            <li class="over"></li>
+                                            <li class="over"></li>
+                                            <li class=""></li>
+                                            <li class=""></li>
+                                            <li class=""></li>
+                                            <li class=""></li>
+                                        </ul>
+                                    </div>
+                                    <button class="task-btn"><i class="fas fa-reply"></i></button>
+                                    <button class="task-btn"><i class="fas fa-ellipsis-h"></i></button>
+                                </li>
+                                <li class="surface">
+                                    <button class="task-btn"><i class="bi bi-check-circle-fill"></i></button>
+                                    <div class="task-title">
+                                        <h3 class="task-text">Task Title</h3>
+                                        <ul class="task-expect">
+                                            <li class="over"></li>
+                                            <li class="over"></li>
+                                            <li class="over"></li>
+                                            <li class="over"></li>
+                                            <li class=""></li>
+                                            <li class=""></li>
+                                            <li class=""></li>
+                                            <li class=""></li>
+                                        </ul>
+                                    </div>
+                                    <button class="task-btn"><i class="fas fa-reply"></i></button>
+                                    <button class="task-btn"><i class="fas fa-ellipsis-h"></i></button>
+                                </li>
+                                <li class="surface">
+                                    <button class="task-btn"><i class="bi bi-check-circle-fill"></i></button>
+                                    <div class="task-title">
+                                        <h3 class="task-text">Task Title</h3>
+                                        <ul class="task-expect">
+                                            <li class="over"></li>
+                                            <li class="over"></li>
+                                            <li class="over"></li>
+                                            <li class="over"></li>
+                                            <li class=""></li>
+                                            <li class=""></li>
+                                            <li class=""></li>
+                                            <li class=""></li>
+                                        </ul>
+                                    </div>
+                                    <button class="task-btn"><i class="fas fa-reply"></i></button>
+                                    <button class="task-btn"><i class="fas fa-ellipsis-h"></i></button>
+                                </li>
+                                <li class="surface">
+                                    <button class="task-btn"><i class="bi bi-check-circle-fill"></i></button>
+                                    <div class="task-title">
+                                        <h3 class="task-text">Task Title</h3>
+                                        <ul class="task-expect">
+                                            <li class="over"></li>
+                                            <li class="over"></li>
+                                            <li class="over"></li>
+                                            <li class="over"></li>
+                                            <li class=""></li>
+                                            <li class=""></li>
+                                            <li class=""></li>
+                                            <li class=""></li>
+                                        </ul>
+                                    </div>
+                                    <button class="task-btn"><i class="fas fa-reply"></i></button>
+                                    <button class="task-btn"><i class="fas fa-ellipsis-h"></i></button>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
                 </div>
+                <!--? List Page End -->
+            </div>
+            <!--? Plus Page -->
+            <div class="col-6 min-h-100">
+                <h1 class="title">Add new task</h1>
+                <!--? Plus Page End -->
             </div>
         </div>
-        <!--? List Page End -->
+        <!--? Content End -->
     </div>
-
     <script src="https://unpkg.com/vue@next"></script>
     <script src="./js/app.js"></script>
 </body>
