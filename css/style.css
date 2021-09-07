@@ -70,6 +70,7 @@ img {
 body{
     background-color: var(--color-background);
 }
+/*? Navigation Bar */
 .nav{
     position: fixed;
     width: 100%;
@@ -93,26 +94,31 @@ body{
     justify-content: space-around;
     align-items: center;
 }
+
 .menu li{
     font-size: 24px;
     padding: 12px;
+    width: 3rem;
+    height: 3rem;
     cursor: pointer;
 }
 .menu-active{
     color: var(--color-primary-variant);
 }
 .title{
+    height: 3rem;
     color: var(--color-primary-variant);
-    /* font-weight: bold; */
     font-size: 1.5rem;
     margin: 0.5rem 0;
     padding-top: 1rem;
     padding-bottom: 0.5rem;
+    text-transform: uppercase;
     border-bottom: 2px solid var(--color-primary-variant);
 }
 .task{
     /* border: 1px solid black; */
-    margin-top: 2rem;
+    margin-top: 1rem;
+    margin-bottom: 2rem;
 }
 .task h2{
     text-transform: uppercase;
@@ -161,8 +167,8 @@ body{
     border-left: 2px solid var(--color-on-primary);
     padding: 0.5rem 0;
 }
-
-.task-clocks li{
+/*? task list item */
+.task-expect li{
     display: inline-block;
     width: 0.5rem;
     height: 0.5rem;
@@ -177,18 +183,35 @@ body{
     flex: 1;
     margin: 0 0.25rem;
 }
-.task-clocks > .over{
+.task-expect > .over{
     /* border: none; */
     background-color: var(--color-on-surface);
 }
-.btn{
+.task-btn{
     color: var(--color-on-surface);
     background-color: unset;
     border: none;
-    font-size: 24px;
-    padding: 0.25rem;
+    font-size: 1.5rem;
+    padding: 0.5rem;
     cursor: pointer;
 }
+.task-date{
+    width: 100%;
+    font-size: 0.75rem;
+    padding-left: 2.5rem;
+    display: flex;
+    justify-content: space-between;
+    text-transform: uppercase;
+}
+.task-date p{
+    padding:0 0.5rem;
+    color: var(--color-on-background);
+}
+.task-done{
+    width: 100%;
+    text-align: right;
+}
+/*? clock */
 .clock{
     width: 100%;
     display: flex;
@@ -220,8 +243,30 @@ body{
 .task-list li{
     margin-bottom: 0.5rem;
 }
-
-
+.task-filter{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 0.5rem;
+    background-color: var(--color-surface);
+    margin-bottom: 1rem;
+}
+.filter-btn{
+    width: 50%;
+    height: 2rem;
+    font-size: 1rem;
+    background-color: unset;
+    border: none;
+    color: var(--color-on-background);
+    padding:0.5rem 0;
+    border-radius: 0.5rem;
+    cursor: pointer;
+    text-transform: uppercase;
+}
+.filter-btn-active{
+    background-color: var(--color-primary-variant);
+    color: var(--color-on-primary);
+}
 
 /*! RWD SET */
 .container{
@@ -232,7 +277,7 @@ body{
 .row{
     display: flex;
     justify-content: space-between;
-    align-items: center;
+    /* align-items: center; */
     padding-right: -0.5rem;
     padding-left: -0.5rem;
     flex-wrap: wrap;
@@ -288,6 +333,9 @@ body{
 /** Responsive Web Design */
 /* ? mobile first */
 @media screen and (min-width:768px){
+    .container{
+        max-width: 720px;
+    }
     .nav{
         top: 0;
         bottom: auto;
@@ -298,8 +346,9 @@ body{
     .col-6{
         width: calc(100%/12*6);
     }
-    .container{
-        max-width: 720px;
+    .filter-btn{
+        font-size: 1.25rem;
+        height: 2.5rem;
     }
 }
 @media screen and (min-width:992px) {
