@@ -241,8 +241,7 @@ body{
     /* border: none; */
     background-color: var(--color-on-surface);
 }
-.task-btn{
-    color: var(--color-on-surface);
+.btn{
     background-color: unset;
     border: none;
     font-size: 1.5rem;
@@ -335,16 +334,44 @@ body{
     margin: 0 0.25rem;
 }
 .task-edit{
-    width: 100%;
-    border: unset;
-    border-radius: 0.25rem;
-    color: var(--color-on-primary);
-    background-color: var(--color-primary-variant);
-    font-size: 1rem;
-    padding: 0.5rem;
+    display: flex;
+    justify-content: space-between;
+    /* align-items: center; */
+    flex-wrap: wrap;
     margin-top: 3rem;
+}
+.edit-btn{
+    flex: 1;
+    margin-left: 0.25rem;
+    margin-right: 0.25rem;
+    margin-bottom: 1rem;
+    padding: 0.5rem;
+    border: unset;
+    border-radius: 0.5rem;
+    font-size: 1rem;
+    text-transform: uppercase;
     cursor: pointer;
 }
+.btn-plus{
+    flex: unset;
+    width: 100%;
+    color: var(--color-on-primary);
+    background-color: var(--color-primary-variant);
+}
+.btn-cancel{
+    /* opacity: 0.75; */
+    color: var(--color-on-surface);
+    background-color: var(--color-surface);
+    border:1px solid var(--color-on-surface);
+}
+.btn-delete{
+    /* opacity: 0.75; */
+    color: var(--color-error);
+    background-color:var(--color-on-error);
+    border:1px solid var(--color-error);
+}
+
+
 /*? Analysis */
 .chart-date{
     width: 100%;
@@ -361,10 +388,62 @@ body{
 .chart-body{
     height: 5rem;
 }
-
-
-
-
+/*? Setting */
+.setting-time{
+    display: flex;
+    margin:0 -0.25rem;
+}
+.setting-time li{
+    width: 25%;
+    margin: 0 0.25rem;
+}
+.setting-time label{
+    display: block;
+    width: 100%;
+    color: var(--color-on-background);
+    background-color: var(--color-surface);
+    transition: color  0.3s ease,
+    background-color 0.3s ease;
+    padding: 0.25rem;
+    text-align: center;
+    border-radius: 0.5rem;
+    cursor: pointer;
+}
+.setting-time input[type=radio]{
+    display: none;
+}
+.setting-time input[type=radio]:checked+ label{
+    background-color: var(--color-primary-variant);
+    color: var(--color-on-primary);
+}
+.ringtone li{
+    width: 100%;
+    margin-bottom: 0.5rem;
+}
+.ringtone label{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: var(--color-on-surface);
+    background-color: var(--color-surface);
+    border-radius: 0.5rem;
+    padding: 0 0.75rem;
+    transition: color  0.3s ease,
+                background-color 0.3s ease;
+}
+.ringtone label p{
+    flex:1;
+    font-size: 1rem;
+    /* text-transform: uppercase; */
+    text-align-last: left;
+}
+.ringtone input[type=radio]{
+    display: none;
+}
+.ringtone input[type=radio]:checked+ label{
+    background-color: var(--color-primary-variant);
+    color: var(--color-on-primary);
+}
 
 
 
@@ -439,7 +518,7 @@ body{
         width: 50%;
     }
     .col-6{
-        width: calc(100%/12*6);
+        /* width: calc(100%/12*6); */
     }
     .filter-btn{
         font-size: 1.25rem;
