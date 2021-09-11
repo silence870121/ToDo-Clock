@@ -40,6 +40,56 @@
         </div>
     </nav>
     <!--? Content -->
+    <!--? Clock Modal -->
+    <div class="container">
+        <div class="row">
+            <div class="col-6  min-h-100" id="clock">
+                <div class="title">
+                    <h1>TODO CLOCK</h1>
+                </div>
+                <div class="clock">
+                    <h2 class="clock-title">Working task title</h2>
+                    <ul class="clock-progress">
+                        <li class="clock-progress--active"></li>
+                        <li class="clock-progress--active"></li>
+                        <li class="clock-progress--active"></li>
+                        <li class="clock-progress--active"></li>
+                        <li></li>
+                        <li></li>
+                        <li></li>
+                        <li></li>
+                    </ul>
+                    <p class="clock-date">Create On 2021/09/08</p>
+                </div>
+                <div class="clock">
+                    <div class="clock-body">
+                        <div class="clock-content">
+                            <svg>
+                                <circle r="7.25rem" cx="7.5rem" cy="7.5rem" />
+                                <circle r="7.25rem" cx="7.5rem" cy="7.5rem" class="clock-bar"
+                                    style="stroke-dashoffset: calc(7.5rem * 6.08 * (1 - 0));" />
+                            </svg>
+                        </div>
+                        <span>50%</span>
+                    </div>
+                </div>
+                <div class="clock">
+                    <ul class="clock-player">
+                        <li class="btn"><i class="bi bi-stop-circle-fill"></i></li>
+                        <li class="btn"><i class="bi bi-play-circle-fill"></i></li>
+                        <!-- <li class="btn"><i class="bi bi-pause-circle-fill"></i></li> -->
+                        <li class="btn"><i class="bi bi-skip-end-circle-fill"></i></li>
+                    </ul>
+                </div>
+                <div class="clock">
+                    <button class="clock-complete">
+                        Task complete
+                        <i class="bi bi-check-circle-fill"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
     <div class="container">
         <div class="row">
             <!--? Home Page -->
@@ -78,7 +128,7 @@
                             </ul>
                         </div>
                         <button class="btn"><i class="fas fa-ellipsis-h"></i></button>
-                        <div class="clock">
+                        <div class="clock-working">
                             <ul class="clock-player">
                                 <li class="btn"><i class="bi bi-stop-circle-fill"></i></li>
                                 <li class="btn"><i class="bi bi-play-circle-fill"></i></li>
@@ -89,7 +139,7 @@
                                 <p>00:00</p>
                             </div>
                         </div>
-                        <button class="clock-complete">
+                        <button class="task-complete">
                             Task complete
                             <i class="bi bi-check-circle-fill"></i>
                         </button>
