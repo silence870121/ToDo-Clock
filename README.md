@@ -40,7 +40,6 @@
             },
         }
     },
-let data = [item, item]
 
 ```
 ***Data function***
@@ -202,11 +201,12 @@ let data = [item, item]
 ### Clock
 | Action | 功能 | function()    |
 |--------|------|---------------|
-| Start  | 開始 | switchClock() |
-| Pause  | 暫停 | switchClock() |
-| Stop   | 停止 | stopClock()   |
-| Skip   | 跳過 | skipClock()   |
+| Work Time  | 設定工作時間 | setworkTime() |
+| Break Time | 設定休息時間 | setbreakTime() |
+| Ringtone   | 設定鈴聲 | serRingtone()   |
+| Ringtone   | 播放鈴聲 | playRingtone()   |
 
+***Data Format***
 ```javascript
     data(){ 
         return{
@@ -214,11 +214,28 @@ let data = [item, item]
                 working:[30,35,40,45,50,55,60,75,90,120,150,180],
                 breaking:[30,35,40,45,50,55,60,75,90,120,150,180],
                 ringtone:[
-                    src(./mp3),
-                    src(./mp3),
-                    src(./mp3),
+                    src(./Ringtone.mp3),
+                    src(./Ringtone.mp3),
+                    src(./Ringtone.mp3),
                 ]
             },
         }
+    }
+```
+
+***Data function***
+```javascript
+    setworkTime(item){
+        this.clock.working = item
+    },
+    setbreakTime(item){
+        this.clock.breaking = item
+    },
+    serRingtone(item){
+        this.clock.ringtone = item
+    }
+    playRingtone(item){
+        item.currentTime = 0
+        item.play()
     }
 ```
