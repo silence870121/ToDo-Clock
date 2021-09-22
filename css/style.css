@@ -174,32 +174,29 @@ body{
     text-transform: uppercase;
 }
 .clock-body{
-    width: 15rem;
-    height: 15rem;
     margin-top: 3rem;
     margin-bottom: 2rem;
     text-align: center;
-    position: relative;
 }
 .clock-content{
     position: relative;
 }
 svg{
-    width: 15rem;
-    height: 15rem;
+    width: 100%;
+    height: auto;
     transform: rotate(-90deg);
 }
 svg circle{
     fill: none;
-    stroke-width: 0.5rem;
+    stroke-width: 5;
     stroke: var(--color-surface);
 }
 .clock-bar{
     stroke: var(--color-primary-variant);
     position: relative;
     z-index: 1;
-    stroke-dasharray: 912;
-    stroke-dashoffset: 903;
+    stroke-dasharray: 786;
+    stroke-dashoffset: calc(786 * (1 - 0.99));
 
 }
 .clock-body span{
