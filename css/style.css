@@ -84,6 +84,7 @@ body{
     background-color: var(--color-primary);
     padding: 0.5rem;
 }
+
 .logo {
     width: 50%;
     display: none;
@@ -99,13 +100,13 @@ body{
     font-size: 2.5rem;
     padding:0.25rem;
 }
+
 .menu{
     width: 100%;
     display: flex;
     justify-content: space-around;
     align-items: center;
 }
-
 .menu li a{
     display: block;
     font-size: 24px;
@@ -133,7 +134,8 @@ body{
     text-transform: uppercase;
     border-bottom: 2px solid var(--color-primary-variant);
 }
-/*? clock */
+
+/*? Clock Modal */
 .clock{
     width: calc(100%/12*8);
     display: flex;
@@ -151,20 +153,20 @@ body{
     color: var(--color-primary-variant);
     margin-top: 2rem;
 }
-.clock-progress{
+.clock-spend{
     width: 100%;
     display: flex;
     justify-content: center;
     align-items: center;
 }
-.clock-progress li{
+.clock-spend li{
     width: 0.5rem;
     height: 0.5rem;
     margin: 0.5rem;
     border-radius: 50%;
     border: 1px solid var(--color-on-surface);
 }
-.clock-progress--active{
+.clock-spend--active{
     background-color: var(--color-on-surface);
 }
 .clock-date{
@@ -196,8 +198,8 @@ svg circle{
     stroke: var(--color-primary-variant);
     position: relative;
     z-index: 1;
-    stroke-dasharray: calc(7.5rem * 6.08 );
-    stroke-dashoffset: calc(7.5rem * 6.08 * (1 - 0.1));
+    stroke-dasharray: 912;
+    stroke-dashoffset: calc(912 * (1 - 0.01));
 
 }
 .clock-body span{
@@ -209,9 +211,6 @@ svg circle{
     color: var(--color-primary-variant);
     transform: translate(-50%,-50%);
 }
-/*! test */
-
-/*! test End */
 
 .clock-working{
     display: flex;
@@ -240,6 +239,8 @@ svg circle{
     cursor: pointer;
     margin-top: 2rem;
 }
+/*? Clock End */
+
 /*? Task */
 .task{
     /* border: 1px solid black; */
