@@ -199,7 +199,7 @@ svg circle{
     position: relative;
     z-index: 1;
     stroke-dasharray: 912;
-    stroke-dashoffset: calc(912 * (1 - 0.01));
+    stroke-dashoffset: 903;
 
 }
 .clock-body span{
