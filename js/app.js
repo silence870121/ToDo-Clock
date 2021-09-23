@@ -121,7 +121,7 @@ Vue.createApp({
                 if (this.working.clock_spend < this.working.clock_expect) {
                     this.working.clock_spend++
                 } else {
-                    if (this.working.clock_over < 8) {
+                    if (this.working.clock_over < (8 - this.working.clock_expect)) {
                         this.working.clock_over++
                     }
                 }
