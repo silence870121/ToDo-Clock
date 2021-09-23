@@ -5,12 +5,12 @@ Vue.createApp({
             clock: {
                 status: "working", // "working" || "breaking"
                 working: 50,
-                breaking: 10,
+                breaking: 1,
+                fulltime: 3000,
                 time: 3000,
                 timerText: "00:00",
                 playing: false, // true || false
                 ringtone: "", // setting's ringtone
-                fulltime: 3000,
                 dasharray: 786, //clock progress full
                 dashoffset: 0, //clock progress playing
             },
@@ -73,37 +73,7 @@ Vue.createApp({
                     break;
             }
         },
-        stopClock() {
-            this.clock.playing = false
-            this.setClockTime()
-        },
-        playClock() {
-            this.clock.playing = true
-        },
-        pauseClock() {
-            this.clock.playing = false
-        },
-        skipclock() {
-            this.clock.playing = false
-            switch (this.clock.status) {
-                case "working":
-                    this.clock.status = "breaking"
-                    if (this.working.clock_spend < this.working.clock_expect) {
-                        this.working.clock_spend++
-                    } else {
-                        this.working.clock_over++
-                    }
-                    break;
-                case "breaking":
-                    this.clock.status = "working"
-                    break;
-            }
-            this.setClockTime()
-        },
-        playingclock() {
-            if (this.clock.playing) {
-                this.clock.time--
-            }
+        renderClock() {
             if (this.clock.time % 60 < 10) {
                 this.clock.timerText = `${parseInt(this.clock.time / 60)}:0${this.clock.time % 60}`
             } else {
@@ -111,11 +81,61 @@ Vue.createApp({
             }
             this.clock.dashoffset = this.clock.dasharray * ((this.clock.time / this.clock.fulltime))
         },
+        switchClock() {
+            switch (this.clock.status) {
+                case "working":
+                    this.clock.status = "breaking"
+                    break;
+                case "breaking":
+                    this.clock.status = "working"
+                    break;
+            }
+        },
+        playingClock() {
+            if (this.clock.playing) {
+                this.clock.time--
+            }
+            if (this.clock.time <= 0) {
+                this.switchClock()
+                this.setClockTime()
+                this.clock.playing = false
+            }
+            this.renderClock()
+        },
+        stopClock() {
+            this.clock.playing = false
+            this.setClockTime()
+            this.renderClock()
+        },
+        playClock() {
+            this.clock.playing = true
+            this.renderClock()
+        },
+        pauseClock() {
+            this.clock.playing = false
+            this.renderClock()
+        },
+        skipclock() {
+            this.clock.playing = false
+            if (this.clock.status == "working") {
+                if (this.working.clock_spend < this.working.clock_expect) {
+                    this.working.clock_spend++
+                } else {
+                    if (this.working.clock_over < 8) {
+                        this.working.clock_over++
+                    }
+                }
+            }
+            this.switchClock()
+            this.setClockTime()
+            this.renderClock()
+        },
     },
     mounted() {
         this.getstrock()
-        this.timer = setInterval(this.playingclock, 1000);
+        this.timer = setInterval(this.playingClock, 1000);
         this.setClockTime()
+        this.renderClock()
     },
     computed() {
 
