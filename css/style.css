@@ -141,6 +141,7 @@ body{
     width: calc(100%/12*8);
     display: flex;
     justify-content: center;
+    text-align: center;
     margin-right: auto;
     margin-left: auto;
     flex-wrap: wrap;
@@ -239,7 +240,7 @@ svg circle{
 }
 .clock-player li{
     display: inline-block;
-    margin-right: 0.75rem;
+    margin:0  0.5rem;
 }
 .clock-timer{
     font-size: 1.5rem;
@@ -253,7 +254,7 @@ svg circle{
     color: var(--color-on-primary);
     border: none;
     border-radius: 0.5rem;
-    padding: 0.375rem;
+    padding: 0.5rem 1.25rem;
     margin-top: 0.5rem;
     text-transform: uppercase;
     cursor: pointer;
@@ -637,6 +638,9 @@ svg circle{
 @media screen and (min-width:992px) {
     .container{
         max-width: 960px;
+    }
+    .clock-complete{
+        width: 50%;
     }
 }
 @media screen and (min-width:1200px) {
