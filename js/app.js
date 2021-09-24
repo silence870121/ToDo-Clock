@@ -13,6 +13,7 @@ Vue.createApp({
                 ringtone: "", // setting's ringtone
                 dasharray: 786, //clock progress full
                 dashoffset: 0, //clock progress playing
+                ringtone: "" //setting's ringtone
             },
             selectItem: {},
 
