@@ -84,6 +84,7 @@ body{
     color: var(--color-on-primary);
     background-color: var(--color-primary);
     padding: 0.5rem;
+    z-index: 3;
 }
 
 .logo {
@@ -667,12 +668,12 @@ svg circle{
         height: 2.5rem;
     }
     .clock-player{
-        width: 50%;
+        width: 75%;
         margin-left: 5rem;
         margin-right: 5rem;
     }
     .clock-complete{
-        width: 50%;
+        width: 75%;
     }
 }
 @media screen and (min-width:992px) {
