@@ -5,7 +5,7 @@ Vue.createApp({
             clock: {
                 status: "working", // "working" || "breaking"
                 working: 50,
-                breaking: 1,
+                breaking: 10,
                 fulltime: 3000,
                 time: 3000,
                 timerText: "00:00",
@@ -51,7 +51,23 @@ Vue.createApp({
                 },
                 date_complete: "yyyy/mm/dd", //完成日期
             },
-
+            //? Setting Data
+            setting: {
+                work: [
+                    25, 30, 35, 40,
+                    45, 50, 55, 60,
+                    75, 90, 120, 150
+                ],
+                break: [
+                    5, 10, 15, 20,
+                    25, 30, 35, 40,
+                    45, 50, 55, 60
+                ],
+                ringtone: {
+                    music_1: new Audio("ringtone1.mp3"),
+                    music_2: new Audio("ringtone2.mp3"),
+                }
+            }
         }
     },
     methods: {
@@ -130,14 +146,22 @@ Vue.createApp({
             this.setClockTime()
             this.renderClock()
         },
+        //? setting part
+        setWorkTime(item) {
+            this.stopClock()
+            this.clock.working = item
+            this.setClockTime()
+        },
+        setBreakTime(item) {
+            this.stopClock()
+            this.clock.breaking = item
+            this.setClockTime()
+        }
     },
     mounted() {
         this.getstrock()
         this.timer = setInterval(this.playingClock, 1000);
         this.setClockTime()
         this.renderClock()
-    },
-    computed() {
-
     }
 }).mount('#app');

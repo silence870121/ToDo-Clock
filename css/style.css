@@ -126,6 +126,7 @@ body{
 /*? page position */
 .title{
     width: 100%;
+    padding: 0 0.75rem;
     position: fixed;
     z-index: 2;
     top: 0;
@@ -157,7 +158,7 @@ body{
     padding-bottom: 4rem;
 }
 .clock{
-    width: calc(100%/12*9);
+    width:100%;
     display: flex;
     justify-content: center;
     flex-wrap: wrap;
@@ -219,8 +220,6 @@ body{
     background-color: var(--color-secondary);
 }
 .clock-body{
-    /* margin-top: 2rem; */
-    /* margin-bottom: 2rem; */
     text-align: center;
 }
 .clock-content{
@@ -258,7 +257,7 @@ svg circle{
     justify-content: space-between;
 }
 .clock-player{
-    width: 90%;
+    width: 20rem;
     display: flex;
     justify-content: space-around;
     align-items: center;
@@ -277,7 +276,7 @@ svg circle{
     cursor: pointer;
 }
 .clock-complete{
-    width: 100%;
+    width: 20rem;
     background-color: var(--color-primary-variant);
     color: var(--color-on-primary);
     font-size: 1rem;
@@ -531,23 +530,26 @@ svg circle{
 /*? Setting */
 .setting-time{
     display: flex;
-    margin:0 -0.25rem;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
 }
 .setting-time li{
     width: 25%;
-    margin: 0 0.25rem;
+    padding: 0.25rem;
 }
 .setting-time label{
     display: block;
     width: 100%;
     color: var(--color-on-background);
     background-color: var(--color-surface);
+    border-radius: 0.5rem;
+    font-size: 1.25rem;
+    text-align: center;
+    padding: 0.25rem;
+    cursor: pointer;
     transition: color  0.3s ease,
                 background-color  0.3s ease;
-    padding: 0.25rem;
-    text-align: center;
-    border-radius: 0.5rem;
-    cursor: pointer;
 }
 .setting-time input[type=radio]{
     display: none;
@@ -647,6 +649,18 @@ svg circle{
     .container{
         max-width: 720px;
     }
+    .col-6{
+        /* width: calc(100%/12*6); */
+    }
+    .filter-btn{
+        font-size: 1.25rem;
+        height: 2.5rem;
+    }
+}
+@media screen and (min-width:992px) {
+    .container{
+        max-width: 960px;
+    }
     .nav{
         top: 0;
         bottom: auto;
@@ -659,26 +673,6 @@ svg circle{
     }
     .menu{
         width: 50%;
-    }
-    .col-6{
-        /* width: calc(100%/12*6); */
-    }
-    .filter-btn{
-        font-size: 1.25rem;
-        height: 2.5rem;
-    }
-    .clock-player{
-        width: 75%;
-        margin-left: 5rem;
-        margin-right: 5rem;
-    }
-    .clock-complete{
-        width: 75%;
-    }
-}
-@media screen and (min-width:992px) {
-    .container{
-        max-width: 960px;
     }
 }
 @media screen and (min-width:1200px) {

@@ -41,9 +41,7 @@
             </div>
         </nav>
         <div class="title">
-            <div class="container">
-                <h1>TODO CLOCK <span class="version">ver. 0.0923.1843</span></h1>
-            </div>
+            <h1>TODO CLOCK <span class="version">ver. 0.0923.1843</span></h1>
         </div>
         <!--? Content -->
         <!--? Clock Modal -->
@@ -86,6 +84,8 @@
                             </li>
                             <li class="clock-btn"><i class="bi bi-skip-end-circle-fill" @click="skipclock()"></i></li>
                         </ul>
+                    </div>
+                    <div class="clock">
                         <!--? Complete Task -->
                         <button class="clock-complete">
                             Task complete
@@ -338,44 +338,23 @@
                     <div class="task">
                         <h2>Work time</h2>
                         <ul class="setting-time">
-                            <li>
-                                <input type="radio" name="time-work" id="time0" value="25" checked>
-                                <label for="time0">25 min</label>
-                            </li>
-                            <li>
-                                <input type="radio" name="time-work" id="time1" value="25">
-                                <label for="time1">30 min</label>
-                            </li>
-                            <li>
-                                <input type="radio" name="time-work" id="time2" value="25">
-                                <label for="time2">35 min</label>
-                            </li>
-                            <li>
-                                <input type="radio" name="time-work" id="time3" value="25">
-                                <label for="time3">45 min</label>
+                            <li v-for="(item, key) in setting.work" :key="item.index">
+                                <input type="radio" name="time-work" :id="'work'+item" :value="item"
+                                    v-if="item ==clock.working" checked>
+                                <input type="radio" name="time-work" :id="'work'+item" :value="item" v-else>
+                                <label :for="'work'+item" @click="setWorkTime(item)">{{item}}</label>
                             </li>
                         </ul>
                     </div>
                     <div class="task">
                         <h2>break time</h2>
                         <ul class="setting-time">
-                            <li>
-                                <input type="radio" name="time-break" id="break0" value="25" checked>
-                                <label for="break0">25 min</label>
+                            <li v-for="(item, key) in setting.break" :key="item.index">
+                                <input type="radio" name="time-break" :id="'break'+item" :value="item"
+                                    v-if="item ==clock.breaking" checked>
+                                <input type="radio" name="time-work" :id="'break'+item" :value="item" v-else>
+                                <label :for="'break'+item" @click="setBreakTime(item)">{{item}}</label>
                             </li>
-                            <li>
-                                <input type="radio" name="time-break" id="break1" value="30">
-                                <label for="break1">30 min</label>
-                            </li>
-                            <li>
-                                <input type="radio" name="time-break" id="break2" value="30">
-                                <label for="break2">30 min</label>
-                            </li>
-                            <li>
-                                <input type="radio" name="time-break" id="break3" value="30">
-                                <label for="break3">30 min</label>
-                            </li>
-
                         </ul>
                     </div>
                     <div class="task">
