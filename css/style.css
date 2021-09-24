@@ -122,9 +122,14 @@ body{
 .menu-active{
     color: var(--color-primary-variant);
 }
+/*? page position */
 .title{
+    width: 100%;
+    position: fixed;
+    z-index: 2;
+    top: 0;
     padding-top: 0.5rem;
-    padding-bottom: 0.5rem;
+    background-color: var(--color-background);
 }
 .title h1{
     height: 3rem;
@@ -135,16 +140,29 @@ body{
     text-transform: uppercase;
     border-bottom: 2px solid var(--color-primary-variant);
 }
-
+.version{
+    font-size: 0.5rem;
+    float: right;
+    text-transform:lowercase;
+    color: var(--color-on-background);
+}
 /*? Clock Modal */
+#clock{
+    height: 100vh;
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+    padding-top: 3rem;
+    padding-bottom: 4rem;
+}
 .clock{
-    width: calc(100%/12*8);
+    width: calc(100%/12*9);
     display: flex;
     justify-content: center;
+    flex-wrap: wrap;
     text-align: center;
     margin-right: auto;
     margin-left: auto;
-    flex-wrap: wrap;
     color: var(--color-primary);
 }
 .clock-title{
@@ -183,11 +201,6 @@ body{
     text-transform: uppercase;
     /* margin-bottom: 1rem; */
 }
-.clock-body{
-    margin-top: 3rem;
-    margin-bottom: 2rem;
-    text-align: center;
-}
 .clock-tag{
     text-transform: uppercase;
     padding: 0.25rem 0.5rem;
@@ -203,6 +216,11 @@ body{
 .clock-tag-break{
     color: var(--color-on-secondary);
     background-color: var(--color-secondary);
+}
+.clock-body{
+    /* margin-top: 2rem; */
+    /* margin-bottom: 2rem; */
+    text-align: center;
 }
 .clock-content{
     position: relative;
@@ -238,15 +256,24 @@ svg circle{
     width: 100%;
     justify-content: space-between;
 }
-.clock-player li{
-    display: inline-block;
-    margin:0  0.5rem;
+.clock-player{
+    width: 90%;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
 }
 .clock-timer{
-    font-size: 1.5rem;
+    font-size: 1.5rem; 
     padding: 0.25rem 0.5rem;
     border-radius: 0.5rem;
     border: 1px solid var(--color-on-surface);
+}
+.clock-btn{
+    background-color: unset;
+    border: none;
+    font-size: 2rem;
+    padding: 0.5rem;
+    cursor: pointer;
 }
 .clock-complete{
     width: 100%;
@@ -256,10 +283,10 @@ svg circle{
     border: none;
     border-radius: 0.5rem;
     padding: 0.5rem 1.25rem;
-    margin-top: 0.5rem;
+    margin-top: 1rem;
+    margin-bottom: 2rem;
     text-transform: uppercase;
     cursor: pointer;
-    margin-top: 2rem;
 }
 /*? Clock End */
 
@@ -560,9 +587,6 @@ svg circle{
 
 
 /*! RWD SET */
-.min-h-100{
-    min-height: 100vh;
-}
 .container{
     width: 100%;
     margin: auto;
@@ -575,6 +599,10 @@ svg circle{
     margin-left: -0.5rem;
     margin-right: -0.5rem;
     flex-wrap: wrap;
+}
+.content{
+    padding-top: 3rem;
+    min-height: 100vh;
 }
 .col, .col-1, .col-2, .col-3, .col-4, .col-5, .col-6,
 .col-7, .col-8, .col-9, .col-10, .col-11, .col-12 {
@@ -622,6 +650,9 @@ svg circle{
         top: 0;
         bottom: auto;
     }
+    .title{
+        display: none;
+    }
     .logo{
         display: flex;
     }
@@ -635,13 +666,18 @@ svg circle{
         font-size: 1.25rem;
         height: 2.5rem;
     }
+    .clock-player{
+        width: 50%;
+        margin-left: 5rem;
+        margin-right: 5rem;
+    }
+    .clock-complete{
+        width: 50%;
+    }
 }
 @media screen and (min-width:992px) {
     .container{
         max-width: 960px;
-    }
-    .clock-complete{
-        width: 50%;
     }
 }
 @media screen and (min-width:1200px) {
