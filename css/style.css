@@ -152,7 +152,7 @@ body{
     display: flex;
     justify-content: space-between;
     flex-direction: column;
-    padding-top: 3rem;
+    padding-top: 4rem;
     padding-bottom: 4rem;
 }
 .clock{
@@ -601,7 +601,7 @@ svg circle{
     flex-wrap: wrap;
 }
 .content{
-    padding-top: 3rem;
+    padding-top: 4rem;
     min-height: 100vh;
 }
 .col, .col-1, .col-2, .col-3, .col-4, .col-5, .col-6,
