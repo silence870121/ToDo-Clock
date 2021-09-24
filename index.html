@@ -40,15 +40,16 @@
                 </div>
             </div>
         </nav>
+        <div class="title">
+            <div class="container">
+                <h1>TODO CLOCK <span class="version">ver. 0.0923.1843</span></h1>
+            </div>
+        </div>
         <!--? Content -->
         <!--? Clock Modal -->
         <div class="container">
             <div class="row">
-                <div class="col-6  min-h-100" id="clock">
-                    <div class="title">
-                        <h1>TODO CLOCK </h1>
-                        <span>ver 0.0923.1843</span>
-                    </div>
+                <div class="col-6" id="clock">
                     <!--? Task Spended Clock -->
                     <div class="clock">
                         <h2 class="clock-title">{{working.title}}</h2>
@@ -78,15 +79,14 @@
                     <!--? Clock Control -->
                     <div class="clock">
                         <ul class="clock-player">
-                            <li class="btn" @click="stopClock()"><i class="bi bi-stop-circle-fill"></i></li>
-                            <li class="btn" v-if="clock.playing == false" @click="playClock()"><i
+                            <li class="clock-btn" @click="stopClock()"><i class="bi bi-stop-circle-fill"></i></li>
+                            <li class="clock-btn" v-if="clock.playing == false" @click="playClock()"><i
                                     class="bi bi-play-circle-fill"></i></li>
-                            <li class="btn" v-else @click="pauseClock()"><i class="bi bi-pause-circle-fill"></i></li>
-                            <li class="btn"><i class="bi bi-skip-end-circle-fill" @click="skipclock()"></i></li>
+                            <li class="clock-btn" v-else @click="pauseClock()"><i class="bi bi-pause-circle-fill"></i>
+                            </li>
+                            <li class="clock-btn"><i class="bi bi-skip-end-circle-fill" @click="skipclock()"></i></li>
                         </ul>
-                    </div>
-                    <!--? Complete Task -->
-                    <div class="clock">
+                        <!--? Complete Task -->
                         <button class="clock-complete">
                             Task complete
                             <i class="bi bi-check-circle-fill"></i>
@@ -96,14 +96,11 @@
             </div>
         </div>
         <div class="container">
-            <div class="row">
+            <div class="row ">
                 <!--? ---------- ---------- Home Page ---------- ---------- -->
                 <!--? ---------- ---------- Home Page ---------- ---------- -->
                 <!--? ---------- ---------- Home Page ---------- ---------- -->
-                <div class="col-6 min-h-100" id="home">
-                    <div class="title">
-                        <h1> TODO clock </h1>
-                    </div>
+                <div class="col-6 content" id="home">
                     <div class="task">
                         <h2>complete task</h2>
                         <div class="task-completed">
@@ -180,10 +177,7 @@
                 <!--? ---------- ---------- List Page ---------- ---------- -->
                 <!--? ---------- ---------- List Page ---------- ---------- -->
                 <!--? ---------- ---------- List Page ---------- ---------- -->
-                <div class="col-6 min-h-100" id="list">
-                    <div class="title">
-                        <h1> TODO list </h1>
-                    </div>
+                <div class="col-6 content" id="list">
                     <div class="task">
                         <div class="task-filter">
                             <button class="filter-btn filter-btn-active">ToDo</button>
@@ -253,10 +247,8 @@
                 <!--? ---------- ---------- Plus Page ---------- ---------- -->
                 <!--? ---------- ---------- Plus Page ---------- ---------- -->
                 <!--? ---------- ---------- Plus Page ---------- ---------- -->
-                <div class="col-6 min-h-100" id="plus">
-                    <div class="title">
-                        <h1> Add new task </h1>
-                    </div>
+                <div class="col-6 content" id="plus">
+
                     <div class="task">
                         <h2>task title</h2>
                         <input type="text" placeholder="Task title" class="input-text">
@@ -300,10 +292,7 @@
                 <!--? ---------- ---------- Analysis Page ---------- ---------- -->
                 <!--? ---------- ---------- Analysis Page ---------- ---------- -->
                 <!--? ---------- ---------- Analysis Page ---------- ---------- -->
-                <div class="col-6 min-h-100" id="analysis">
-                    <div class="title">
-                        <h1> Analysis </h1>
-                    </div>
+                <div class="col-6 content" id="analysis">
                     <div class="task">
                         <div class="task-filter">
                             <button class="filter-btn filter-btn-active">Day</button>
@@ -345,10 +334,7 @@
                 <!--? ---------- ---------- Setting Page ---------- ---------- -->
                 <!--? ---------- ---------- Setting Page ---------- ---------- -->
                 <!--? ---------- ---------- Setting Page ---------- ---------- -->
-                <div class="col-6 min-h-100" id="setting">
-                    <div class="title">
-                        <h1> Setting </h1>
-                    </div>
+                <div class="col-6 content" id="setting">
                     <div class="task">
                         <h2>Work time</h2>
                         <ul class="setting-time">
