@@ -20,28 +20,28 @@
                     <div class="logo">
                         <a href="index.html"><i class="fas fa-clock"></i>TODO CLOCK</a>
                     </div>
-                    <ul class="menu">
-                        <li>
-                            <a href="#home" class="menu-active"><i class="fas fa-house-user"></i></a>
+                    <ul class="tab-header">
+                        <li data-tab-target="home" data-tab-index="0" @click="selectTabs" class="tab-item active">
+                            <i class="fas fa-house-user"></i>
                         </li>
-                        <li>
-                            <a href="#list"><i class="fas fa-list"></i></a>
+                        <li data-tab-target="list" data-tab-index="1" @click="selectTabs" class="tab-item">
+                            <i class="fas fa-list"></i>
                         </li>
-                        <li>
-                            <a href="#plus"><i class="fas fa-plus-circle"></i></a>
+                        <li data-tab-target="editor" data-tab-index="2" @click="selectTabs" class="tab-item">
+                            <i class="fas fa-plus-circle"></i>
                         </li>
-                        <li>
-                            <a href="#analysis"><i class="fas fa-chart-bar"></i></a>
+                        <li data-tab-target="analysis" data-tab-index="3" @click="selectTabs" class="tab-item">
+                            <i class="fas fa-chart-bar"></i>
                         </li>
-                        <li>
-                            <a href="#setting"><i class="fas fa-cog"></i></a>
+                        <li data-tab-target="setting" data-tab-index="4" @click="selectTabs" class="tab-item">
+                            <i class="fas fa-cog"></i>
                         </li>
                     </ul>
                 </div>
             </div>
         </nav>
         <div class="title">
-            <h1>TODO CLOCK <span class="version">ver. 0.0923.1843</span></h1>
+            <h1>TODO CLOCK <span class="version">ver. 0.1005.1051</span></h1>
         </div>
         <!--? Content -->
         <!--? Clock Modal -->
@@ -82,7 +82,7 @@
                                     class="bi bi-play-circle-fill"></i></li>
                             <li class="clock-btn" v-else @click="pauseClock()"><i class="bi bi-pause-circle-fill"></i>
                             </li>
-                            <li class="clock-btn"><i class="bi bi-skip-end-circle-fill" @click="skipclock()"></i></li>
+                            <li class="clock-btn" @click="skipClock()"><i class="bi bi-skip-end-circle-fill"></i></li>
                         </ul>
                     </div>
                     <div class="clock">
@@ -96,11 +96,11 @@
             </div>
         </div>
         <div class="container">
-            <div class="row ">
+            <div class="tab-body">
                 <!--? ---------- ---------- Home Page ---------- ---------- -->
                 <!--? ---------- ---------- Home Page ---------- ---------- -->
                 <!--? ---------- ---------- Home Page ---------- ---------- -->
-                <div class="col-6 content" id="home">
+                <div data-tab-content="home" class="tab-content active">
                     <div class="task">
                         <h2>complete task</h2>
                         <div class="task-completed">
@@ -131,7 +131,8 @@
                                     <li class=""></li>
                                 </ul>
                             </div>
-                            <button class="btn"><i class="fas fa-ellipsis-h"></i></button>
+                            <button class="btn" data-tab-target="editor" @click="selectTabs"><i
+                                    class="fas fa-ellipsis-h"></i></button>
                             <div class="clock-working">
                                 <ul class="clock-player">
                                     <li class="btn"><i class="bi bi-stop-circle-fill"></i></li>
@@ -143,7 +144,7 @@
                                     <p>00:00</p>
                                 </div>
                             </div>
-                            <button class="task-complete">
+                            <button class="task-complete" data-tab-target="list" @click="selectTabs">
                                 Task complete
                                 <i class="bi bi-check-circle-fill"></i>
                             </button>
@@ -177,7 +178,7 @@
                 <!--? ---------- ---------- List Page ---------- ---------- -->
                 <!--? ---------- ---------- List Page ---------- ---------- -->
                 <!--? ---------- ---------- List Page ---------- ---------- -->
-                <div class="col-6 content" id="list">
+                <div data-tab-content="list" class="tab-content">
                     <div class="task">
                         <div class="task-filter">
                             <button class="filter-btn filter-btn-active">ToDo</button>
@@ -247,7 +248,7 @@
                 <!--? ---------- ---------- Plus Page ---------- ---------- -->
                 <!--? ---------- ---------- Plus Page ---------- ---------- -->
                 <!--? ---------- ---------- Plus Page ---------- ---------- -->
-                <div class="col-6 content" id="plus">
+                <div data-tab-content="editor" class="tab-content">
 
                     <div class="task">
                         <h2>task title</h2>
@@ -292,7 +293,7 @@
                 <!--? ---------- ---------- Analysis Page ---------- ---------- -->
                 <!--? ---------- ---------- Analysis Page ---------- ---------- -->
                 <!--? ---------- ---------- Analysis Page ---------- ---------- -->
-                <div class="col-6 content" id="analysis">
+                <div data-tab-content="analysis" class="tab-content">
                     <div class="task">
                         <div class="task-filter">
                             <button class="filter-btn filter-btn-active">Day</button>
@@ -334,7 +335,7 @@
                 <!--? ---------- ---------- Setting Page ---------- ---------- -->
                 <!--? ---------- ---------- Setting Page ---------- ---------- -->
                 <!--? ---------- ---------- Setting Page ---------- ---------- -->
-                <div class="col-6 content" id="setting">
+                <div data-tab-content="setting" class="tab-content">
                     <div class="task">
                         <h2>Work time</h2>
                         <ul class="setting-time">

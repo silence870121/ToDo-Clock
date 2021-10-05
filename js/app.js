@@ -1,6 +1,11 @@
 Vue.createApp({
     data() {
         return {
+            //? tab Data
+            tabAnimation: {
+                enter: "",
+                leave: ""
+            },
             //? Clocker Data
             clock: {
                 status: "working", // "working" || "breaking"
@@ -65,13 +70,86 @@ Vue.createApp({
                     45, 50, 55, 60
                 ],
                 ringtone: {
-                    music_1: new Audio("ringtone1.mp3"),
-                    music_2: new Audio("ringtone2.mp3"),
+                    // music_1: new Audio("ringtone1.mp3"),
+                    // music_2: new Audio("ringtone2.mp3"),
                 }
             }
         }
     },
     methods: {
+        //?tab
+        tabAnimationPosition(position) {
+            switch (position) {
+                case "right":
+                    this.tabAnimation.enter = "slide-left-enter"
+                    this.tabAnimation.leave = "slide-right-leave"
+                    break;
+
+                case "left":
+                    this.tabAnimation.enter = "slide-right-enter"
+                    this.tabAnimation.leave = "slide-left-leave"
+                    break;
+                default:
+                    break;
+            }
+        },
+        selectTabs(e) {
+            let tab_item = document.querySelectorAll(".tab-item")
+            let tab_active = document.querySelector(".tab-header .active")
+            let tab_content = document.querySelectorAll(".tab-content")
+            let tab_content_active = document.querySelector(".tab-body .active")
+            let selectIndex = "";
+            // console.log(e.target);
+            //? 取得目標的 Index
+            tab_item.forEach(item => {
+                if (item.dataset.tabTarget == e.target.dataset.tabTarget) {
+                    selectIndex = item.dataset.tabIndex
+                }
+            })
+
+            //? 判斷動畫方向
+            if (tab_active.dataset.tabIndex < selectIndex) {
+                //right to left |<<<|
+                this.tabAnimationPosition("right");
+            } else if (tab_active.dataset.tabIndex > selectIndex) {
+                //left to right |>>>|
+                this.tabAnimationPosition("left");
+            }
+
+            if (tab_active.dataset.tabIndex !== selectIndex) {
+                //? 標記目標選項
+                // remove old active
+                tab_item.forEach((item) => {
+                    item.classList.remove("active")
+                })
+                // add new active
+                tab_item.forEach(item => {
+                    if (item.dataset.tabTarget == e.target.dataset.tabTarget) {
+                        item.classList.add("active")
+                    }
+                })
+                //? 顯示對應內容
+                // render active content
+                tab_content.forEach((item) => {
+                    // tab 清除所有內容標記
+                    item.classList.remove("active")
+                    // tab 判斷選項標記內容
+                    if (item.dataset.tabContent == e.target.dataset.tabTarget) {
+                        item.classList.add(this.tabAnimation.enter)
+                    }
+                })
+                tab_content_active.classList.add(this.tabAnimation.leave)
+                setTimeout(() => {
+                    tab_content.forEach((item) => {
+                        if (item.dataset.tabContent == e.target.dataset.tabTarget) {
+                            item.classList.add("active")
+                            item.classList.remove(this.tabAnimation.enter)
+                        }
+                    })
+                    tab_content_active.classList.remove(this.tabAnimation.leave)
+                }, 200);
+            }
+        },
         //? Clock Action
         getstrock() {
             let stroke = document.querySelector('.clock-bar').getTotalLength()
@@ -132,7 +210,7 @@ Vue.createApp({
             this.clock.playing = false
             this.renderClock()
         },
-        skipclock() {
+        skipClock() {
             this.clock.playing = false
             if (this.clock.status == "working") {
                 if (this.working.clock_spend < this.working.clock_expect) {
