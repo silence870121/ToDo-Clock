@@ -57,7 +57,9 @@
                                 <li v-for="item in working.clock_expect-working.clock_spend" class="clock-spend"></li>
                                 <li v-for="item in working.clock_over" class="clock-spend clock-spend--over"></li>
                             </ul>
-                            <p class="clock-date">Create On {{working.date_create}}</p>
+                            <p v-if="working.date_create == null" class="clock-date">{{working.date_create}}
+                            <p v-else class="clock-date">Create On {{working.date_create}}
+                            </p>
                             <p class="clock-tag clock-tag-work" v-if="clock.status == 'working'">Working</p>
                             <p class="clock-tag clock-tag-break" v-else>Breaking</p>
                         </div>
