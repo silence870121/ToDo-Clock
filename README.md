@@ -198,7 +198,7 @@
     }
 ```
 ---
-### Clock
+### Setting
 | Action | 功能 | function()    |
 |--------|------|---------------|
 | Work Time  | 設定工作時間 | setworkTime() |

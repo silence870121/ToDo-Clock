@@ -96,7 +96,7 @@
                         </div>
                         <div class="clock">
                             <!--? Complete Task -->
-                            <button class="clock-complete" data-tab-target="list" @click="selectTabs">
+                            <button class="clock-complete" data-tab-target="list" @click="[selectTabs, resetWorking]">
                                 Task complete
                                 <i class="bi bi-check-circle-fill"></i>
                             </button>
@@ -126,31 +126,37 @@
                                 <h2>working task</h2>
                                 <div class="surface">
                                     <div class="task-title">
-                                        <h3 class="task-text">Task Title</h3>
+                                        <h3 class="task-text">{{working.title}}</h3>
                                         <!--? expect clocks -->
                                         <ul class="task-expect">
-                                            <li class="over"></li>
-                                            <li class="over"></li>
-                                            <li class="over"></li>
-                                            <li class="over"></li>
-                                            <li class=""></li>
-                                            <li class=""></li>
-                                            <li class=""></li>
-                                            <li class=""></li>
+                                            <li v-for="item in working.clock_spend"
+                                                class="task-spend task-spend--active"></li>
+                                            <li v-for="item in working.clock_expect-working.clock_spend"
+                                                class="task-spend"></li>
+                                            <li v-for="item in working.clock_over" class="clock-spend task-spend--over">
+                                            </li>
                                         </ul>
                                     </div>
                                     <button class="btn" data-tab-target="editor" @click="selectTabs"><i
                                             class="fas fa-ellipsis-h"></i></button>
-                                    <div class="clock-working">
-                                        <ul class="clock-player">
-                                            <li class="btn"><i class="bi bi-stop-circle-fill"></i></li>
-                                            <li class="btn"><i class="bi bi-play-circle-fill"></i></li>
-                                            <!-- <li class="btn"><i class="bi bi-pause-circle-fill"></i></li> -->
-                                            <li class="btn"><i class="bi bi-skip-end-circle-fill"></i></li>
+                                    <div class="working">
+                                        <ul class="working-player">
+                                            <li class=" working-btn" @click="stopClock()">
+                                                <i class="bi bi-stop-circle-fill"></i>
+                                            </li>
+                                            <li class=" working-btn" v-if="clock.playing == false" @click="playClock()">
+                                                <i class="bi bi-play-circle-fill"></i>
+                                            </li>
+                                            <li class=" working-btn" v-else @click="pauseClock()">
+                                                <i class="bi bi-pause-circle-fill"></i>
+                                            </li>
+                                            <li class=" working-btn" @click="skipClock()">
+                                                <i class="bi bi-skip-end-circle-fill"></i>
+                                            </li>
                                         </ul>
-                                        <div class="clock-timer">
-                                            <p>00:00</p>
-                                        </div>
+                                        <p class="working-timer">
+                                            {{clock.timerText}}
+                                        </p>
                                     </div>
                                     <button class="task-complete" data-tab-target="list" @click="selectTabs">
                                         Task complete
@@ -187,8 +193,8 @@
                         <!--? ---------- ---------- List Page ---------- ---------- -->
                         <!--? ---------- ---------- List Page ---------- ---------- -->
                         <div data-tab-content="list" class="tab-content">
-                            <div class="task">
-                                <div class="task-filter">
+                            <div class="filter">
+                                <div class="filter-bar">
                                     <button class="filter-btn filter-btn-active">ToDo</button>
                                     <button class="filter-btn">Done</button>
                                 </div>
@@ -257,7 +263,6 @@
                         <!--? ---------- ---------- Plus Page ---------- ---------- -->
                         <!--? ---------- ---------- Plus Page ---------- ---------- -->
                         <div data-tab-content="editor" class="tab-content">
-
                             <div class="task">
                                 <h2>task title</h2>
                                 <input type="text" placeholder="Task title" class="input-text">
@@ -303,7 +308,7 @@
                         <!--? ---------- ---------- Analysis Page ---------- ---------- -->
                         <div data-tab-content="analysis" class="tab-content">
                             <div class="task">
-                                <div class="task-filter">
+                                <div class="filter-bar">
                                     <button class="filter-btn filter-btn-active">Day</button>
                                     <button class="filter-btn">Week</button>
                                 </div>
@@ -368,56 +373,20 @@
                             </div>
                             <div class="task">
                                 <h2>Ringtone</h2>
-                                <div class="task-filter">
+                                <div class="filter-bar">
                                     <button class="filter-btn filter-btn-active">working</button>
                                     <button class="filter-btn">Break</button>
                                 </div>
                                 <ul class="ringtone">
-                                    <li>
-                                        <input type="radio" name="ringtone" id="ringtone1" value="Ringtone1" checked>
-                                        <label for="ringtone1">
-                                            <button class="btn"><i class="bi bi-circle"></i></button>
-                                            <p>Ringtone 1</p>
-                                            <button class="btn"><i class="bi bi-play-circle"></i></button>
-                                        </label>
-                                    </li>
-                                    <li>
-                                        <input type="radio" name="ringtone" id="ringtone2" value="Ringtone2">
-                                        <label for="ringtone2">
-                                            <button class="btn"><i class="bi bi-circle"></i></button>
-                                            <p>Ringtone 2</p>
-                                            <button class="btn"><i class="bi bi-play-circle"></i></button>
-                                        </label>
-                                    </li>
-                                    <li>
-                                        <input type="radio" name="ringtone" id="ringtone3" value="ringtone3">
-                                        <label for="ringtone3">
-                                            <button class="btn"><i class="bi bi-circle"></i></button>
-                                            <p>Ringtone 3</p>
-                                            <button class="btn"><i class="bi bi-play-circle"></i></button>
-                                        </label>
-                                    </li>
-                                    <li>
-                                        <input type="radio" name="ringtone" id="ringtone4" value="ringtone4">
-                                        <label for="ringtone4">
-                                            <button class="btn"><i class="bi bi-circle"></i></button>
-                                            <p>Ringtone 4</p>
-                                            <button class="btn"><i class="bi bi-play-circle"></i></button>
-                                        </label>
-                                    </li>
-                                    <li>
-                                        <input type="radio" name="ringtone" id="ringtone5" value="ringtone5">
-                                        <label for="ringtone5">
-                                            <button class="btn"><i class="bi bi-circle"></i></button>
-                                            <p>Ringtone 5</p>
-                                            <button class="btn"><i class="bi bi-play-circle"></i></button>
-                                        </label>
-                                    </li>
-                                    <li>
-                                        <input type="radio" name="ringtone" id="ringtone6" value="Ringtone6">
-                                        <label for="ringtone6">
-                                            <button class="btn"><i class="bi bi-circle"></i></button>
-                                            <p>Ringtone 6</p>
+                                    <li v-for="(item, key) in setting.ringtone" :key="item.index">
+                                        <input type="radio" name="ringtone" :id="item" :value="item"
+                                            v-if="item == clock.ringtone" checked>
+                                        <input type="radio" name="ringtone" :id="item" :value="item" v-else>
+                                        <label :for="item" @click="setBreakRingtone(item)">
+                                            <button class="btn" v-if="item == clock.ringtone"><i
+                                                    class="bi bi-check-circle"></i></button>
+                                            <button class="btn" v-else><i class="bi bi-circle"></i></button>
+                                            <p>{{item}}</p>
                                             <button class="btn"><i class="bi bi-play-circle"></i></button>
                                         </label>
                                     </li>

@@ -1,7 +1,7 @@
 Vue.createApp({
     data() {
         return {
-            //? tab Data
+            //? ---------- ---------- tab Data ---------- ----------
             tabAnimation: {
                 enter: "",
                 leave: ""
@@ -15,30 +15,9 @@ Vue.createApp({
                 time: 3000,
                 timerText: "00:00",
                 playing: false, // true || false
-                ringtone: "", // setting's ringtone
                 dasharray: 786, //clock progress full
                 dashoffset: 0, //clock progress playing
-                ringtone: "" //setting's ringtone
-            },
-            selectItem: {},
-
-            //? TODO list Data 
-            list: [],
-            temp: {},
-            item: {
-                id: "", //項目建立時之時間戳
-                title: "項目名稱",
-                clock_expect: 0, //預期時間
-                clock_spend: 0, //花費時間
-                clock_over: 0, //超出時間
-                completed: true, //項目完成狀態 完成: true | 未完成: false
-                date_create: "yyyy/mm/dd", //建立日期
-                date_limit: { //項目期限
-                    year: 2021,
-                    month: 9,
-                    day: 8,
-                },
-                date_complete: "yyyy/mm/dd", //完成日期
+                ringtone: "ringtone3" //setting's ringtone
             },
             //? Working Task
             working: {
@@ -56,6 +35,54 @@ Vue.createApp({
                 },
                 date_complete: "yyyy/mm/dd", //完成日期
             },
+
+            //? TODO list Data 
+            list: [{
+                id: "001", //項目建立時之時間戳
+                title: "項目 001",
+                clock_expect: 1, //預期時間
+                clock_spend: 2, //花費時間
+                clock_over: 0, //超出時間
+                completed: true, //項目完成狀態 完成: true | 未完成: false
+                date_create: "yyyy/mm/dd", //建立日期
+                date_limit: { //項目期限
+                    year: 2021,
+                    month: 9,
+                    day: 8,
+                },
+                date_complete: "yyyy/mm/dd", //完成日期
+            }, {
+                id: "002", //項目建立時之時間戳
+                title: "項目 002",
+                clock_expect: 2, //預期時間
+                clock_spend: 4, //花費時間
+                clock_over: 0, //超出時間
+                completed: true, //項目完成狀態 完成: true | 未完成: false
+                date_create: "yyyy/mm/dd", //建立日期
+                date_limit: { //項目期限
+                    year: 2021,
+                    month: 9,
+                    day: 8,
+                },
+                date_complete: "yyyy/mm/dd", //完成日期
+            }, ],
+            temp: {},
+            item: {
+                id: "", //項目建立時之時間戳
+                title: "項目名稱",
+                clock_expect: 0, //預期時間
+                clock_spend: 0, //花費時間
+                clock_over: 0, //超出時間
+                completed: true, //項目完成狀態 完成: true | 未完成: false
+                date_create: "yyyy/mm/dd", //建立日期
+                date_limit: { //項目期限
+                    year: 2021,
+                    month: 9,
+                    day: 8,
+                },
+                date_complete: "yyyy/mm/dd", //完成日期
+            },
+
             //? Setting Data
             setting: {
                 work: [
@@ -65,18 +92,21 @@ Vue.createApp({
                 ],
                 break: [
                     5, 10, 15, 20,
-                    25, 30, 35, 40,
-                    45, 50, 55, 60
+                    25, 30, 45, 60
                 ],
                 ringtone: {
-                    // music_1: new Audio("ringtone1.mp3"),
-                    // music_2: new Audio("ringtone2.mp3"),
+                    music_1: "ringtone1",
+                    music_2: "ringtone2",
+                    music_3: "ringtone3",
+                    music_4: "ringtone4",
+                    music_5: "ringtone5",
+                    music_6: "ringtone6",
                 }
             }
         }
     },
     methods: {
-        //?tab
+        //? ---------- ---------- tab ---------- ----------
         tabAnimationPosition(position) {
             switch (position) {
                 case "right":
@@ -149,7 +179,60 @@ Vue.createApp({
                 }, 200);
             }
         },
-        //? Clock Action
+        //? ---------- ---------- reset data ---------- ----------
+        resetClock() {
+            this.clock = {
+                status: "working", // "working" || "breaking"
+                working: 50,
+                breaking: 10,
+                fulltime: 3000,
+                time: 3000,
+                timerText: "00:00",
+                playing: false, // true || false
+                dasharray: 786, //clock progress full
+                dashoffset: 0, //clock progress playing
+                ringtone: "ringtone1" //setting's ringtone
+            }
+        },
+        resetWorking() {
+            this.working = {
+                id: "000", //項目建立時之時間戳
+                title: "無指定項目",
+                clock_expect: 8, //預期時間
+                clock_spend: 0, //花費時間
+                clock_over: 0, //超出時間
+                completed: false, //項目完成狀態 完成: true | 未完成: false
+                date_create: null, //建立日期
+                date_limit: { //項目期限
+                    year: 2021,
+                    month: 9,
+                    day: 8,
+                },
+                date_complete: "yyyy/mm/dd", //完成日期
+            }
+        },
+        //? ---------- ---------- localstorage ---------- ----------
+        setLocalClock() {
+            localStorage.setItem('clock', JSON.stringify(this.clock))
+        },
+        getLocalClock() {
+            this.clock = JSON.parse(localStorage.getItem('clock'));
+            if (this.clock == null) {
+                this.resetClock()
+            }
+        },
+        setLocalWorking() {
+            localStorage.setItem('working', JSON.stringify(this.working))
+        },
+        getLocalWorking() {
+            this.working = JSON.parse(localStorage.getItem('working'));
+            if (this.working == null) {
+                this.resetWorking()
+            }
+        },
+        setLocallist() {},
+        getLocallist() {},
+        //? ---------- ---------- Clock Action ---------- ----------
         getstrock() {
             let stroke = document.querySelector('.clock-bar').getTotalLength()
             this.clock.dasharray = stroke
@@ -167,23 +250,7 @@ Vue.createApp({
                     break;
             }
         },
-        resetClockData() {
-            this.working = {
-                id: "000", //項目建立時之時間戳
-                title: "無指定項目",
-                clock_expect: 8, //預期時間
-                clock_spend: 0, //花費時間
-                clock_over: 0, //超出時間
-                completed: false, //項目完成狀態 完成: true | 未完成: false
-                date_create: null, //建立日期
-                date_limit: { //項目期限
-                    year: 2021,
-                    month: 9,
-                    day: 8,
-                },
-                date_complete: "yyyy/mm/dd", //完成日期
-            }
-        },
+
         renderClock() {
             if (this.clock.time % 60 < 10) {
                 this.clock.timerText = `${parseInt(this.clock.time / 60)}:0${this.clock.time % 60}`
@@ -204,11 +271,8 @@ Vue.createApp({
         },
         playingClock() {
             if (this.clock.playing) {
-                if (this.working == null) {
-                    this.resetClockData()
-                }
                 this.clock.time--;
-                localStorage.setItem('clock', JSON.stringify(this.working))
+                this.setLocalWorking()
             }
             if (this.clock.time <= 0) {
                 this.switchClock()
@@ -241,6 +305,7 @@ Vue.createApp({
                     }
                 }
             }
+            this.setLocalWorking()
             this.switchClock()
             this.setClockTime()
             this.renderClock()
@@ -255,13 +320,17 @@ Vue.createApp({
             this.stopClock()
             this.clock.breaking = item
             this.setClockTime()
+        },
+        setBreakRingtone(item) {
+            this.clock.ringtone = item
         }
     },
     mounted() {
+        this.getLocalClock()
+        this.getLocalWorking()
         this.getstrock()
-        this.timer = setInterval(this.playingClock, 1000);
         this.setClockTime()
         this.renderClock()
-        this.working = JSON.parse(localStorage.getItem('clock'));
+        this.timer = setInterval(this.playingClock, 1000);
     }
 }).mount('#app');
