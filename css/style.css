@@ -397,8 +397,6 @@ svg circle {
     margin-bottom: 2rem;
 }
 
-
-
 .area h2 {
     text-transform: uppercase;
     margin-bottom: 0.5rem;
@@ -430,9 +428,6 @@ svg circle {
     border-left: 2px solid var(--color-on-primary);
     padding: 0.5rem 0;
 }
-
-
-
 
 /*? ---------- ---------- home ---------- ---------- */
 .complete {
@@ -508,6 +503,11 @@ svg circle {
 
 /*? ---------- ---------- list ---------- ---------- */
 /*? task list item */
+.task-title {
+    flex: 1;
+    padding-left: 0.5rem;
+}
+
 .task-expect {
     width: 100%;
     display: flex;
