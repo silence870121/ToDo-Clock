@@ -37,35 +37,85 @@ Vue.createApp({
             },
 
             //? TODO list Data 
-            list: [{
-                id: "001", //項目建立時之時間戳
-                title: "項目 001",
-                clock_expect: 2, //預期時間
-                clock_spend: 1, //花費時間
-                clock_over: 0, //超出時間
-                completed: false, //項目完成狀態 完成: true | 未完成: false
-                date_create: "yyyy/mm/dd", //建立日期
-                date_limit: { //項目期限
-                    year: 2021,
-                    month: 9,
-                    day: 8,
+            list: [
+                //?
+                {
+                    id: "001", //項目建立時之時間戳
+                    title: "測試項目 001",
+                    clock_expect: 8, //預期時間
+                    clock_spend: 1, //花費時間
+                    clock_over: 0, //超出時間
+                    completed: false, //項目完成狀態 完成: true | 未完成: false
+                    date_create: "yyyy/mm/dd", //建立日期
+                    date_limit: { //項目期限
+                        year: 2021,
+                        month: 9,
+                        day: 8,
+                    },
+                    date_complete: "yyyy/mm/dd", //完成日期
                 },
-                date_complete: "yyyy/mm/dd", //完成日期
-            }, {
-                id: "002", //項目建立時之時間戳
-                title: "項目 002",
-                clock_expect: 4, //預期時間
-                clock_spend: 2, //花費時間
-                clock_over: 0, //超出時間
-                completed: true, //項目完成狀態 完成: true | 未完成: false
-                date_create: "yyyy/mm/dd", //建立日期
-                date_limit: { //項目期限
-                    year: 2021,
-                    month: 9,
-                    day: 8,
+                //?
+                {
+                    id: "002", //項目建立時之時間戳
+                    title: "測試項目 002",
+                    clock_expect: 8, //預期時間
+                    clock_spend: 2, //花費時間
+                    clock_over: 0, //超出時間
+                    completed: true, //項目完成狀態 完成: true | 未完成: false
+                    date_create: "yyyy/mm/dd", //建立日期
+                    date_limit: { //項目期限
+                        year: 2021,
+                        month: 9,
+                        day: 8,
+                    },
+                    date_complete: "yyyy/mm/dd", //完成日期
                 },
-                date_complete: "yyyy/mm/dd", //完成日期
-            }, ],
+                {
+                    id: "003", //項目建立時之時間戳
+                    title: "測試項目 003",
+                    clock_expect: 8, //預期時間
+                    clock_spend: 4, //花費時間
+                    clock_over: 0, //超出時間
+                    completed: true, //項目完成狀態 完成: true | 未完成: false
+                    date_create: "yyyy/mm/dd", //建立日期
+                    date_limit: { //項目期限
+                        year: 2021,
+                        month: 9,
+                        day: 8,
+                    },
+                    date_complete: "yyyy/mm/dd", //完成日期
+                },
+                {
+                    id: "004", //項目建立時之時間戳
+                    title: "測試項目 004",
+                    clock_expect: 8, //預期時間
+                    clock_spend: 8, //花費時間
+                    clock_over: 0, //超出時間
+                    completed: true, //項目完成狀態 完成: true | 未完成: false
+                    date_create: "yyyy/mm/dd", //建立日期
+                    date_limit: { //項目期限
+                        year: 2021,
+                        month: 9,
+                        day: 8,
+                    },
+                    date_complete: "yyyy/mm/dd", //完成日期
+                },
+                {
+                    id: "005", //項目建立時之時間戳
+                    title: "測試項目 005",
+                    clock_expect: 4, //預期時間
+                    clock_spend: 4, //花費時間
+                    clock_over: 4, //超出時間
+                    completed: true, //項目完成狀態 完成: true | 未完成: false
+                    date_create: "yyyy/mm/dd", //建立日期
+                    date_limit: { //項目期限
+                        year: 2021,
+                        month: 9,
+                        day: 8,
+                    },
+                    date_complete: "yyyy/mm/dd", //完成日期
+                },
+            ],
             temp: {},
             item: {
                 id: "", //項目建立時之時間戳
