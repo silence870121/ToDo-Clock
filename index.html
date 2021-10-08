@@ -109,7 +109,7 @@
                         <!--? ---------- ---------- Home Page ---------- ---------- -->
                         <!--? ---------- ---------- Home Page ---------- ---------- -->
                         <div data-tab-content="home" class="tab-content active">
-                            <div class="task">
+                            <div class="area">
                                 <h2>complete task</h2>
                                 <div class="task-completed">
                                     <div class="surface-left">
@@ -122,23 +122,27 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="task">
+                            <div class="area">
                                 <h2>working task</h2>
                                 <div class="surface">
-                                    <div class="task-title">
-                                        <h3 class="task-text">{{working.title}}</h3>
-                                        <!--? expect clocks -->
-                                        <ul class="task-expect">
-                                            <li v-for="item in working.clock_spend"
-                                                class="task-spend task-spend--active"></li>
-                                            <li v-for="item in working.clock_expect-working.clock_spend"
-                                                class="task-spend"></li>
-                                            <li v-for="item in working.clock_over" class="task-spend task-spend--over">
-                                            </li>
-                                        </ul>
+                                    <div class="working">
+                                        <div class="working-title">
+                                            <h3>{{working.title}}</h3>
+                                            <ul class="task-expect">
+                                                <li v-for="item in working.clock_spend"
+                                                    class="task-spend task-spend--active">
+                                                </li>
+                                                <li v-for="item in working.clock_expect-working.clock_spend"
+                                                    class="task-spend">
+                                                </li>
+                                                <li v-for="item in working.clock_over"
+                                                    class="task-spend task-spend--over">
+                                                </li>
+                                            </ul>
+                                        </div>
+                                        <button class="btn" data-tab-target="editor" @click="selectTabs"><i
+                                                class="fas fa-ellipsis-h"></i></button>
                                     </div>
-                                    <button class="btn" data-tab-target="editor" @click="selectTabs"><i
-                                            class="fas fa-ellipsis-h"></i></button>
                                     <div class="working">
                                         <ul class="working-player">
                                             <li class=" working-btn" @click="stopClock()">
@@ -164,7 +168,7 @@
                                     </button>
                                 </div>
                             </div>
-                            <div class="task">
+                            <div class="area">
                                 <h2>Newest task</h2>
                                 <ul class="task-list" v-for="item in list" :key="item.id">
                                     <!--? task item -->
