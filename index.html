@@ -109,6 +109,7 @@
                         <!--? ---------- ---------- Home Page ---------- ---------- -->
                         <!--? ---------- ---------- Home Page ---------- ---------- -->
                         <div data-tab-content="home" class="tab-content active">
+                            <!--? Complete Area -->
                             <div class="area">
                                 <h2>complete task</h2>
                                 <div class="complete">
@@ -122,6 +123,7 @@
                                     </div>
                                 </div>
                             </div>
+                            <!--? Working Area -->
                             <div class="area">
                                 <h2>working task</h2>
                                 <div class="surface">
@@ -168,12 +170,15 @@
                                     </button>
                                 </div>
                             </div>
+                            <!--? ToDoList Area -->
                             <div class="area">
                                 <h2>Newest task</h2>
                                 <ul class="task-list" v-for="item in list" :key="item.id">
                                     <!--? task item -->
                                     <li class="surface">
-                                        <button class="btn"><i class="bi bi-play-circle-fill"></i></button>
+                                        <button v-if="item.completed == true" class="btn"><i
+                                                class="bi bi-check-circle"></i></button>
+                                        <button v-else class="btn"><i class="bi bi-play-circle-fill"></i></button>
                                         <div class="task-title">
                                             <h3 class="task-text">{{item.title}}</h3>
                                             <ul class="task-expect">
@@ -185,6 +190,9 @@
                                                 </li>
                                             </ul>
                                         </div>
+                                        <button v-if="item.completed == true" class="btn"><i
+                                                class="bi bi-reply-fill"></i></button>
+                                        <button v-else class="btn"><i class="bi bi-check-circle-fill"></i></button>
                                         <button class="btn"><i class="fas fa-ellipsis-h"></i></button>
                                     </li>
                                 </ul>
@@ -309,15 +317,15 @@
                         <!--? ---------- ---------- Analysis Page ---------- ---------- -->
                         <!--? ---------- ---------- Analysis Page ---------- ---------- -->
                         <div data-tab-content="analysis" class="tab-content">
-                            <div class="task">
+                            <div class="area">
                                 <div class="filter-bar">
                                     <button class="filter-btn filter-btn-active">Day</button>
                                     <button class="filter-btn">Week</button>
                                 </div>
                             </div>
-                            <div class="task">
+                            <div class="area">
                                 <h2>completed</h2>
-                                <div class="task-completed">
+                                <div class="complete">
                                     <div class="surface-left">
                                         <p>8</p>
                                         <span>task</span>
@@ -328,7 +336,7 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="task">
+                            <div class="area">
                                 <!--? CHART -->
                                 <div class="task-chart">
                                     <div class="surface">
@@ -351,7 +359,7 @@
                         <!--? ---------- ---------- Setting Page ---------- ---------- -->
                         <!--? ---------- ---------- Setting Page ---------- ---------- -->
                         <div data-tab-content="setting" class="tab-content">
-                            <div class="task">
+                            <div class="area">
                                 <h2>Work time</h2>
                                 <ul class="setting-time">
                                     <li v-for="(item, key) in setting.work" :key="item.index">
@@ -362,7 +370,7 @@
                                     </li>
                                 </ul>
                             </div>
-                            <div class="task">
+                            <div class="area">
                                 <h2>break time</h2>
                                 <ul class="setting-time">
                                     <li v-for="(item, key) in setting.break" :key="item.index">
@@ -373,7 +381,7 @@
                                     </li>
                                 </ul>
                             </div>
-                            <div class="task">
+                            <div class="area">
                                 <h2>Ringtone</h2>
                                 <div class="filter-bar">
                                     <button class="filter-btn filter-btn-active">working</button>
