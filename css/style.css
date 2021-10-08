@@ -147,8 +147,6 @@ body {
     cursor: pointer;
 }
 
-
-
 .tab-item:hover {
     color: var(--color-primary-variant);
 }
@@ -179,6 +177,10 @@ body {
     top: 0;
     left: 0;
     position: absolute;
+    -webkit-transition: -webkit-transform 200ms cubic-bezier(1, 0, 1, 1);
+    -moz-transition: transform 200ms cubic-bezier(1, 0, 1, 1);
+    -ms-transition: transform 200ms cubic-bezier(1, 0, 1, 1);
+    -o-transition: transform 200ms cubic-bezier(1, 0, 1, 1);
     transition: transform 200ms cubic-bezier(1, 0, 1, 1),
         opacity 200ms cubic-bezier(1, 0, 1, 1);
 
@@ -186,11 +188,19 @@ body {
 
 /* |>>>> >>>>| */
 .slide-right-enter, .slide-right-leave {
+    -webkit-transform: translateX(-100%);
+    -moz-transform: translateX(-100%);
+    -ms-transform: translateX(-100%);
+    -o-transform: translateX(-100%);
     transform: translateX(-100%);
 }
 
 /* |<<<< <<<<| */
 .slide-left-enter, .slide-left-leave {
+    -webkit-transform: translateX(100%);
+    -moz-transform: translateX(100%);
+    -ms-transform: translateX(100%);
+    -o-transform: translateX(100%);
     transform: translateX(100%);
 }
 
