@@ -40,10 +40,10 @@ Vue.createApp({
             list: [{
                 id: "001", //項目建立時之時間戳
                 title: "項目 001",
-                clock_expect: 1, //預期時間
-                clock_spend: 2, //花費時間
+                clock_expect: 2, //預期時間
+                clock_spend: 1, //花費時間
                 clock_over: 0, //超出時間
-                completed: true, //項目完成狀態 完成: true | 未完成: false
+                completed: false, //項目完成狀態 完成: true | 未完成: false
                 date_create: "yyyy/mm/dd", //建立日期
                 date_limit: { //項目期限
                     year: 2021,
@@ -54,8 +54,8 @@ Vue.createApp({
             }, {
                 id: "002", //項目建立時之時間戳
                 title: "項目 002",
-                clock_expect: 2, //預期時間
-                clock_spend: 4, //花費時間
+                clock_expect: 4, //預期時間
+                clock_spend: 2, //花費時間
                 clock_over: 0, //超出時間
                 completed: true, //項目完成狀態 完成: true | 未完成: false
                 date_create: "yyyy/mm/dd", //建立日期
