@@ -381,43 +381,18 @@ svg circle {
 
 /*? Clock End */
 
-/*? ---------- ---------- Task ---------- ---------- */
-.task {
-    /* border: 1px solid black; */
+/*? ---------- ---------- Area ---------- ---------- */
+.area {
     margin-top: 1.5rem;
     margin-bottom: 2rem;
 }
 
-.task-plus {
-    /* border: 1px solid black; */
-    margin-top: 3rem;
-    margin-bottom: 2rem;
-}
 
-.task h2 {
+
+.area h2 {
     text-transform: uppercase;
     margin-bottom: 0.5rem;
     color: var(--color-on-background);
-}
-
-.task-completed {
-    text-transform: uppercase;
-    /* border: 1px solid black; */
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
-    color: var(--color-on-surface);
-    background-color: var(--color-surface);
-    border-radius: 0.5rem;
-    text-align: center;
-    padding: 1.25rem;
-    font-size: 0.75rem;
-}
-
-.task-completed p {
-    font-size: 1.5rem;
-    font-weight: bold;
-    padding-bottom: 0.25rem;
 }
 
 .surface {
@@ -446,11 +421,54 @@ svg circle {
     padding: 0.5rem 0;
 }
 
+.task {
+    margin-top: 1.5rem;
+    margin-bottom: 2rem;
+}
+
+.task-plus {
+    /* border: 1px solid black; */
+    margin-top: 3rem;
+    margin-bottom: 2rem;
+}
+
+.task-completed {
+    text-transform: uppercase;
+    /* border: 1px solid black; */
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    color: var(--color-on-surface);
+    background-color: var(--color-surface);
+    border-radius: 0.5rem;
+    text-align: center;
+    padding: 1.25rem;
+    font-size: 0.75rem;
+}
+
+.task-completed p {
+    font-size: 1.5rem;
+    font-weight: bold;
+    padding-bottom: 0.25rem;
+}
+
+
+
 /*? ---------- ---------- home ---------- ---------- */
 .working {
     display: flex;
     width: 100%;
     justify-content: space-between;
+    margin-bottom: 0.5rem;
+}
+
+.working-title h3 {
+    font-size: 1.5rem;
+    font-weight: bold;
+}
+
+.working-title h3 {
+    font-size: 1rem;
 }
 
 .working-player {
@@ -486,7 +504,7 @@ svg circle {
     cursor: pointer;
     font-size: 1rem;
     padding: 0.5rem 1.25rem;
-    margin-top: 1rem;
+    margin-top: 0.5rem;
 }
 
 /*? ---------- ---------- list ---------- ---------- */
@@ -515,12 +533,6 @@ svg circle {
     border-color: var(--color-error);
     background-color: var(--color-error);
 }
-
-.task-title {
-    flex: 1;
-    margin: 0 0.25rem;
-}
-
 
 .btn {
     background-color: unset;
@@ -700,7 +712,7 @@ svg circle {
     height: 5rem;
 }
 
-/*? Setting */
+/*? ---------- ---------- Setting ---------- ---------- */
 .setting-time {
     display: flex;
     justify-content: center;
