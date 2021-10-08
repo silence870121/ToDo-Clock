@@ -400,19 +400,6 @@ svg circle {
     color: var(--color-on-background);
 }
 
-.task-complete {
-    width: 100%;
-    background-color: var(--color-primary-variant);
-    color: var(--color-on-primary);
-    border: none;
-    border-radius: 0.5rem;
-    text-transform: uppercase;
-    cursor: pointer;
-    font-size: 1rem;
-    padding: 0.5rem 1.25rem;
-    margin-top: 1rem;
-}
-
 .task-completed {
     text-transform: uppercase;
     /* border: 1px solid black; */
@@ -425,7 +412,6 @@ svg circle {
     text-align: center;
     padding: 1.25rem;
     font-size: 0.75rem;
-
 }
 
 .task-completed p {
@@ -488,6 +474,19 @@ svg circle {
     font-size: 1.75rem;
     padding: 0.5rem;
     cursor: pointer;
+}
+
+.working-complete {
+    width: 100%;
+    background-color: var(--color-primary-variant);
+    color: var(--color-on-primary);
+    border: none;
+    border-radius: 0.5rem;
+    text-transform: uppercase;
+    cursor: pointer;
+    font-size: 1rem;
+    padding: 0.5rem 1.25rem;
+    margin-top: 1rem;
 }
 
 /*? ---------- ---------- list ---------- ---------- */
@@ -818,6 +817,7 @@ svg circle {
 .col-6 {
     width: 100%;
     height: 100vh;
+    border-bottom: 1px solid var(--color-on-background);
 }
 
 .col-9 {
@@ -851,6 +851,7 @@ svg circle {
 
     .col-6 {
         width: calc(100%/12*6);
+
     }
 
     .filter-btn {
