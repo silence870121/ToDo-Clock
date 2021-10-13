@@ -621,7 +621,7 @@ svg circle {
     flex-wrap: nowrap;
 }
 
-/*? task list item */
+/*? ---------- task list item ---------- */
 .task-title {
     flex: 1;
     padding-left: 0.5rem;
@@ -660,28 +660,20 @@ svg circle {
     cursor: pointer;
 }
 
-.task-date {
-    width: 100%;
-    font-size: 0.75rem;
-    padding-left: 2.5rem;
-    display: flex;
-    justify-content: space-between;
-    text-transform: uppercase;
-}
-
-.task-date p {
-    padding: 0 0.5rem;
-    color: var(--color-on-background);
-}
-
-.task-done {
-    width: 100%;
-    text-align: right;
-}
-
 
 /*? ---------- ---------- editor ---------- ---------- */
-.task input {
+.area input {
+    color: var(--color-primary-variant);
+    background-color: var(--color-surface);
+    padding: 0.25rem 0.75rem;
+    border: unset;
+    border-radius: 0.25rem;
+    outline: unset;
+}
+
+.editor-text {
+    width: 100%;
+    font-size: 1.25rem;
     color: var(--color-primary-variant);
     background-color: var(--color-surface);
     padding: 0.25rem 0.75rem;
@@ -689,47 +681,84 @@ svg circle {
     border-radius: 0.25rem;
 }
 
-.input-text {
-    width: 100%;
-    font-size: 1.25rem;
+
+.editor-text::placeholder {
+    opacity: 0.5;
+    color: var(--color-primary-variant);
 }
 
-.task input[type=checkbox] {
+.editor-text::-webkit-input-placeholder {
+    /* Chrome, Safari */
+    opacity: 0.5;
+    color: var(--color-primary-variant);
+}
+
+.editor-text:-ms-input-placeholder {
+    /* IE 10+ */
+    opacity: 0.5;
+    color: var(--color-primary-variant);
+}
+
+.editor-text::-moz-placeholder {
+    /* Firefox 19+ */
+    color: var(--color-primary-variant);
+    opacity: 0.5;
+}
+
+.editor-expect {
+    margin: 0 -0.25rem;
+    width: 100%;
+    flex-flow: row-reverse;
+}
+
+.editor-expect input[type=radio] {
     display: none;
 }
 
-.task input[type=checkbox]+span {
-    display: block;
-    max-width: 100%;
-    width: 100%;
-    height: 1rem;
-    margin: 0;
-    border-radius: 0.25rem;
-    background-color: var(--color-surface);
-}
-
-.task input[type=checkbox]:checked+span {
+.editor-expect input[type=radio]:checked,
+.editor-expect input[type=radio]:checked~label {
     background-color: var(--color-primary-variant);
 }
 
-.input-group {
+.editor-expect input[type=radio]:hover,
+.editor-expect input[type=radio]:hover~label {
+    background-color: var(--color-primary-variant);
+}
+
+.editor-expect {
     display: flex;
     justify-content: space-between;
     align-items: center;
 }
 
-.input-group label {
+.editor-expect label {
     width: calc(100%/8);
-    padding: 0 0.25rem;
-}
-
-.input-date {
-    width: calc(100%/3);
-    text-align: center;
+    background-color: var(--color-surface);
+    display: block;
+    height: 1rem;
     margin: 0 0.25rem;
+    border-radius: 0.25rem;
+    cursor: pointer;
+    transition: all 200ms ease;
 }
 
-.task-edit {
+.editor-date {
+    display: flex;
+}
+
+.editor-date input[type=number] {
+    width: calc(100%/3);
+    font-size: 1rem;
+    padding: 0.25rem;
+    margin: 0 0.25rem;
+    border: unset;
+    border-radius: 0.25rem;
+    text-align: center;
+    background-color: var(--color-surface);
+    color: var(--color-primary-variant);
+}
+
+.editor {
     display: flex;
     justify-content: space-between;
     /* align-items: center; */
@@ -737,7 +766,7 @@ svg circle {
     margin-top: 3rem;
 }
 
-.edit-btn {
+.editor-btn {
     flex: 1;
     margin-left: 0.25rem;
     margin-right: 0.25rem;
@@ -748,27 +777,41 @@ svg circle {
     font-size: 1rem;
     text-transform: uppercase;
     cursor: pointer;
+    transition: all 200ms ease;
 }
 
-.btn-plus {
+.editor-btn-plus {
     flex: unset;
     width: 100%;
     color: var(--color-on-primary);
     background-color: var(--color-primary-variant);
 }
 
-.btn-cancel {
-    /* opacity: 0.75; */
-    color: var(--color-on-surface);
-    background-color: var(--color-surface);
-    border: 1px solid var(--color-on-surface);
+.editor-btn-plus:hover {
+    color: var(--color-on-primary);
+    background-color: var(--color-primary);
 }
 
-.btn-delete {
-    /* opacity: 0.75; */
+.editor-btn-cancel {
+    color: var(--color-primary);
+    background-color: var(--color-surface);
+    border: 1px solid var(--color-primary);
+}
+
+.editor-btn-cancel:hover {
+    color: var(--color-surface);
+    background-color: var(--color-primary);
+}
+
+.editor-btn-delete {
     color: var(--color-error);
     background-color: var(--color-on-error);
     border: 1px solid var(--color-error);
+}
+
+.editor-btn-delete:hover {
+    color: var(--color-on-error);
+    background-color: var(--color-error);
 }
 
 

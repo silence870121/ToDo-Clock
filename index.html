@@ -289,41 +289,30 @@
                         <div data-tab-content="editor" class="tab-content">
                             <div class="area">
                                 <h2>task title</h2>
-                                <input type="text" placeholder="Task title" class="input-text">
+                                <input type="text" placeholder="Task title" class="editor-text">
                             </div>
                             <div class="area">
                                 <h2>expect clock</h2>
-                                <div class="input-group">
-                                    <label> <input type="checkbox" value="1" checked>
-                                        <span></span> </label>
-                                    <label> <input type="checkbox" value="2">
-                                        <span></span> </label>
-                                    <label> <input type="checkbox" value="3">
-                                        <span></span> </label>
-                                    <label> <input type="checkbox" value="4">
-                                        <span></span> </label>
-                                    <label> <input type="checkbox" value="5">
-                                        <span></span> </label>
-                                    <label> <input type="checkbox" value="6">
-                                        <span></span> </label>
-                                    <label> <input type="checkbox" value="7">
-                                        <span></span> </label>
-                                    <label> <input type="checkbox" value="8">
-                                        <span></span> </label>
+                                <div class="editor-expect">
+                                    <template v-for="num in 8">
+                                        <input type="radio" :id="'expect_'+num" name="expect" :value="num">
+                                        <label :for="'expect_'+num"> </label>
+                                    </template>
                                 </div>
                             </div>
                             <div class="area">
                                 <h2>limit time</h2>
-                                <div class="input-group">
-                                    <input type="text" class="input-date" value="2021">
-                                    <input type="text" class="input-date" value="09">
-                                    <input type="text" class="input-date" value="07">
+                                <div class="editor-date">
+                                    <input type="number" value="2021" min="2021">
+                                    <input type="number" value="9" min="1" max="12">
+                                    <input type="number" value="7" min="1" max="31">
                                 </div>
                             </div>
-                            <div class="task-edit">
-                                <button class="edit-btn  btn-cancel">Cancel <i class="bi bi-reply-fill"></i></button>
-                                <button class="edit-btn  btn-delete"><i class="bi bi-x-lg"></i></button>
-                                <button class="edit-btn btn-plus">ADD | Save</button>
+                            <div class="editor">
+                                <button class="editor-btn editor-btn-cancel">Cancel
+                                    <i class="bi bi-reply-fill"></i></button>
+                                <button class="editor-btn editor-btn-delete"><i class="bi bi-x-lg"></i></button>
+                                <button class="editor-btn editor-btn-plus">ADD | Save</button>
                             </div>
                             <!--? Plus Page End -->
                         </div>
