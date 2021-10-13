@@ -214,31 +214,68 @@
                                 </ul>
                             </div>
                             <!--? filtered list -->
-                            <ul class="task-list">
-                                <template v-for="item in list" :key="item.id">
-                                    <!--? task item -->
-                                    <li class="surface" v-if="item.completed == filter.list">
-                                        <button v-if="item.completed" class="btn"><i
-                                                class="bi bi-check-circle"></i></button>
-                                        <button v-else class="btn"><i class="bi bi-play-circle-fill"></i></button>
-                                        <div class="task-title">
-                                            <h3 class="task-text">{{item.title}}</h3>
-                                            <ul class="task-expect">
-                                                <li v-for="item in item.clock_spend"
-                                                    class="task-spend task-spend--active"></li>
-                                                <li v-for="item in  item.clock_expect - item.clock_spend"
-                                                    class="task-spend"></li>
-                                                <li v-for="item in item.clock_over" class="task-spend task-spend--over">
-                                                </li>
-                                            </ul>
-                                        </div>
-                                        <button v-if="item.completed == true" class="btn"><i
-                                                class="bi bi-reply-fill"></i></button>
-                                        <button v-else class="btn"><i class="bi bi-check-circle-fill"></i></button>
-                                        <button class="btn"><i class="fas fa-ellipsis-h"></i></button>
-                                    </li>
-                                </template>
-                            </ul>
+                            <div class="filter-body">
+                                <div class="filter-content" data-filter="todo">
+                                    <ul class="task-list">
+                                        <template v-for="item in list" :key="item.id">
+                                            <!--? task item -->
+                                            <li class="surface" v-if="item.completed == false">
+                                                <button v-if="item.completed" class="btn"><i
+                                                        class="bi bi-check-circle"></i></button>
+                                                <button v-else class="btn"><i
+                                                        class="bi bi-play-circle-fill"></i></button>
+                                                <div class="task-title">
+                                                    <h3 class="task-text">{{item.title}}</h3>
+                                                    <ul class="task-expect">
+                                                        <li v-for="item in item.clock_spend"
+                                                            class="task-spend task-spend--active"></li>
+                                                        <li v-for="item in  item.clock_expect - item.clock_spend"
+                                                            class="task-spend"></li>
+                                                        <li v-for="item in item.clock_over"
+                                                            class="task-spend task-spend--over">
+                                                        </li>
+                                                    </ul>
+                                                </div>
+                                                <button v-if="item.completed == true" class="btn"><i
+                                                        class="bi bi-reply-fill"></i></button>
+                                                <button v-else class="btn"><i
+                                                        class="bi bi-check-circle-fill"></i></button>
+                                                <button class="btn"><i class="fas fa-ellipsis-h"></i></button>
+                                            </li>
+                                        </template>
+                                    </ul>
+                                </div>
+                                <div class="filter-content" data-filter="done">
+                                    <ul class="task-list">
+                                        <template v-for="item in list" :key="item.id">
+                                            <!--? task item -->
+                                            <li class="surface" v-if="item.completed == true">
+                                                <button v-if="item.completed" class="btn"><i
+                                                        class="bi bi-check-circle"></i></button>
+                                                <button v-else class="btn"><i
+                                                        class="bi bi-play-circle-fill"></i></button>
+                                                <div class="task-title">
+                                                    <h3 class="task-text">{{item.title}}</h3>
+                                                    <ul class="task-expect">
+                                                        <li v-for="item in item.clock_spend"
+                                                            class="task-spend task-spend--active"></li>
+                                                        <li v-for="item in  item.clock_expect - item.clock_spend"
+                                                            class="task-spend"></li>
+                                                        <li v-for="item in item.clock_over"
+                                                            class="task-spend task-spend--over">
+                                                        </li>
+                                                    </ul>
+                                                </div>
+                                                <button v-if="item.completed == true" class="btn"><i
+                                                        class="bi bi-reply-fill"></i></button>
+                                                <button v-else class="btn"><i
+                                                        class="bi bi-check-circle-fill"></i></button>
+                                                <button class="btn"><i class="fas fa-ellipsis-h"></i></button>
+                                            </li>
+                                        </template>
+                                    </ul>
+                                </div>
+                            </div>
                             <!--? List Page End -->
                         </div>
                         <!--? ---------- ---------- Plus Page ---------- ---------- -->
