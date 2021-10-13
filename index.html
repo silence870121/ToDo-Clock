@@ -41,7 +41,7 @@
             </div>
         </nav>
         <div class="title">
-            <h1>TODO CLOCK <span class="version">ver. 0.1009.0500</span></h1>
+            <h1>TODO CLOCK <span class="version">ver. 0.1013.2100</span></h1>
         </div>
         <!--? Content -->
         <!--? Clock Modal -->
@@ -173,9 +173,9 @@
                             <!--? ToDoList Area -->
                             <div class="area">
                                 <h2>Newest task</h2>
-                                <ul class="task-list" v-for="item in list" :key="item.id">
+                                <ul class="task-list">
                                     <!--? task item -->
-                                    <li class="surface">
+                                    <li class="surface" v-for="item in list" :key="item.id">
                                         <button v-if="item.completed == true" class="btn"><i
                                                 class="bi bi-check-circle"></i></button>
                                         <button v-else class="btn"><i class="bi bi-play-circle-fill"></i></button>
@@ -208,65 +208,87 @@
                                     <button class="filter-btn filter-btn-active">ToDo</button>
                                     <button class="filter-btn">Done</button>
                                 </div>
-                                <!--? filtered list -->
-                                <div class="row">
-                                    <!--? TODO list -->
-                                    <div class="col-12">
-                                        <ul class="task-list">
-                                            <!--? task item -->
-                                            <li class="surface">
-                                                <button class="btn"><i class="bi bi-play-circle-fill"></i></button>
-                                                <div class="task-title">
-                                                    <h3 class="task-text">Todo Task Title</h3>
-                                                    <ul class="task-expect">
-                                                        <li class="over"></li>
-                                                        <li class="over"></li>
-                                                        <li class="over"></li>
-                                                        <li class="over"></li>
-                                                        <li class=""></li>
-                                                        <li class=""></li>
-                                                        <li class=""></li>
-                                                        <li class=""></li>
-                                                    </ul>
-                                                </div>
-                                                <button class="btn"><i class="fas fa-ellipsis-h"></i></button>
-                                                <div class="task-date">
-                                                    <p>Create: 2021/09/07</p>
-                                                    <p>Limit: 2021/09/07</p>
-                                                </div>
-                                            </li>
-                                        </ul>
-                                    </div>
-                                    <!--? DONE List -->
-                                    <div class="col-12">
-                                        <ul class="task-list">
-                                            <!--? task item -->
-                                            <li class="surface">
-                                                <button class="btn"><i class="bi bi-check-circle-fill"></i></button>
-                                                <div class="task-title">
-                                                    <h3 class="task-text">Done Task Title</h3>
-                                                    <ul class="task-expect">
-                                                        <li class="over"></li>
-                                                        <li class="over"></li>
-                                                        <li class="over"></li>
-                                                        <li class="over"></li>
-                                                        <li class=""></li>
-                                                        <li class=""></li>
-                                                        <li class=""></li>
-                                                        <li class=""></li>
-                                                    </ul>
-                                                </div>
-                                                <button class="btn"><i class="fas fa-reply"></i></button>
-                                                <button class="btn"><i class="fas fa-ellipsis-h"></i></button>
-                                                <div class="task-date">
-                                                    <!-- <p>Create: 2021/09/07</p> -->
-                                                    <p class="task-done">Complete on 2021/09/07</p>
-                                                </div>
-                                            </li>
-                                        </ul>
-                                    </div>
+                            </div>
+                            <!--? filtered list -->
+                            <div class="row">
+                                <!--? TODO list -->
+                                <div class="col-12">
+                                    <ul class="task-list">
+                                        <!--? task item -->
+                                        <li class="surface" v-for="item in list" :key="item.id">
+                                            <button v-if="item.completed == true" class="btn"><i
+                                                    class="bi bi-check-circle"></i></button>
+                                            <button v-else class="btn"><i class="bi bi-play-circle-fill"></i></button>
+                                            <div class="task-title">
+                                                <h3 class="task-text">{{item.title}}</h3>
+                                                <ul class="task-expect">
+                                                    <li v-for="item in item.clock_spend"
+                                                        class="task-spend task-spend--active"></li>
+                                                    <li v-for="item in  item.clock_expect - item.clock_spend"
+                                                        class="task-spend"></li>
+                                                    <li v-for="item in item.clock_over"
+                                                        class="task-spend task-spend--over">
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                            <button v-if="item.completed == true" class="btn"><i
+                                                    class="bi bi-reply-fill"></i></button>
+                                            <button v-else class="btn"><i class="bi bi-check-circle-fill"></i></button>
+                                            <button class="btn"><i class="fas fa-ellipsis-h"></i></button>
+                                        </li>
+                                    </ul>
+                                </div>
+                                <!--? DONE List -->
+                                <div class="col-12" style="display: none;">
+                                    <ul class="task-list">
+                                        <!--? task item -->
+                                        <li class="surface">
+                                            <button class="btn"><i class="bi bi-check-circle-fill"></i></button>
+                                            <div class="task-title">
+                                                <h3 class="task-text">Done Task Title</h3>
+                                                <ul class="task-expect">
+                                                    <li class="over"></li>
+                                                    <li class="over"></li>
+                                                    <li class="over"></li>
+                                                    <li class="over"></li>
+                                                    <li class=""></li>
+                                                    <li class=""></li>
+                                                    <li class=""></li>
+                                                    <li class=""></li>
+                                                </ul>
+                                            </div>
+                                            <button class="btn"><i class="fas fa-reply"></i></button>
+                                            <button class="btn"><i class="fas fa-ellipsis-h"></i></button>
+                                            <div class="task-date">
+                                                <!-- <p>Create: 2021/09/07</p> -->
+                                                <p class="task-done">Complete on 2021/09/07</p>
+                                            </div>
+                                        </li>
+                                        <li class="surface" v-for="item in list" :key="item.id">
+                                            <button v-if="item.completed == true" class="btn"><i
+                                                    class="bi bi-check-circle"></i></button>
+                                            <button v-else class="btn"><i class="bi bi-play-circle-fill"></i></button>
+                                            <div class="task-title">
+                                                <h3 class="task-text">{{item.title}}</h3>
+                                                <ul class="task-expect">
+                                                    <li v-for="item in item.clock_spend"
+                                                        class="task-spend task-spend--active"></li>
+                                                    <li v-for="item in  item.clock_expect - item.clock_spend"
+                                                        class="task-spend"></li>
+                                                    <li v-for="item in item.clock_over"
+                                                        class="task-spend task-spend--over">
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                            <button v-if="item.completed == true" class="btn"><i
+                                                    class="bi bi-reply-fill"></i></button>
+                                            <button v-else class="btn"><i class="bi bi-check-circle-fill"></i></button>
+                                            <button class="btn"><i class="fas fa-ellipsis-h"></i></button>
+                                        </li>
+                                    </ul>
                                 </div>
                             </div>
+
                             <!--? List Page End -->
                         </div>
                         <!--? ---------- ---------- Plus Page ---------- ---------- -->
