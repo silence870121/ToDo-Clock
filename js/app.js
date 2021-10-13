@@ -35,7 +35,12 @@ Vue.createApp({
                 },
                 date_complete: "yyyy/mm/dd", //完成日期
             },
-
+            //? filter
+            filter: {
+                list: true,
+                completed: "day",
+                ringtone: "working"
+            },
             //? TODO list Data 
             list: [
                 //?
