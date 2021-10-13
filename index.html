@@ -96,7 +96,8 @@
                         </div>
                         <div class="clock">
                             <!--? Complete Task -->
-                            <button class="clock-complete" data-tab-target="list" @click="[selectTabs, resetWorking]">
+                            <button class="clock-complete" data-tab-target="list" data-filter-target="done"
+                                @click="[selectTabs, resetWorking, filterContent]">
                                 Task complete
                                 <i class="bi bi-check-circle-fill"></i>
                             </button>
@@ -209,17 +210,20 @@
                         <div data-tab-content="list" class="tab-content">
                             <div class="filter">
                                 <ul class="filter-bar">
-                                    <li class="filter-btn filter-btn-active" @click="filter.list = false">ToDo</li>
-                                    <li class="filter-btn" @click="filter.list = true">Done</button>
+                                    <li class="filter-btn filter-btn-active" data-filter-target="todo"
+                                        @click="[filterList, filterContent]">ToDo</li>
+                                    <li class="filter-btn" data-filter-target="done"
+                                        @click="[filterList, filterContent]">
+                                        Done</button>
                                 </ul>
                             </div>
                             <!--? filtered list -->
                             <div class="filter-body">
-                                <div class="filter-content" data-filter="todo">
+                                <div class="filter-content filter-content-active" data-filter-content="todo">
                                     <ul class="task-list">
                                         <template v-for="item in list" :key="item.id">
                                             <!--? task item -->
-                                            <li class="surface" v-if="item.completed == false">
+                                            <li class="surface" v-if="!item.completed">
                                                 <button v-if="item.completed" class="btn"><i
                                                         class="bi bi-check-circle"></i></button>
                                                 <button v-else class="btn"><i
@@ -245,11 +249,11 @@
                                         </template>
                                     </ul>
                                 </div>
-                                <div class="filter-content" data-filter="done">
+                                <div class="filter-content" data-filter-content="done">
                                     <ul class="task-list">
                                         <template v-for="item in list" :key="item.id">
                                             <!--? task item -->
-                                            <li class="surface" v-if="item.completed == true">
+                                            <li class="surface" v-if="item.completed">
                                                 <button v-if="item.completed" class="btn"><i
                                                         class="bi bi-check-circle"></i></button>
                                                 <button v-else class="btn"><i

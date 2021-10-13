@@ -352,7 +352,6 @@ Vue.createApp({
                 //left to right |>>>|
                 this.tabAnimationPosition("left");
             }
-
             if (tab_active.dataset.tabIndex !== selectIndex) {
                 //? 標記目標選項
                 // remove old active
@@ -387,6 +386,51 @@ Vue.createApp({
                 }, 200);
             }
         },
+        //? ---------- ---------- filter ---------- ----------
+        filterList(e) {
+            let filter = document.querySelector(".filter-bar .filter-btn-active")
+            let filterNodes = filter.parentNode.querySelectorAll(".filter-btn")
+            filterNodes.forEach(item => {
+                item.classList.remove("filter-btn-active")
+            })
+            e.target.classList.add("filter-btn-active")
+        },
+        filterContent(e) {
+            let filter_content = document.querySelectorAll(".filter-content")
+            let filter_content_active = document.querySelector(".filter-content-active")
+            if (filter_content_active.dataset.filterContent !== e.target.dataset.filterTarget) {
+                switch (e.target.dataset.filterTarget) {
+                    case "todo":
+                        this.tabAnimationPosition("left");
+                        break;
+                    case "done":
+                        this.tabAnimationPosition("right");
+                        break;
+                }
+
+                //? content
+                filter_content.forEach(item => {
+                    item.classList.remove("filter-content-active")
+                    if (item.dataset.filterContent == e.target.dataset.filterTarget) {
+                        item.classList.add(this.tabAnimation.enter)
+                    }
+                })
+                filter_content_active.classList.add(this.tabAnimation.leave)
+
+                setTimeout(() => {
+                    filter_content.forEach((item) => {
+                        if (item.dataset.filterContent == e.target.dataset.filterTarget) {
+                            item.classList.add("filter-content-active")
+                            item.classList.remove(this.tabAnimation.enter)
+                        }
+                    })
+                    filter_content_active.classList.remove(this.tabAnimation.leave)
+                }, 200);
+            }
+        },
+
+
+
         //? ---------- ---------- localstorage ---------- ----------
         setLocalClock() {
             localStorage.setItem('clock', JSON.stringify(this.clock))
