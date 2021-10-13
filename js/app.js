@@ -387,13 +387,22 @@ Vue.createApp({
             }
         },
         //? ---------- ---------- filter ---------- ----------
-        filterList(e) {
-            let filter = document.querySelector(".filter-bar .filter-btn-active")
+        filterBtn(e) {
+            let filter = e.target.parentNode.querySelector(".filter-bar .filter-btn-active")
             let filterNodes = filter.parentNode.querySelectorAll(".filter-btn")
             filterNodes.forEach(item => {
-                item.classList.remove("filter-btn-active")
+                filter.classList.remove("filter-btn-active")
             })
             e.target.classList.add("filter-btn-active")
+            let slider = filter.parentNode.querySelector(".slider-bar")
+            switch (e.target) {
+                case filterNodes[0]:
+                    slider.style.left = 0
+                    break;
+                case filterNodes[1]:
+                    slider.style.left = `50%`
+                    break;
+            }
         },
         filterContent(e) {
             let filter_content = document.querySelectorAll(".filter-content")
