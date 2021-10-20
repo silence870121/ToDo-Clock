@@ -585,6 +585,8 @@ Vue.createApp({
         setBreakRingtone(item) {
             this.clock.ringtone = item
         }
+        //? ---------- ---------- Editor Action ---------- ----------
+
     },
     mounted() {
         this.getLocalClock()
