@@ -473,9 +473,12 @@ Vue.createApp({
                 dashoffset: 0, //clock progress playing
                 ringtone: "ringtone1" //setting's ringtone
             }
+            this.setClockTime()
             this.setLocalClock()
         },
         resetWorking() {
+            this.clock.status = "working"
+            this.setClockTime()
             this.working = {
                 id: "000", //項目建立時之時間戳
                 title: "無指定項目",
@@ -492,6 +495,25 @@ Vue.createApp({
                 date_complete: "yyyy/mm/dd", //完成日期
             }
             this.setLocalWorking()
+        },
+        resetList() {
+            this.list = [{
+                id: "000", //項目建立時之時間戳
+                title: "第一個項目",
+                clock_expect: 8, //預期時間
+                clock_spend: 0, //花費時間
+                clock_over: 0, //超出時間
+                completed: false, //項目完成狀態 完成: true | 未完成: false
+                date_create: null, //建立日期
+                date_limit: { //項目期限
+                    year: 2022,
+                    month: 1,
+                    day: 1,
+                },
+                date_complete: "yyyy/mm/dd", //完成日期
+            }];
+            this.resetWorking()
+            this.setLocallist()
         },
         //? ---------- ---------- Clock Action ---------- ----------
         getstrock() {

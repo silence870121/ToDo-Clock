@@ -41,7 +41,7 @@
             </div>
         </nav>
         <div class="title">
-            <h1>TODO CLOCK <span class="version">ver. 0.1020.2340</span></h1>
+            <h1>TODO CLOCK <span class="version">ver. 0.1021.0234</span></h1>
         </div>
         <!--? Content -->
         <!--? Clock Modal -->
@@ -286,7 +286,7 @@
                         <!--? ---------- ---------- Editor Page ---------- ---------- -->
                         <!--? ---------- ---------- Editor Page ---------- ---------- -->
                         <!--? ---------- ---------- Editor Page ---------- ---------- -->
-                        <div data-tab-content="editor" class="tab-content active">
+                        <div data-tab-content="editor" class="tab-content">
                             <div class="area">
                                 <h2>task title</h2>
                                 <input type="text" placeholder="Task title" class="editor-text">
@@ -364,7 +364,7 @@
                         <!--? ---------- ---------- Setting Page ---------- ---------- -->
                         <!--? ---------- ---------- Setting Page ---------- ---------- -->
                         <!--? ---------- ---------- Setting Page ---------- ---------- -->
-                        <div data-tab-content="setting" class="tab-content">
+                        <div data-tab-content="setting" class="tab-content active">
                             <div class="area">
                                 <h2>Work time</h2>
                                 <ul class="setting-time">
@@ -398,7 +398,7 @@
                                         <li class="slider-bar"> </li>
                                     </ul>
                                 </div>
-                                <ul class="ringtone">
+                                <ul class="setting-ringtone">
                                     <li v-for="(item, key) in setting.ringtone" :key="item.index">
                                         <input type="radio" name="ringtone" :id="item" :value="item"
                                             v-if="item == clock.ringtone" checked>
@@ -411,6 +411,14 @@
                                             <button class="btn"><i class="bi bi-play-circle"></i></button>
                                         </label>
                                     </li>
+                                </ul>
+                            </div>
+                            <div class="setting-reset">
+                                <h2>Reset</h2>
+                                <ul class="reset">
+                                    <li class="reset-btn" @click="resetClock()">clock</li>
+                                    <li class="reset-btn" @click="resetWorking()">working</li>
+                                    <li class="reset-btn" @click="resetList()">Task list</li>
                                 </ul>
                             </div>
                             <!--? Setting Page End -->
