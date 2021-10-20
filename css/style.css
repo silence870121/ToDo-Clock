@@ -746,6 +746,7 @@ svg circle {
 
 .editor-date {
     display: flex;
+    flex-wrap: wrap;
 }
 
 .editor-date input[type=number] {
@@ -758,6 +759,26 @@ svg circle {
     text-align: center;
     background-color: var(--color-surface);
     color: var(--color-primary-variant);
+}
+
+.editor-date input[type=date] {
+    font-size: 1rem;
+    padding: 0.25rem;
+    border: unset;
+    border-radius: 0.25rem;
+    text-align: center;
+    background-color: var(--color-surface);
+    color: var(--color-primary-variant);
+}
+
+.date-complete {
+    width: 100%;
+    font-style: Italic;
+    text-align: right;
+    color: var(--color-on-surface);
+    padding: 0.25rem 1rem;
+    text-transform: uppercase;
+    /* border: 1px solid black; */
 }
 
 .editor {

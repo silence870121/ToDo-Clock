@@ -41,7 +41,7 @@
             </div>
         </nav>
         <div class="title">
-            <h1>TODO CLOCK <span class="version">ver. 0.1021.0234</span></h1>
+            <h1>TODO CLOCK <span class="version">ver. 0.1021.0500</span></h1>
         </div>
         <!--? Content -->
         <!--? Clock Modal -->
@@ -289,14 +289,16 @@
                         <div data-tab-content="editor" class="tab-content active">
                             <div class="area">
                                 <h2>task title</h2>
-                                <input type="text" placeholder="Task title" class="editor-text" v-model="editor.title">
+                                <input type="text" placeholder="Task title" class="editor-text"
+                                    v-model="editor.item.title">
                             </div>
                             <div class="area">
                                 <h2>expect clock</h2>
                                 <div class="editor-expect">
                                     <template v-for="num in 8">
                                         <input type="radio" :id="'expect_'+(8-num+1)" name="expect" :value="8-num+1">
-                                        <label :for="'expect_'+(8-num+1)" @click="editor.clock_expect = (8 - num + 1)">
+                                        <label :for="'expect_'+(8-num+1)"
+                                            @click="editor.item.clock_expect = (8 - num + 1)">
                                         </label>
                                     </template>
                                 </div>
@@ -304,16 +306,19 @@
                             <div class="area">
                                 <h2>limit time</h2>
                                 <div class="editor-date">
-                                    <input type="number" value="2021" min="2021">
-                                    <input type="number" value="9" min="1" max="12">
-                                    <input type="number" value="7" min="1" max="31">
+                                    <input type="date" v-model="editor.item.date_limit">
+                                    <!-- TODO -->
+                                    <span class="date-complete">Completed : {{editor.item.date_complete}}</span>
                                 </div>
                             </div>
                             <div class="editor">
                                 <button class="editor-btn editor-btn-cancel">Cancel
                                     <i class="bi bi-reply-fill"></i></button>
                                 <button class="editor-btn editor-btn-delete"><i class="bi bi-x-lg"></i></button>
-                                <button class="editor-btn editor-btn-plus">ADD | Save</button>
+                                <button class="editor-btn editor-btn-plus" v-if="editor.status == 'create'"
+                                    @click="addItem()">ADD
+                                    Task</button>
+                                <button class="editor-btn editor-btn-plus" v-else>Save Task</button>
                             </div>
                             <!--? Plus Page End -->
                         </div>
