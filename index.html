@@ -286,17 +286,18 @@
                         <!--? ---------- ---------- Editor Page ---------- ---------- -->
                         <!--? ---------- ---------- Editor Page ---------- ---------- -->
                         <!--? ---------- ---------- Editor Page ---------- ---------- -->
-                        <div data-tab-content="editor" class="tab-content">
+                        <div data-tab-content="editor" class="tab-content active">
                             <div class="area">
                                 <h2>task title</h2>
-                                <input type="text" placeholder="Task title" class="editor-text">
+                                <input type="text" placeholder="Task title" class="editor-text" v-model="editor.title">
                             </div>
                             <div class="area">
                                 <h2>expect clock</h2>
                                 <div class="editor-expect">
                                     <template v-for="num in 8">
-                                        <input type="radio" :id="'expect_'+num" name="expect" :value="num">
-                                        <label :for="'expect_'+num"> </label>
+                                        <input type="radio" :id="'expect_'+(8-num+1)" name="expect" :value="8-num+1">
+                                        <label :for="'expect_'+(8-num+1)" @click="editor.clock_expect = (8 - num + 1)">
+                                        </label>
                                     </template>
                                 </div>
                             </div>
@@ -364,7 +365,7 @@
                         <!--? ---------- ---------- Setting Page ---------- ---------- -->
                         <!--? ---------- ---------- Setting Page ---------- ---------- -->
                         <!--? ---------- ---------- Setting Page ---------- ---------- -->
-                        <div data-tab-content="setting" class="tab-content active">
+                        <div data-tab-content="setting" class="tab-content ">
                             <div class="area">
                                 <h2>Work time</h2>
                                 <ul class="setting-time">

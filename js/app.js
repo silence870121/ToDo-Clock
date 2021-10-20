@@ -275,9 +275,9 @@ Vue.createApp({
             ],
             temp: {},
             //? Editor Data
-            item: {
+            editor: {
                 id: "", //項目建立時之時間戳
-                title: " ",
+                title: "無輸入文字",
                 clock_expect: 0, //預期時間
                 clock_spend: 0, //花費時間
                 clock_over: 0, //超出時間
@@ -606,9 +606,8 @@ Vue.createApp({
         },
         setBreakRingtone(item) {
             this.clock.ringtone = item
-        }
+        },
         //? ---------- ---------- Editor Action ---------- ----------
-
     },
     mounted() {
         this.getLocalClock()
