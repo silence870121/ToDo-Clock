@@ -591,9 +591,9 @@ svg circle {
     overflow-x: hidden;
     padding-top: 0.5em;
     padding-bottom: 0.5em;
-    box-shadow: inset 0 3px 2px var(--color-background),
+    /* box-shadow: inset 0 3px 2px var(--color-background),
         inset 0 -3px 2px var(--color-background);
-    box-sizing: content-box;
+    box-sizing: content-box; */
 }
 
 .task-list {
@@ -615,8 +615,8 @@ svg circle {
 
 .task-list li {
     margin-bottom: 0.5rem;
-    position: relative;
-    z-index: -1;
+    /* position: relative;
+    z-index: -1; */
 }
 
 .task-list .surface {
@@ -772,12 +772,13 @@ svg circle {
 }
 
 .date-complete {
-    width: 100%;
     font-style: Italic;
     text-align: right;
+    float: right;
     color: var(--color-on-surface);
     padding: 0.25rem 1rem;
     text-transform: uppercase;
+    font-size: 0.875rem;
     /* border: 1px solid black; */
 }
 

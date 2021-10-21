@@ -57,11 +57,7 @@ Vue.createApp({
                     clock_over: 0, //超出時間
                     completed: false, //項目完成狀態 完成: true | 未完成: false
                     date_create: "yyyy/mm/dd", //建立日期
-                    date_limit: { //項目期限
-                        year: 2021,
-                        month: 9,
-                        day: 8,
-                    },
+                    date_limit: "2022-01-01", //項目期限
                     date_complete: "yyyy/mm/dd", //完成日期
                 },
                 //?
@@ -73,11 +69,7 @@ Vue.createApp({
                     clock_over: 0, //超出時間
                     completed: true, //項目完成狀態 完成: true | 未完成: false
                     date_create: "yyyy/mm/dd", //建立日期
-                    date_limit: { //項目期限
-                        year: 2021,
-                        month: 9,
-                        day: 8,
-                    },
+                    date_limit: "2022-01-01", //項目期限
                     date_complete: "yyyy/mm/dd", //完成日期
                 },
                 {
@@ -88,11 +80,7 @@ Vue.createApp({
                     clock_over: 0, //超出時間
                     completed: false, //項目完成狀態 完成: true | 未完成: false
                     date_create: "yyyy/mm/dd", //建立日期
-                    date_limit: { //項目期限
-                        year: 2021,
-                        month: 9,
-                        day: 8,
-                    },
+                    date_limit: "2022-01-01", //項目期限
                     date_complete: "yyyy/mm/dd", //完成日期
                 },
                 {
@@ -103,11 +91,7 @@ Vue.createApp({
                     clock_over: 0, //超出時間
                     completed: true, //項目完成狀態 完成: true | 未完成: false
                     date_create: "yyyy/mm/dd", //建立日期
-                    date_limit: { //項目期限
-                        year: 2021,
-                        month: 9,
-                        day: 8,
-                    },
+                    date_limit: "2022-01-01", //項目期限
                     date_complete: "yyyy/mm/dd", //完成日期
                 },
                 {
@@ -118,163 +102,119 @@ Vue.createApp({
                     clock_over: 4, //超出時間
                     completed: true, //項目完成狀態 完成: true | 未完成: false
                     date_create: "yyyy/mm/dd", //建立日期
-                    date_limit: { //項目期限
-                        year: 2021,
-                        month: 9,
-                        day: 8,
-                    },
+                    date_limit: "2022-01-01", //項目期限
                     date_complete: "yyyy/mm/dd", //完成日期
                 },
                 {
-                    id: "001", //項目建立時之時間戳
-                    title: "測試項目 001",
+                    id: "006", //項目建立時之時間戳
+                    title: "測試項目 006",
                     clock_expect: 8, //預期時間
                     clock_spend: 1, //花費時間
                     clock_over: 0, //超出時間
                     completed: false, //項目完成狀態 完成: true | 未完成: false
                     date_create: "yyyy/mm/dd", //建立日期
-                    date_limit: { //項目期限
-                        year: 2021,
-                        month: 9,
-                        day: 8,
-                    },
+                    date_limit: "2022-01-01", //項目期限
                     date_complete: "yyyy/mm/dd", //完成日期
                 },
                 //?
                 {
-                    id: "002", //項目建立時之時間戳
-                    title: "測試項目 002",
+                    id: "007", //項目建立時之時間戳
+                    title: "測試項目 007",
                     clock_expect: 8, //預期時間
                     clock_spend: 2, //花費時間
                     clock_over: 0, //超出時間
                     completed: true, //項目完成狀態 完成: true | 未完成: false
                     date_create: "yyyy/mm/dd", //建立日期
-                    date_limit: { //項目期限
-                        year: 2021,
-                        month: 9,
-                        day: 8,
-                    },
+                    date_limit: "2022-01-01", //項目期限
                     date_complete: "yyyy/mm/dd", //完成日期
                 },
                 {
-                    id: "003", //項目建立時之時間戳
-                    title: "測試項目 003",
+                    id: "008", //項目建立時之時間戳
+                    title: "測試項目 008",
                     clock_expect: 8, //預期時間
                     clock_spend: 4, //花費時間
                     clock_over: 0, //超出時間
                     completed: false, //項目完成狀態 完成: true | 未完成: false
                     date_create: "yyyy/mm/dd", //建立日期
-                    date_limit: { //項目期限
-                        year: 2021,
-                        month: 9,
-                        day: 8,
-                    },
+                    date_limit: "2022-01-01", //項目期限
                     date_complete: "yyyy/mm/dd", //完成日期
                 },
                 {
-                    id: "004", //項目建立時之時間戳
-                    title: "測試項目 004",
+                    id: "009", //項目建立時之時間戳
+                    title: "測試項目 009",
                     clock_expect: 8, //預期時間
                     clock_spend: 8, //花費時間
                     clock_over: 0, //超出時間
                     completed: true, //項目完成狀態 完成: true | 未完成: false
                     date_create: "yyyy/mm/dd", //建立日期
-                    date_limit: { //項目期限
-                        year: 2021,
-                        month: 9,
-                        day: 8,
-                    },
+                    date_limit: "2022-01-01", //項目期限
                     date_complete: "yyyy/mm/dd", //完成日期
                 },
                 {
-                    id: "005", //項目建立時之時間戳
-                    title: "測試項目 005",
+                    id: "010", //項目建立時之時間戳
+                    title: "測試項目 010",
                     clock_expect: 4, //預期時間
                     clock_spend: 4, //花費時間
                     clock_over: 4, //超出時間
                     completed: true, //項目完成狀態 完成: true | 未完成: false
                     date_create: "yyyy/mm/dd", //建立日期
-                    date_limit: { //項目期限
-                        year: 2021,
-                        month: 9,
-                        day: 8,
-                    },
+                    date_limit: "2022-01-01", //項目期限
                     date_complete: "yyyy/mm/dd", //完成日期
                 },
                 {
-                    id: "001", //項目建立時之時間戳
-                    title: "測試項目 001",
+                    id: "011", //項目建立時之時間戳
+                    title: "測試項目 011",
                     clock_expect: 8, //預期時間
                     clock_spend: 1, //花費時間
                     clock_over: 0, //超出時間
                     completed: false, //項目完成狀態 完成: true | 未完成: false
                     date_create: "yyyy/mm/dd", //建立日期
-                    date_limit: { //項目期限
-                        year: 2021,
-                        month: 9,
-                        day: 8,
-                    },
+                    date_limit: "2022-01-01", //項目期限
                     date_complete: "yyyy/mm/dd", //完成日期
                 },
                 //?
                 {
-                    id: "002", //項目建立時之時間戳
-                    title: "測試項目 002",
+                    id: "012", //項目建立時之時間戳
+                    title: "測試項目 012",
                     clock_expect: 8, //預期時間
                     clock_spend: 2, //花費時間
                     clock_over: 0, //超出時間
                     completed: true, //項目完成狀態 完成: true | 未完成: false
                     date_create: "yyyy/mm/dd", //建立日期
-                    date_limit: { //項目期限
-                        year: 2021,
-                        month: 9,
-                        day: 8,
-                    },
+                    date_limit: "2022-01-01", //項目期限
                     date_complete: "yyyy/mm/dd", //完成日期
                 },
                 {
-                    id: "003", //項目建立時之時間戳
-                    title: "測試項目 003",
+                    id: "013", //項目建立時之時間戳
+                    title: "測試項目 013",
                     clock_expect: 8, //預期時間
                     clock_spend: 4, //花費時間
                     clock_over: 0, //超出時間
                     completed: false, //項目完成狀態 完成: true | 未完成: false
                     date_create: "yyyy/mm/dd", //建立日期
-                    date_limit: { //項目期限
-                        year: 2021,
-                        month: 9,
-                        day: 8,
-                    },
+                    date_limit: "2022-01-01", //項目期限
                     date_complete: "yyyy/mm/dd", //完成日期
                 },
                 {
-                    id: "004", //項目建立時之時間戳
-                    title: "測試項目 004",
+                    id: "014", //項目建立時之時間戳
+                    title: "測試項目 014",
                     clock_expect: 8, //預期時間
                     clock_spend: 8, //花費時間
                     clock_over: 0, //超出時間
                     completed: true, //項目完成狀態 完成: true | 未完成: false
                     date_create: "yyyy/mm/dd", //建立日期
-                    date_limit: { //項目期限
-                        year: 2021,
-                        month: 9,
-                        day: 8,
-                    },
+                    date_limit: "2022-01-01", //項目期限
                     date_complete: "yyyy/mm/dd", //完成日期
                 },
                 {
-                    id: "005", //項目建立時之時間戳
-                    title: "測試項目 005",
+                    id: "015", //項目建立時之時間戳
+                    title: "測試項目 015",
                     clock_expect: 4, //預期時間
                     clock_spend: 4, //花費時間
                     clock_over: 4, //超出時間
                     completed: true, //項目完成狀態 完成: true | 未完成: false
                     date_create: "yyyy/mm/dd", //建立日期
-                    date_limit: { //項目期限
-                        year: 2021,
-                        month: 9,
-                        day: 8,
-                    },
+                    date_limit: "2022-01-01", //項目期限
                     date_complete: "yyyy/mm/dd", //完成日期
                 },
             ],
@@ -518,7 +458,7 @@ Vue.createApp({
         resetEditor() {
             this.editor.item = {
                 id: "", //項目建立時之時間戳
-                title: "無輸入文字",
+                title: "",
                 clock_expect: 0, //預期時間
                 clock_spend: 0, //花費時間
                 clock_over: 0, //超出時間
@@ -632,7 +572,13 @@ Vue.createApp({
             this.editor.item.date_create = this.date.today
             this.list.push(this.editor.item)
             this.resetEditor()
-        }
+        },
+        editItem(item) {
+            this.editor.item = {
+                ...item
+            }
+            console.log(item);
+        },
     },
     mounted() {
         this.getLocalClock()

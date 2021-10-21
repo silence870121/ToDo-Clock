@@ -241,11 +241,16 @@
                                                         </li>
                                                     </ul>
                                                 </div>
-                                                <button v-if="item.completed == true" class="btn"><i
-                                                        class="bi bi-reply-fill"></i></button>
-                                                <button v-else class="btn"><i
-                                                        class="bi bi-check-circle-fill"></i></button>
-                                                <button class="btn"><i class="fas fa-ellipsis-h"></i></button>
+                                                <button v-if="item.completed == true" class="btn"
+                                                    @click="item.completed = false">
+                                                    <i class="bi bi-reply-fill"></i>
+                                                </button>
+                                                <button v-else class="btn" @click="item.completed = true">
+                                                    <i class="bi bi-check-circle-fill"></i>
+                                                </button>
+                                                <button class=" btn" data-tab-target="editor" @click="editItem(item)">
+                                                    <i class="fas fa-ellipsis-h"></i>
+                                                </button>
                                             </li>
                                         </template>
                                     </ul>
@@ -271,11 +276,16 @@
                                                         </li>
                                                     </ul>
                                                 </div>
-                                                <button v-if="item.completed == true" class="btn"><i
-                                                        class="bi bi-reply-fill"></i></button>
-                                                <button v-else class="btn"><i
-                                                        class="bi bi-check-circle-fill"></i></button>
-                                                <button class="btn"><i class="fas fa-ellipsis-h"></i></button>
+                                                <button v-if="item.completed == true" class="btn"
+                                                    @click="item.completed = false">
+                                                    <i class="bi bi-reply-fill"></i>
+                                                </button>
+                                                <button v-else class="btn" @click="item.completed = true">
+                                                    <i class="bi bi-check-circle-fill"></i>
+                                                </button>
+                                                <button class=" btn" data-tab-target="editor" @click="editItem(item)">
+                                                    <i class="fas fa-ellipsis-h"></i>
+                                                </button>
                                             </li>
                                         </template>
                                     </ul>
@@ -288,7 +298,9 @@
                         <!--? ---------- ---------- Editor Page ---------- ---------- -->
                         <div data-tab-content="editor" class="tab-content active">
                             <div class="area">
-                                <h2>task title</h2>
+
+                                <h2>task title <span class="date-complete" v-if="editor.item.completed">Completed :
+                                        {{editor.item.date_complete}}</span></h2>
                                 <input type="text" placeholder="Task title" class="editor-text"
                                     v-model="editor.item.title">
                             </div>
@@ -296,7 +308,10 @@
                                 <h2>expect clock</h2>
                                 <div class="editor-expect">
                                     <template v-for="num in 8">
-                                        <input type="radio" :id="'expect_'+(8-num+1)" name="expect" :value="8-num+1">
+                                        <input type="radio" :id="'expect_'+(8-num+1)" name="expect" :value="8-num+1"
+                                            v-if="(8-num+1) == editor.item.clock_expect" checked>
+                                        <input type="radio" :id="'expect_'+(8-num+1)" name="expect" :value="8-num+1"
+                                            v-else>
                                         <label :for="'expect_'+(8-num+1)"
                                             @click="editor.item.clock_expect = (8 - num + 1)">
                                         </label>
@@ -307,8 +322,6 @@
                                 <h2>limit time</h2>
                                 <div class="editor-date">
                                     <input type="date" v-model="editor.item.date_limit">
-                                    <!-- TODO -->
-                                    <span class="date-complete">Completed : {{editor.item.date_complete}}</span>
                                 </div>
                             </div>
                             <div class="editor">
