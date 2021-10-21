@@ -157,8 +157,6 @@ body {
 
 .tab-body {
     height: 100vh;
-    padding-top: 4rem;
-    padding-bottom: 4rem;
     position: relative;
     overflow-x: hidden;
     -ms-overflow-style: none;
@@ -181,6 +179,8 @@ body {
 }
 
 .tab-content {
+    padding-top: 4rem;
+    padding-bottom: 4rem;
     display: none;
     pointer-events: none;
     opacity: 0;

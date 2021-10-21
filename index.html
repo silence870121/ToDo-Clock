@@ -21,19 +21,22 @@
                         <a href="index.html"><i class="fas fa-clock"></i>TODO CLOCK</a>
                     </div>
                     <ul class="tab-header">
-                        <li data-tab-target="home" data-tab-index="0" @click="selectTabs" class="tab-item active">
+                        <li data-tab-target="home" data-tab-index="0" @click="selectTabs('home')"
+                            class="tab-item active">
                             <i class="fas fa-house-user"></i>
                         </li>
-                        <li data-tab-target="list" data-tab-index="1" @click="selectTabs" class="tab-item">
+                        <li data-tab-target="list" data-tab-index="1" @click="selectTabs('list')" class="tab-item">
                             <i class="fas fa-list"></i>
                         </li>
-                        <li data-tab-target="editor" data-tab-index="2" @click="selectTabs" class="tab-item">
+                        <li data-tab-target="editor" data-tab-index="2" @click="selectTabs('editor')" class="tab-item">
                             <i class="fas fa-plus-circle"></i>
                         </li>
-                        <li data-tab-target="analysis" data-tab-index="3" @click="selectTabs" class="tab-item">
+                        <li data-tab-target="analysis" data-tab-index="3" @click="selectTabs('analysis')"
+                            class="tab-item">
                             <i class="fas fa-chart-bar"></i>
                         </li>
-                        <li data-tab-target="setting" data-tab-index="4" @click="selectTabs" class="tab-item">
+                        <li data-tab-target="setting" data-tab-index="4" @click="selectTabs('setting')"
+                            class="tab-item">
                             <i class="fas fa-cog"></i>
                         </li>
                     </ul>
@@ -97,7 +100,7 @@
                         <div class="clock">
                             <!--? Complete Task -->
                             <button class="clock-complete" data-tab-target="list" data-filter-target="done"
-                                @click="[selectTabs, resetWorking, filterContent]">
+                                @click="selectTabs('list'); resetWorking();">
                                 Task complete
                                 <i class="bi bi-check-circle-fill"></i>
                             </button>
@@ -143,8 +146,9 @@
                                                 </li>
                                             </ul>
                                         </div>
-                                        <button class="btn" data-tab-target="editor" @click="selectTabs"><i
-                                                class="fas fa-ellipsis-h"></i></button>
+                                        <button class="btn" @click="selectTabs('editor')">
+                                            <i class="fas fa-ellipsis-h"></i>
+                                        </button>
                                     </div>
                                     <div class="working">
                                         <ul class="working-player">
@@ -165,7 +169,7 @@
                                             {{clock.timerText}}
                                         </p>
                                     </div>
-                                    <button class="working-complete" data-tab-target="list" @click="selectTabs">
+                                    <button class="working-complete" data-tab-target="list" @click="selectTabs('list')">
                                         Task complete
                                         <i class="bi bi-check-circle-fill"></i>
                                     </button>
@@ -194,10 +198,16 @@
                                                     </li>
                                                 </ul>
                                             </div>
-                                            <button v-if="item.completed == true" class="btn"><i
-                                                    class="bi bi-reply-fill"></i></button>
-                                            <button v-else class="btn"><i class="bi bi-check-circle-fill"></i></button>
-                                            <button class="btn"><i class="fas fa-ellipsis-h"></i></button>
+                                            <button v-if="item.completed == true" class="btn"
+                                                @click="item.completed = false">
+                                                <i class="bi bi-reply-fill"></i>
+                                            </button>
+                                            <button v-else class="btn" @click="item.completed = true">
+                                                <i class="bi bi-check-circle-fill"></i>
+                                            </button>
+                                            <button class=" btn" @click="editItem(item); selectTabs('editor');">
+                                                <i class="fas fa-ellipsis-h"></i>
+                                            </button>
                                         </li>
                                     </template>
                                 </ul>
@@ -221,6 +231,7 @@
                             <!--? filtered list -->
                             <div class="filter-body">
                                 <div class="filter-content filter-content-active" data-filter-content="todo">
+                                    <!--? ToDoList TODO Content -->
                                     <ul class="task-list">
                                         <template v-for="item in list" :key="item.id">
                                             <!--? task item -->
@@ -248,7 +259,7 @@
                                                 <button v-else class="btn" @click="item.completed = true">
                                                     <i class="bi bi-check-circle-fill"></i>
                                                 </button>
-                                                <button class=" btn" data-tab-target="editor" @click="editItem(item)">
+                                                <button class=" btn" @click="editItem(item); selectTabs('editor');">
                                                     <i class="fas fa-ellipsis-h"></i>
                                                 </button>
                                             </li>
@@ -256,6 +267,7 @@
                                     </ul>
                                 </div>
                                 <div class="filter-content" data-filter-content="done">
+                                    <!--? ToDoList DONE Content -->
                                     <ul class="task-list">
                                         <template v-for="item in list" :key="item.id">
                                             <!--? task item -->

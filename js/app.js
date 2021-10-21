@@ -274,16 +274,16 @@ Vue.createApp({
                     break;
             }
         },
-        selectTabs(e) {
+        selectTabs(tab) {
             let tab_item = document.querySelectorAll(".tab-item")
             let tab_active = document.querySelector(".tab-header .active")
             let tab_content = document.querySelectorAll(".tab-content")
             let tab_content_active = document.querySelector(".tab-body .active")
             let selectIndex = "";
-            // console.log(e.target);
+            // console.log(tab);
             //? 取得目標的 Index
             tab_item.forEach(item => {
-                if (item.dataset.tabTarget == e.target.dataset.tabTarget) {
+                if (item.dataset.tabTarget == tab) {
                     selectIndex = item.dataset.tabIndex
                 }
             })
@@ -304,7 +304,7 @@ Vue.createApp({
                 })
                 // add new active
                 tab_item.forEach(item => {
-                    if (item.dataset.tabTarget == e.target.dataset.tabTarget) {
+                    if (item.dataset.tabTarget == tab) {
                         item.classList.add("active")
                     }
                 })
@@ -314,14 +314,14 @@ Vue.createApp({
                     // tab 清除所有內容標記
                     item.classList.remove("active")
                     // tab 判斷選項標記內容
-                    if (item.dataset.tabContent == e.target.dataset.tabTarget) {
+                    if (item.dataset.tabContent == tab) {
                         item.classList.add(this.tabAnimation.enter)
                     }
                 })
                 tab_content_active.classList.add(this.tabAnimation.leave)
                 setTimeout(() => {
                     tab_content.forEach((item) => {
-                        if (item.dataset.tabContent == e.target.dataset.tabTarget) {
+                        if (item.dataset.tabContent == tab) {
                             item.classList.add("active")
                             item.classList.remove(this.tabAnimation.enter)
                         }
@@ -421,6 +421,7 @@ Vue.createApp({
             this.setLocalClock()
         },
         resetWorking() {
+            this.stopClock()
             this.clock.status = "working"
             this.setClockTime()
             this.working = {
