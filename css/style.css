@@ -662,6 +662,9 @@ svg circle {
     cursor: pointer;
 }
 
+.btn-disabled {
+    cursor: unset;
+}
 
 /*? ---------- ---------- editor ---------- ---------- */
 .area input {

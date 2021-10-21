@@ -236,10 +236,10 @@
                                         <template v-for="item in list" :key="item.id">
                                             <!--? task item -->
                                             <li class="surface" v-if="!item.completed">
-                                                <button v-if="item.completed" class="btn"><i
-                                                        class="bi bi-check-circle"></i></button>
-                                                <button v-else class="btn"><i
-                                                        class="bi bi-play-circle-fill"></i></button>
+                                                <button class="btn" @click="playItem(item)">
+                                                    <i class="bi bi-play-circle-fill"></i>
+                                                </button>
+
                                                 <div class="task-title">
                                                     <h3 class="task-text">{{item.title}}</h3>
                                                     <ul class="task-expect">
@@ -252,11 +252,8 @@
                                                         </li>
                                                     </ul>
                                                 </div>
-                                                <button v-if="item.completed == true" class="btn"
-                                                    @click="item.completed = false">
-                                                    <i class="bi bi-reply-fill"></i>
-                                                </button>
-                                                <button v-else class="btn" @click="item.completed = true">
+
+                                                <button class="btn" @click="completeItem(item)">
                                                     <i class="bi bi-check-circle-fill"></i>
                                                 </button>
                                                 <button class=" btn" @click="editItem(item); selectTabs('editor');">
@@ -272,10 +269,10 @@
                                         <template v-for="item in list" :key="item.id">
                                             <!--? task item -->
                                             <li class="surface" v-if="item.completed">
-                                                <button v-if="item.completed" class="btn"><i
-                                                        class="bi bi-check-circle"></i></button>
-                                                <button v-else class="btn"><i
-                                                        class="bi bi-play-circle-fill"></i></button>
+                                                <button class="btn btn-disabled">
+                                                    <i class="bi bi-check-circle"></i>
+                                                </button>
+
                                                 <div class="task-title">
                                                     <h3 class="task-text">{{item.title}}</h3>
                                                     <ul class="task-expect">
@@ -292,10 +289,9 @@
                                                     @click="item.completed = false">
                                                     <i class="bi bi-reply-fill"></i>
                                                 </button>
-                                                <button v-else class="btn" @click="item.completed = true">
-                                                    <i class="bi bi-check-circle-fill"></i>
-                                                </button>
-                                                <button class=" btn" data-tab-target="editor" @click="editItem(item)">
+
+                                                <button class=" btn" data-tab-target="editor"
+                                                    @click="editItem(item);selectTabs('editor')">
                                                     <i class="fas fa-ellipsis-h"></i>
                                                 </button>
                                             </li>
@@ -337,13 +333,17 @@
                                 </div>
                             </div>
                             <div class="editor">
-                                <button class="editor-btn editor-btn-cancel">Cancel
-                                    <i class="bi bi-reply-fill"></i></button>
-                                <button class="editor-btn editor-btn-delete"><i class="bi bi-x-lg"></i></button>
+                                <button class="editor-btn editor-btn-cancel">
+                                    Cancel <i class="bi bi-reply-fill"></i>
+                                </button>
+                                <button class="editor-btn editor-btn-delete" @click="removeItem()">
+                                    Delete <i class="bi bi-x-lg"></i>
+                                </button>
                                 <button class="editor-btn editor-btn-plus" v-if="editor.status == 'create'"
-                                    @click="addItem()">ADD
+                                    @click="addItem();selectTabs('list')">ADD
                                     Task</button>
-                                <button class="editor-btn editor-btn-plus" v-else>Save Task</button>
+                                <button class="editor-btn editor-btn-plus" v-else @click="selectTabs('list')">Save
+                                    Task</button>
                             </div>
                             <!--? Plus Page End -->
                         </div>

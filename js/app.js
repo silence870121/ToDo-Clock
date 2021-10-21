@@ -42,7 +42,6 @@ Vue.createApp({
             },
             //? filter
             filter: {
-                list: true,
                 completed: "day",
                 ringtone: "working"
             },
@@ -228,7 +227,7 @@ Vue.createApp({
                     clock_expect: 0, //預期時間
                     clock_spend: 0, //花費時間
                     clock_over: 0, //超出時間
-                    completed: true, //項目完成狀態 完成: true | 未完成: false
+                    completed: false, //項目完成狀態 完成: true | 未完成: false
                     date_create: '', //建立日期
                     date_limit: '',
                     date_complete: '2021-10-20', //完成日期
@@ -580,6 +579,34 @@ Vue.createApp({
             }
             console.log(item);
         },
+        editWork() {
+            this.editor.item = {
+                ...this.working
+            }
+            console.log(this.working);
+        },
+        playItem(item) {
+            this.working = item
+
+            console.log(item);
+        },
+        completeItem(item) {
+            item.completed = true
+            if (this.working.id == item.id) {
+                this.resetWorking()
+            }
+        },
+        removeItem() {
+            const Index = this.list.findIndex(item => item.id === this.editor.item.id)
+            console.log(Index);
+            if (this.list[Index] !== undefined) {
+                console.log('REMOVE  ' + this.list[Index].id);
+                this.list.splice(Index, 1)
+            } else {
+                console.log('List Index undefined');
+            }
+            this.resetEditor()
+        }
     },
     mounted() {
         this.getLocalClock()
