@@ -44,7 +44,7 @@
             </div>
         </nav>
         <div class="title">
-            <h1>TODO CLOCK <span class="version">ver. 0.1022.0435</span></h1>
+            <h1>TODO CLOCK <span class="version">ver. 0.1025.1130</span></h1>
         </div>
         <!--? Content -->
         <!--? Clock Modal -->
@@ -352,17 +352,17 @@
                         <!--? ---------- ---------- Analysis Page ---------- ---------- -->
                         <!--? ---------- ---------- Analysis Page ---------- ---------- -->
                         <div data-tab-content="analysis" class="tab-content">
-                            <div class="filter">
-                                <ul class="filter-bar">
-                                    <li class="filter-btn filter-btn-active" data-filter-target="today"
-                                        @click="filterBtn">Today</li>
-                                    <li class="filter-btn" data-filter-target="week" @click="filterBtn">
-                                        Week</li>
-                                    <li class="slider-bar"> </li>
-                                </ul>
-                            </div>
                             <div class="area">
                                 <h2>completed</h2>
+                                <div class="filter">
+                                    <ul class="filter-bar">
+                                        <li class="filter-btn filter-btn-active" data-filter-target="today"
+                                            @click="filterBtn">Today</li>
+                                        <li class="filter-btn" data-filter-target="week" @click="filterBtn">
+                                            Week</li>
+                                        <li class="slider-bar"> </li>
+                                    </ul>
+                                </div>
                                 <div class="complete">
                                     <div class="surface-left">
                                         <p>8</p>
@@ -375,6 +375,7 @@
                                 </div>
                             </div>
                             <div class="area">
+                                <h2>CHART</h2>
                                 <!--? CHART -->
                                 <div class="task-chart">
                                     <div class="surface">

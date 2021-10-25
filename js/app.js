@@ -242,8 +242,7 @@ Vue.createApp({
                     75, 90, 120, 150
                 ],
                 break: [
-                    5, 10, 15, 20,
-                    25, 30, 45, 60
+                    5, 10, 15, 30
                 ],
                 ringtone: {
                     music_1: "ringtone1",
