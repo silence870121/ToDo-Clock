@@ -51,8 +51,8 @@
         <div class="container">
             <div class="row">
                 <div class="col-6">
+                    <!--? Task Working Clock -->
                     <div id="clock">
-                        <!--? Task Spended Clock -->
                         <div class="clock">
                             <h2 class="clock-title">{{working.title}}</h2>
                             <ul class="clock-expect">
@@ -100,7 +100,7 @@
                         <div class="clock">
                             <!--? Complete Task -->
                             <button class="clock-complete" data-tab-target="list" data-filter-target="done"
-                                @click="selectTabs('list'); resetWorking();">
+                                @click="selectTabs('list'); workingComplete();">
                                 Task complete
                                 <i class="bi bi-check-circle-fill"></i>
                             </button>
@@ -183,11 +183,17 @@
                                     <template v-for="(item, index) in list.filter(list => list.completed == false)"
                                         :key="item.id">
                                         <li class="surface" v-if="index <= 2">
-                                            <button v-if="item.completed == true" class="btn"><i
-                                                    class="bi bi-check-circle"></i></button>
-                                            <button v-else class="btn"><i class="bi bi-play-circle-fill"></i></button>
+                                            <button class="btn" @click="playItem(item)" v-if="item.id == working.id">
+                                                <i class="bi bi-play-circle"></i>
+                                            </button>
+                                            <button class="btn" @click="playItem(item)" v-else>
+                                                <i class="bi bi-play-circle-fill"></i>
+                                            </button>
                                             <div class="task-title">
-                                                <h3 class="task-text">{{item.title}} {{index + 1}}</h3>
+                                                <h3 class="task-text">
+                                                    {{item.title}}
+                                                    <span v-if="item.id == working.id"> working...</span>
+                                                </h3>
                                                 <ul class="task-expect">
                                                     <li v-for="item in item.clock_spend"
                                                         class="task-spend task-spend--active"></li>
@@ -217,7 +223,7 @@
                         <!--? ---------- ---------- List Page ---------- ---------- -->
                         <!--? ---------- ---------- List Page ---------- ---------- -->
                         <!--? ---------- ---------- List Page ---------- ---------- -->
-                        <div data-tab-content="list" class="tab-content">
+                        <div data-tab-content="list" class="tab-content active">
                             <div class="filter">
                                 <ul class="filter-bar">
                                     <li class="filter-btn filter-btn-active" data-filter-target="todo"
@@ -236,20 +242,30 @@
                                         <template v-for="item in list" :key="item.id">
                                             <!--? task item -->
                                             <li class="surface" v-if="!item.completed">
-                                                <button class="btn" @click="playItem(item)">
+                                                <button class="btn" @click="playItem(item)"
+                                                    v-if="item.id == working.id">
+                                                    <i class="bi bi-play-circle"></i>
+                                                </button>
+                                                <button class="btn" @click="playItem(item)" v-else>
                                                     <i class="bi bi-play-circle-fill"></i>
                                                 </button>
 
                                                 <div class="task-title">
-                                                    <h3 class="task-text">{{item.title}}</h3>
+                                                    <h3 class="task-text">
+                                                        {{item.title}}
+                                                        <span v-if="item.id == working.id"> working...</span>
+                                                    </h3>
+                                                    <!--? TASK SPENDED CLOCK -->
                                                     <ul class="task-expect">
                                                         <li v-for="item in item.clock_spend"
                                                             class="task-spend task-spend--active"></li>
                                                         <li v-for="item in  item.clock_expect - item.clock_spend"
                                                             class="task-spend"></li>
-                                                        <li v-for="item in item.clock_over"
-                                                            class="task-spend task-spend--over">
-                                                        </li>
+                                                        <template v-if="item.clock_spend >= item.clock_expect">
+                                                            <li v-for="item in item.clock_over"
+                                                                class="task-spend task-spend--over">
+                                                            </li>
+                                                        </template>
                                                     </ul>
                                                 </div>
 
@@ -304,11 +320,14 @@
                         <!--? ---------- ---------- Editor Page ---------- ---------- -->
                         <!--? ---------- ---------- Editor Page ---------- ---------- -->
                         <!--? ---------- ---------- Editor Page ---------- ---------- -->
-                        <div data-tab-content="editor" class="tab-content active">
+                        <div data-tab-content="editor" class="tab-content ">
                             <div class="area">
-
-                                <h2>task title <span class="date-complete" v-if="editor.item.completed">Completed :
-                                        {{editor.item.date_complete}}</span></h2>
+                                <h2>
+                                    task title
+                                    <span class="date-complete" v-if="editor.item.completed">
+                                        Completed : {{editor.item.date_complete}}
+                                    </span>
+                                </h2>
                                 <input type="text" placeholder="Task title" class="editor-text"
                                     v-model="editor.item.title">
                             </div>
@@ -343,7 +362,8 @@
                                 <button class="editor-btn editor-btn-plus" v-if="editor.status == 'create'"
                                     @click="addItem();selectTabs('list')">ADD
                                     Task</button>
-                                <button class="editor-btn editor-btn-plus" v-else @click="selectTabs('list')">Save
+                                <button class="editor-btn editor-btn-plus" v-else
+                                    @click="selectTabs('list'); updateItem()">Save
                                     Task</button>
                             </div>
                             <!--? Plus Page End -->

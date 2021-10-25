@@ -33,11 +33,7 @@ Vue.createApp({
                 clock_over: 0, //超出時間
                 completed: false, //項目完成狀態 完成: true | 未完成: false
                 date_create: "yyyy/mm/dd", //建立日期
-                date_limit: { //項目期限
-                    year: 2021,
-                    month: 9,
-                    day: 8,
-                },
+                date_limit: "2022-01-01", // 項目期限
                 date_complete: "yyyy/mm/dd", //完成日期
             },
             //? filter
@@ -573,10 +569,23 @@ Vue.createApp({
             this.resetEditor()
         },
         editItem(item) {
+            this.editor.status = 'edit'
             this.editor.item = {
                 ...item
             }
             console.log(item);
+        },
+        updateItem() {
+            const Index = this.list.findIndex(item => item.id === this.editor.item.id)
+            console.log(Index);
+            if (this.list[Index] !== undefined) {
+                this.list[Index] = this.editor.item
+
+                console.log('SAVE TASK ' + this.list[Index].id);
+            } else {
+                console.log('List Index undefined');
+            }
+            this.resetWorking()
         },
         editWork() {
             this.editor.item = {
@@ -605,6 +614,17 @@ Vue.createApp({
                 console.log('List Index undefined');
             }
             this.resetEditor()
+        },
+        workingComplete() {
+            const Index = this.list.findIndex(item => item.id === this.working.id)
+            console.log(Index);
+            if (this.list[Index] !== undefined) {
+                this.list[Index].completed = true
+                console.log('COMPLETE WORKING  ' + this.list[Index].id);
+            } else {
+                console.log('List Index undefined');
+            }
+            this.resetWorking()
         }
         // TODO
     },
