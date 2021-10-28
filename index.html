@@ -44,7 +44,7 @@
             </div>
         </nav>
         <div class="title">
-            <h1>TODO CLOCK <span class="version">ver. 0.1025.2100</span></h1>
+            <h1>TODO CLOCK <span class="version">ver. 0.1028.1600</span></h1>
         </div>
         <!--? Content -->
         <!--? Clock Modal -->
@@ -223,7 +223,7 @@
                         <!--? ---------- ---------- List Page ---------- ---------- -->
                         <!--? ---------- ---------- List Page ---------- ---------- -->
                         <!--? ---------- ---------- List Page ---------- ---------- -->
-                        <div data-tab-content="list" class="tab-content active">
+                        <div data-tab-content="list" class="tab-content ">
                             <div class="filter">
                                 <ul class="filter-bar">
                                     <li class="filter-btn filter-btn-active" data-filter-target="todo"
@@ -371,7 +371,7 @@
                         <!--? ---------- ---------- Analysis Page ---------- ---------- -->
                         <!--? ---------- ---------- Analysis Page ---------- ---------- -->
                         <!--? ---------- ---------- Analysis Page ---------- ---------- -->
-                        <div data-tab-content="analysis" class="tab-content">
+                        <div data-tab-content="analysis" class="tab-content active">
                             <div class="area">
                                 <h2>completed</h2>
                                 <div class="filter">
@@ -401,12 +401,92 @@
                                     <div class="surface">
                                         <div class="chart-date">
                                             <button>&lt;</button>
-                                            <p>2021 <span>08/29</span> - <span>09/04</span></p>
+                                            <p>2021 <span>8/29</span> - <span>9/4</span></p>
                                             <button>&gt;</button>
                                         </div>
-                                        <div class="chart-body">
-                                            ...
-                                        </div>
+                                        <table class="chart-body">
+                                            <thead>
+                                                <tr>
+                                                    <th>50</th>
+                                                    <th>40</th>
+                                                    <th>30</th>
+                                                    <th>20</th>
+                                                    <th>10</th>
+                                                    <th>0</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr>
+                                                    <th class="chart-text">
+                                                        24
+                                                        <span>Sun.</span>
+                                                    </th>
+                                                    <td class="chart-bar" style="height: calc(0.3rem * 20);">
+                                                        <p>20</p>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <th class="chart-text">
+                                                        25
+                                                        <span>Mon.</span>
+                                                    </th>
+                                                    <td class="chart-bar" style="height: calc(0.3rem * 15);">
+                                                        <p>15</p>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <th class="chart-text">
+                                                        26
+                                                        <span>Tue.</span>
+                                                    </th>
+                                                    <td class="chart-bar" style="height: calc(0.3rem * 25);">
+                                                        <p>25</p>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <th class="chart-text">
+                                                        27
+                                                        <span>Wed.</span>
+                                                    </th>
+                                                    <td class="chart-bar" style="height: calc(0.3rem * 35);">
+                                                        <p>35</p>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <th class="chart-text">
+                                                        28
+                                                        <span>Thu.</span>
+                                                    </th>
+                                                    <td class="chart-bar chart-bar-today"
+                                                        style="height: calc(0.3rem * 10);">
+                                                        <p>10</p>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <th class="chart-text">
+                                                        29
+                                                        <span>Fri.</span>
+                                                    </th>
+                                                    <td class="chart-bar" style="height: calc(0.3rem * 15);">
+                                                        <p>15</p>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <th class="chart-text">
+                                                        30
+                                                        <span>Sat.</span>
+                                                    </th>
+                                                    <td class="chart-bar" style="height: calc(0.3rem * 10);">
+                                                        <p>10</p>
+                                                    </td>
+                                                </tr>
+
+
+
+                                            </tbody>
+
+
+                                        </table>
                                     </div>
                                     <!--? CHART END -->
                                 </div>

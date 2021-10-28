@@ -671,6 +671,7 @@ svg circle {
     cursor: unset;
 }
 
+/*? ---------- List End ---------- */
 /*? ---------- ---------- editor ---------- ---------- */
 .area input {
     color: var(--color-primary-variant);
@@ -846,8 +847,8 @@ svg circle {
     background-color: var(--color-error);
 }
 
-
-/*? Analysis */
+/*? ---------- Editor End ---------- */
+/*? ---------- ---------- Analysis ---------- ---------- */
 .chart-date {
     width: 100%;
     display: flex;
@@ -863,9 +864,88 @@ svg circle {
 }
 
 .chart-body {
-    height: 5rem;
+    width: 100%;
+    padding: 0 0.5rem;
+    padding-top: 1rem;
+    margin-top: 1rem;
+    display: flex;
+    flex-direction: row-reverse;
 }
 
+.chart-body thead tr {
+    padding-left: 0.5rem;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    flex-direction: column;
+    height: 16rem;
+
+    margin-bottom: 3rem;
+}
+
+.chart-body tbody {
+    width: 100%;
+    height: 16rem;
+    display: flex;
+    justify-content: space-around;
+    align-items: flex-end;
+    flex-wrap: wrap;
+    margin-bottom: 3rem;
+    border-right: 2px solid var(--color-on-primary);
+    background: repeating-linear-gradient(to top,
+            var(--color-on-primary),
+            var(--color-on-primary) 1px,
+            var(--color-surface) 2px,
+            var(--color-surface) 3rem);
+}
+
+.chart-body tbody tr {
+    width: calc(100%/7);
+    padding: 0 2.5%;
+    color: var(--color-primary);
+    position: relative;
+}
+
+.chart-bar {
+    text-align: center;
+    width: 3rem;
+    height: 5rem;
+    background-color: var(--color-on-background);
+    color: var(--color-primary);
+    position: relative;
+}
+
+.chart-bar-today {
+    background-color: var(--color-primary-variant);
+    color: var(--color-primary-variant);
+}
+
+.chart-bar p {
+    position: absolute;
+    top: -1.5rem;
+    left: 50%;
+    transform: translateX(-50%);
+    font-weight: bold;
+}
+
+.chart-text {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    color: var(--color-on-surface);
+    text-align: center;
+    bottom: -2.5rem;
+    font-weight: bold;
+}
+
+.chart-text span {
+    color: var(--color-on-background);
+}
+
+
+
+/*? ---------- Analysis End ---------- */
 /*? ---------- ---------- Setting ---------- ---------- */
 .setting-time {
     display: flex;
@@ -971,6 +1051,7 @@ svg circle {
         background-color 0.3s ease;
 }
 
+/*? ---------- Setting End ---------- */
 
 /*! RWD SET */
 .container {
