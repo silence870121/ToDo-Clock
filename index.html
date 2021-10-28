@@ -376,9 +376,10 @@
                                 <h2>completed</h2>
                                 <div class="filter">
                                     <ul class="filter-bar">
-                                        <li class="filter-btn filter-btn-active" data-filter-target="today"
-                                            @click="filterBtn">Today</li>
-                                        <li class="filter-btn" data-filter-target="week" @click="filterBtn">
+                                        <li class="filter-btn filter-btn-active" data-filter="analysis"
+                                            data-filter-target="today" @click="[filterBtn,renderAnalysis]">Today</li>
+                                        <li class="filter-btn" data-filter="analysis" data-filter-target="week"
+                                            @click="[filterBtn,renderAnalysis]">
                                             Week</li>
                                         <li class="slider-bar"> </li>
                                     </ul>
@@ -524,9 +525,10 @@
                                 <h2>Ringtone</h2>
                                 <div class="filter">
                                     <ul class="filter-bar">
-                                        <li class="filter-btn filter-btn-active" data-filter-target="working"
-                                            @click="filterBtn">Working</li>
-                                        <li class="filter-btn" data-filter-target="breaking" @click="filterBtn">
+                                        <li class="filter-btn filter-btn-active" data-filter="setting"
+                                            data-filter-target="working" @click="filterBtn">Working</li>
+                                        <li class="filter-btn" data-filter="setting" data-filter-target="breaking"
+                                            @click="filterBtn">
                                             Breaking</li>
                                         <li class="slider-bar"> </li>
                                     </ul>

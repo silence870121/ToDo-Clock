@@ -38,8 +38,8 @@ Vue.createApp({
             },
             //? filter
             filter: {
-                completed: "day",
-                ringtone: "working"
+                analysis: "week",
+                setting: "breaking"
             },
             //? TODO list Data 
             list: [
@@ -229,7 +229,20 @@ Vue.createApp({
                     date_complete: '2021-10-20', //完成日期
                 }
             },
-
+            //? Analysis Data
+            analysis: {
+                data: [ // Daily Complete Colck
+                    {
+                        date: "2021-01-01",
+                        task: 0,
+                        clock: 0,
+                    },
+                ],
+                completed: {
+                    task: 0,
+                    clock: 0
+                }
+            },
             //? Setting Data
             setting: {
                 work: [
@@ -341,6 +354,20 @@ Vue.createApp({
                     slider.style.left = `50%`
                     break;
             }
+            switch (e.target.dataset.filter) {
+                case "analysis":
+                    console.log("set filter.analysis");
+                    console.log(e.target.dataset.filterTarget);
+                    this.filter.analysis = e.target.dataset.filterTarget
+                    break;
+                case "setting":
+                    console.log("set filter.setting");
+                    this.filter.setting = e.target.dataset.filterTarget
+                    break;
+
+                default:
+                    break;
+            }
         },
         filterContent(e) {
             let filter_content = document.querySelectorAll(".filter-content")
@@ -398,6 +425,10 @@ Vue.createApp({
         setLocallist() {},
         getLocallist() {},
         //? ---------- ---------- reset data ---------- ----------
+        resetFilter() {
+            this.filter.analysis = "today"
+            this.filter.setting = "working"
+        },
         resetClock() {
             this.clock = {
                 status: "working", // "working" || "breaking"
@@ -625,8 +656,25 @@ Vue.createApp({
                 console.log('List Index undefined');
             }
             this.resetWorking()
-        }
+        },
         // TODO
+        //? Analysis Part
+        renderAnalysis(e) {
+            console.log(e.target);
+            console.log(e.target.dataset.filterTarget);
+            switch (e.target.dataset.filterTarget) {
+                case "today":
+
+                    break;
+                case "week":
+
+                    break;
+
+                default:
+                    break;
+            }
+
+        }
     },
     mounted() {
         this.getLocalClock()
@@ -636,5 +684,6 @@ Vue.createApp({
         this.renderClock()
         this.timer = setInterval(this.playingClock, 1000);
         this.getTodayDate()
+        this.resetFilter()
     }
 }).mount('#app');
