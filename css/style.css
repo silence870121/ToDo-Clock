@@ -914,6 +914,7 @@ svg circle {
     background-color: var(--color-on-background);
     color: var(--color-primary);
     position: relative;
+    transition: all 200ms ease;
 }
 
 .chart-bar-today {
