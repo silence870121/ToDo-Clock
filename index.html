@@ -112,7 +112,7 @@
                         <!--? ---------- ---------- Home Page ---------- ---------- -->
                         <!--? ---------- ---------- Home Page ---------- ---------- -->
                         <!--? ---------- ---------- Home Page ---------- ---------- -->
-                        <div data-tab-content="home" class="tab-content active">
+                        <div data-tab-content="home" class="tab-content ">
                             <!--? Complete Area -->
                             <div class="area">
                                 <h2>complete task</h2>
@@ -371,27 +371,27 @@
                         <!--? ---------- ---------- Analysis Page ---------- ---------- -->
                         <!--? ---------- ---------- Analysis Page ---------- ---------- -->
                         <!--? ---------- ---------- Analysis Page ---------- ---------- -->
-                        <div data-tab-content="analysis" class="tab-content ">
+                        <div data-tab-content="analysis" class="tab-content active">
                             <div class="area">
                                 <h2>completed</h2>
                                 <div class="filter">
                                     <ul class="filter-bar">
                                         <li class="filter-btn filter-btn-active" data-filter="analysis"
-                                            data-filter-target="today" @click="[filterBtn,renderAnalysis]">Today</li>
-                                        <li class="filter-btn" data-filter="analysis" data-filter-target="week"
+                                            data-filter-target="task" @click="[filterBtn,renderAnalysis]">task</li>
+                                        <li class="filter-btn" data-filter="analysis" data-filter-target="clock"
                                             @click="[filterBtn,renderAnalysis]">
-                                            Week</li>
+                                            clock</li>
                                         <li class="slider-bar"> </li>
                                     </ul>
                                 </div>
                                 <div class="complete">
                                     <div class="surface-left">
                                         <p>8</p>
-                                        <span>task</span>
+                                        <span>today</span>
                                     </div>
                                     <div class="surface-right">
                                         <p>24</p>
-                                        <span>clock</span>
+                                        <span>week</span>
                                     </div>
                                 </div>
                             </div>
@@ -402,10 +402,24 @@
                                     <div class="surface">
                                         <div class="chart-date">
                                             <button>&lt;</button>
-                                            <p>2021 <span>8/29</span> - <span>9/4</span></p>
+                                            <p>
+                                                <span>
+                                                    {{analysis.chart.dateFrom.split("-")[0]}}
+                                                    {{analysis.chart.dateFrom.split("-")[1]}}/{{analysis.chart.dateFrom.split("-")[2]}}
+                                                </span>
+                                                -
+                                                <span>
+                                                    <template
+                                                        v-if="analysis.chart.dateFrom.split('-')[0] !== analysis.chart.dateTo.split('-')[0]">
+                                                        {{analysis.chart.dateTo.split("-")[0]}}
+                                                    </template>
+                                                    {{analysis.chart.dateTo.split("-")[1]}}/{{analysis.chart.dateTo.split("-")[2]}}
+                                                </span>
+                                            </p>
                                             <button>&gt;</button>
                                         </div>
                                         <table class="chart-body">
+
                                             <thead>
                                                 <tr>
                                                     <th>50</th>
@@ -413,7 +427,8 @@
                                                     <th>30</th>
                                                     <th>20</th>
                                                     <th>10</th>
-                                                    <th>0</th>
+                                                    <th>0
+                                                    </th>
                                                 </tr>
                                             </thead>
                                             <tbody>
