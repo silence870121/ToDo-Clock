@@ -399,12 +399,9 @@ Vue.createApp({
             }
             switch (e.target.dataset.filter) {
                 case "analysis":
-                    console.log("set filter.analysis");
-                    console.log(e.target.dataset.filterTarget);
                     this.filter.analysis = e.target.dataset.filterTarget
                     break;
                 case "setting":
-                    console.log("set filter.setting");
                     this.filter.setting = e.target.dataset.filterTarget
                     break;
 
@@ -469,8 +466,8 @@ Vue.createApp({
         getLocallist() {},
         //? ---------- ---------- reset data ---------- ----------
         resetFilter() {
-            this.filter.analysis = "today"
-            this.filter.setting = "working"
+            this.filter.analysis = "task"
+            this.filter.setting = "clock"
         },
         resetClock() {
             this.clock = {
@@ -714,8 +711,8 @@ Vue.createApp({
         // TODO
         //? Analysis Part
         renderAnalysis(e) {
-            console.log(e.target);
-            console.log(e.target.dataset.filterTarget);
+            // console.log(e.target);
+            // console.log(e.target.dataset.filterTarget);
             switch (e.target.dataset.filterTarget) {
                 case "today":
 
