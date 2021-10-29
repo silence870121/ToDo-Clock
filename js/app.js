@@ -38,7 +38,7 @@ Vue.createApp({
             },
             //? filter
             filter: {
-                analysis: "week",
+                analysis: "task",
                 setting: "breaking"
             },
             //? TODO list Data 
@@ -239,8 +239,51 @@ Vue.createApp({
                     },
                 ],
                 completed: {
-                    task: 0,
-                    clock: 0
+                    today: 0,
+                    week: 0
+                },
+                chart: {
+                    dateFrom: "2021-10-24",
+                    dateTo: "2022-10-30",
+                    week: [{
+                            date: "2021-10-24",
+                            task: 10,
+                            clock: 24,
+                        },
+                        {
+                            date: "2021-10-25",
+                            task: 9,
+                            clock: 25,
+                        },
+                        {
+                            date: "2021-10-26",
+                            task: 8,
+                            clock: 26,
+                        },
+                        {
+                            date: "2021-10-27",
+                            task: 7,
+                            clock: 27,
+                        },
+                        {
+                            date: "2021-10-28",
+                            task: 6,
+                            clock: 28,
+                        },
+                        {
+                            date: "2021-10-29",
+                            task: 5,
+                            clock: 29,
+                        },
+                        {
+                            date: "2021-10-30",
+                            task: 4,
+                            clock: 30,
+                        },
+                    ],
+                    weekName: [
+                        "Sun.", "Mon.", "Tue.", "Wed", "Thu.", "Fri.", "Sat."
+                    ]
                 }
             },
             //? Setting Data
@@ -590,7 +633,18 @@ Vue.createApp({
         getTodayDate() {
             let newdate = new Date()
             console.log(new Date().getTime());
-            this.date.today = `${newdate.getFullYear()}-${newdate.getMonth() + 1}-${newdate.getDate()}`
+            let year = newdate.getFullYear();
+            let month = newdate.getMonth() + 1;
+            let day = newdate.getDate();
+            let weekday = newdate.getDay();
+            console.log(weekday);
+            if (newdate.getMonth() < 9) {
+                month = `0${newdate.getMonth()+1}`
+            }
+            if (newdate.getDate() < 9) {
+                day = `0${newdate.getDate()}`
+            }
+            this.date.today = `${year}-${month}-${day}`
             this.date.time = newdate.getTime()
         },
         addItem() {
