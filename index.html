@@ -419,83 +419,36 @@
                                             <button>&gt;</button>
                                         </div>
                                         <table class="chart-body">
-
                                             <thead>
                                                 <tr>
-                                                    <th>50</th>
-                                                    <th>40</th>
-                                                    <th>30</th>
-                                                    <th>20</th>
-                                                    <th>10</th>
-                                                    <th>0
+                                                    <th v-for="num in 6">
+                                                        <template v-if="filter.analysis == 'clock'">
+                                                            {{(6-num)*10}}
+                                                        </template>
+                                                        <template v-else>
+                                                            {{(6-num)*5}}
+                                                        </template>
                                                     </th>
                                                 </tr>
                                             </thead>
                                             <tbody>
-                                                <tr>
+                                                <tr v-for="item in analysis.chart.week" :key="item.date">
                                                     <th class="chart-text">
-                                                        24
+                                                        {{item.date.split('-')[2]}}
                                                         <span>Sun.</span>
                                                     </th>
-                                                    <td class="chart-bar" style="height: calc(0.3rem * 20);">
-                                                        <p>20</p>
-                                                    </td>
+                                                    <template v-if="filter.analysis == 'task'">
+                                                        <td class="chart-bar" :style="{height: item.task*0.6 +'rem'}">
+                                                            <p>{{item.task}}</p>
+                                                        </td>
+                                                    </template>
+                                                    <template v-else>
+                                                        <td class="chart-bar" :style="{height: item.clock*0.3 +'rem'}">
+                                                            <p>{{item.clock}}</p>
+                                                        </td>
+                                                    </template>
                                                 </tr>
-                                                <tr>
-                                                    <th class="chart-text">
-                                                        25
-                                                        <span>Mon.</span>
-                                                    </th>
-                                                    <td class="chart-bar" style="height: calc(0.3rem * 15);">
-                                                        <p>15</p>
-                                                    </td>
-                                                </tr>
-                                                <tr>
-                                                    <th class="chart-text">
-                                                        26
-                                                        <span>Tue.</span>
-                                                    </th>
-                                                    <td class="chart-bar" style="height: calc(0.3rem * 25);">
-                                                        <p>25</p>
-                                                    </td>
-                                                </tr>
-                                                <tr>
-                                                    <th class="chart-text">
-                                                        27
-                                                        <span>Wed.</span>
-                                                    </th>
-                                                    <td class="chart-bar" style="height: calc(0.3rem * 35);">
-                                                        <p>35</p>
-                                                    </td>
-                                                </tr>
-                                                <tr>
-                                                    <th class="chart-text">
-                                                        28
-                                                        <span>Thu.</span>
-                                                    </th>
-                                                    <td class="chart-bar chart-bar-today"
-                                                        style="height: calc(0.3rem * 10);">
-                                                        <p>10</p>
-                                                    </td>
-                                                </tr>
-                                                <tr>
-                                                    <th class="chart-text">
-                                                        29
-                                                        <span>Fri.</span>
-                                                    </th>
-                                                    <td class="chart-bar" style="height: calc(0.3rem * 15);">
-                                                        <p>15</p>
-                                                    </td>
-                                                </tr>
-                                                <tr>
-                                                    <th class="chart-text">
-                                                        30
-                                                        <span>Sat.</span>
-                                                    </th>
-                                                    <td class="chart-bar" style="height: calc(0.3rem * 10);">
-                                                        <p>10</p>
-                                                    </td>
-                                                </tr>
+
 
 
 
