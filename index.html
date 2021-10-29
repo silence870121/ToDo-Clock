@@ -401,7 +401,8 @@
                                 <div class="task-chart">
                                     <div class="surface">
                                         <div class="chart-date">
-                                            <button>&lt;</button>
+                                            <button class="chart-btn">&lt;&lt;</button>
+                                            <button class="chart-btn">&lt;</button>
                                             <p>
                                                 <span>
                                                     {{analysis.chart.dateFrom.split("-")[0]}}
@@ -416,7 +417,8 @@
                                                     {{analysis.chart.dateTo.split("-")[1]}}/{{analysis.chart.dateTo.split("-")[2]}}
                                                 </span>
                                             </p>
-                                            <button>&gt;</button>
+                                            <button class="chart-btn">&gt;</button>
+                                            <button class="chart-btn">&gt;&gt;</button>
                                         </div>
                                         <table class="chart-body">
                                             <thead>
@@ -433,25 +435,24 @@
                                             </thead>
                                             <tbody>
                                                 <tr v-for="item in analysis.chart.week" :key="item.date">
-                                                    <th class="chart-text">
+                                                    <th class="chart-text" @click="plusData(item)">
                                                         {{item.date.split('-')[2]}}
-                                                        <span>Sun.</span>
+                                                        <span>{{weekName[new
+                                                            Date(item.date).getDay()]}}</span>
                                                     </th>
-                                                    <template v-if="filter.analysis == 'task'">
-                                                        <td class="chart-bar" :style="{height: item.task*0.6 +'rem'}">
-                                                            <p>{{item.task}}</p>
+                                                    <template v-if="item.date == date.today">
+                                                        <td class="chart-bar chart-bar-today"
+                                                            :style="{height: item.data *  analysis.chart.height +'rem'}">
+                                                            <p>{{item.data}}</p>
                                                         </td>
                                                     </template>
                                                     <template v-else>
-                                                        <td class="chart-bar" :style="{height: item.clock*0.3 +'rem'}">
-                                                            <p>{{item.clock}}</p>
+                                                        <td class="chart-bar"
+                                                            :style="{height: item.data *  analysis.chart.height +'rem'}">
+                                                            <p>{{item.data}}</p>
                                                         </td>
                                                     </template>
                                                 </tr>
-
-
-
-
                                             </tbody>
 
 

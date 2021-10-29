@@ -245,47 +245,55 @@ Vue.createApp({
                 chart: {
                     dateFrom: "2021-10-24",
                     dateTo: "2022-10-30",
+                    height: 0.3,
                     week: [{
                             date: "2021-10-24",
                             task: 10,
                             clock: 24,
+                            data: 0
                         },
                         {
                             date: "2021-10-25",
                             task: 9,
                             clock: 25,
+                            data: 0
                         },
                         {
                             date: "2021-10-26",
                             task: 8,
                             clock: 26,
+                            data: 0
                         },
                         {
                             date: "2021-10-27",
                             task: 7,
                             clock: 27,
+                            data: 0
                         },
                         {
                             date: "2021-10-28",
                             task: 6,
                             clock: 28,
+                            data: 0
                         },
                         {
                             date: "2021-10-29",
                             task: 5,
                             clock: 29,
+                            data: 0
                         },
                         {
                             date: "2021-10-30",
                             task: 4,
                             clock: 30,
+                            data: 0
                         },
                     ],
-                    weekName: [
-                        "Sun.", "Mon.", "Tue.", "Wed", "Thu.", "Fri.", "Sat."
-                    ]
                 }
             },
+            weekName: [
+                "Sun.", "Mon.", "Tue.", "Wed", "Thu.", "Fri.", "Sat."
+            ],
             //? Setting Data
             setting: {
                 work: [
@@ -534,6 +542,12 @@ Vue.createApp({
                 date_complete: '', //完成日期
             }
         },
+        resetAnalysis() {
+            this.analysis.chart.week.forEach(item => {
+                item.data = item.task
+            })
+            this.analysis.chart.height = 0.6
+        },
         //? ---------- ---------- Clock Action ---------- ----------
         getstrock() {
             let stroke = document.querySelector('.clock-bar').getTotalLength()
@@ -709,22 +723,30 @@ Vue.createApp({
             this.resetWorking()
         },
         // TODO
-        //? Analysis Part
+        //? ---------- ---------- Analysis Action ---------- ----------
         renderAnalysis(e) {
             // console.log(e.target);
             // console.log(e.target.dataset.filterTarget);
             switch (e.target.dataset.filterTarget) {
-                case "today":
-
+                case "task":
+                    this.analysis.chart.week.forEach(item => {
+                        item.data = item.task
+                    })
+                    this.analysis.chart.height = 0.6
                     break;
-                case "week":
-
+                case "clock":
+                    this.analysis.chart.week.forEach(item => {
+                        item.data = item.clock
+                    })
+                    this.analysis.chart.height = 0.3
                     break;
 
                 default:
                     break;
             }
-
+        },
+        plusData(item) {
+            item.data += 1
         }
     },
     mounted() {
@@ -736,5 +758,7 @@ Vue.createApp({
         this.timer = setInterval(this.playingClock, 1000);
         this.getTodayDate()
         this.resetFilter()
+        this.resetAnalysis()
+
     }
 }).mount('#app');
