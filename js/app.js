@@ -243,7 +243,7 @@ Vue.createApp({
                     week: 0
                 },
                 chart: {
-                    dateFrom: "2021-10-24",
+                    dateFrom: "2021-01-01",
                     dateTo: "2022-10-30",
                     height: 0.3,
                     week: [{
@@ -548,6 +548,19 @@ Vue.createApp({
             })
             this.analysis.chart.height = 0.6
         },
+        //? ---------- ---------- Data Format ---------- ----------
+        dateFormat(date) {
+            let year = date.getFullYear()
+            let month = date.getMonth() + 1
+            let day = date.getDate()
+            if ((date.getMonth() + 1) < 10) {
+                month = `0${date.getMonth()+1}`
+            }
+            if (date.getDate() < 10) {
+                day = `0${date.getDate()}`
+            }
+            return `${year}-${month}-${day}`
+        },
         //? ---------- ---------- Clock Action ---------- ----------
         getstrock() {
             let stroke = document.querySelector('.clock-bar').getTotalLength()
@@ -642,21 +655,7 @@ Vue.createApp({
         },
         //? ---------- ---------- Editor Action ---------- ----------
         getTodayDate() {
-            let newdate = new Date()
-            console.log(new Date().getTime());
-            let year = newdate.getFullYear();
-            let month = newdate.getMonth() + 1;
-            let day = newdate.getDate();
-            let weekday = newdate.getDay();
-            console.log(weekday);
-            if (newdate.getMonth() < 9) {
-                month = `0${newdate.getMonth()+1}`
-            }
-            if (newdate.getDate() < 9) {
-                day = `0${newdate.getDate()}`
-            }
-            this.date.today = `${year}-${month}-${day}`
-            this.date.time = newdate.getTime()
+            this.date.today = this.dateFormat(new Date)
         },
         addItem() {
             this.editor.item.id = new Date().getTime()
@@ -722,8 +721,31 @@ Vue.createApp({
             }
             this.resetWorking()
         },
-        // TODO
         //? ---------- ---------- Analysis Action ---------- ----------
+        getThisWeek() {
+            const dayTime = 60 * 60 * 24 * 1000
+            let time = new Date(this.date.today).getTime()
+            let day = new Date(this.date.today).getDay()
+            this.analysis.chart.dateFrom = this.dateFormat(new Date(time - dayTime * day))
+        },
+        updateWeek() {
+            const dayTime = 60 * 60 * 24 * 1000
+            let time = new Date(this.analysis.chart.dateFrom).getTime()
+            for (let i = 0; i < 7; i++) {
+                let newday = new Date(time + dayTime * i)
+                this.dateFormat(newday)
+                this.analysis.chart.week[i].date = this.dateFormat(newday)
+            }
+            this.analysis.chart.dateTo = this.dateFormat(new Date(time + dayTime * 6))
+        },
+        updateDate(range) {
+            const dayTime = 60 * 60 * 24 * 1000
+            let time = new Date(this.analysis.chart.dateFrom).getTime()
+            let newday = new Date(time + dayTime * range)
+            this.analysis.chart.dateFrom = this.dateFormat(newday)
+            this.updateWeek()
+        },
+
         renderAnalysis(e) {
             // console.log(e.target);
             // console.log(e.target.dataset.filterTarget);
@@ -757,8 +779,10 @@ Vue.createApp({
         this.renderClock()
         this.timer = setInterval(this.playingClock, 1000);
         this.getTodayDate()
+        this.getThisWeek()
         this.resetFilter()
         this.resetAnalysis()
 
+        this.updateWeek()
     }
 }).mount('#app');
