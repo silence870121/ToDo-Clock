@@ -727,6 +727,7 @@ Vue.createApp({
             let time = new Date(this.date.today).getTime()
             let day = new Date(this.date.today).getDay()
             this.analysis.chart.dateFrom = this.dateFormat(new Date(time - dayTime * day))
+            this.updateWeek()
         },
         updateWeek() {
             const dayTime = 60 * 60 * 24 * 1000
@@ -783,6 +784,6 @@ Vue.createApp({
         this.resetFilter()
         this.resetAnalysis()
 
-        this.updateWeek()
+        // this.updateWeek()
     }
 }).mount('#app');
