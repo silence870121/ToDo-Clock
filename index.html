@@ -401,8 +401,8 @@
                                 <div class="task-chart">
                                     <div class="surface">
                                         <div class="chart-date">
-                                            <button class="chart-btn">&lt;&lt;</button>
-                                            <button class="chart-btn">&lt;</button>
+                                            <button class="chart-btn" @click="updateDate(-7)">&lt;&lt;</button>
+                                            <button class="chart-btn" @click="updateDate(-1)">&lt;</button>
                                             <p>
                                                 <span>
                                                     {{analysis.chart.dateFrom.split("-")[0]}}
@@ -417,9 +417,10 @@
                                                     {{analysis.chart.dateTo.split("-")[1]}}/{{analysis.chart.dateTo.split("-")[2]}}
                                                 </span>
                                             </p>
-                                            <button class="chart-btn">&gt;</button>
-                                            <button class="chart-btn">&gt;&gt;</button>
+                                            <button class="chart-btn" @click="updateDate(1)">&gt;</button>
+                                            <button class="chart-btn" @click="updateDate(7)">&gt;&gt;</button>
                                         </div>
+
                                         <table class="chart-body">
                                             <thead>
                                                 <tr>
@@ -435,10 +436,21 @@
                                             </thead>
                                             <tbody>
                                                 <tr v-for="item in analysis.chart.week" :key="item.date">
-                                                    <th class="chart-text" @click="plusData(item)">
-                                                        {{item.date.split('-')[2]}}
-                                                        <span>{{weekName[new
-                                                            Date(item.date).getDay()]}}</span>
+                                                    <th class="chart-text">
+                                                        <p v-if="item.date.split('-')[2] =='01'">
+                                                            {{item.date.split('-')[1]}}/1
+                                                        </p>
+                                                        <p v-else>
+                                                            <template v-if="new Date(item.date).getDate()<10">
+                                                                {{item.date.split('-')[2].split('')[1]}}
+                                                            </template>
+                                                            <template v-else>
+                                                                {{item.date.split('-')[2]}}
+                                                            </template>
+                                                        </p>
+                                                        <span>
+                                                            {{weekName[new Date(item.date).getDay()]}}
+                                                        </span>
                                                     </th>
                                                     <template v-if="item.date == date.today">
                                                         <td class="chart-bar chart-bar-today"
