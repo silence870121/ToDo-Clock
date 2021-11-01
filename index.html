@@ -352,13 +352,12 @@
                                 </div>
                             </div>
                             <div class="editor">
-                                <button class="editor-btn editor-btn-cancel">
+                                <button class="editor-btn editor-btn-cancel" @click="selectTabs('list')">
                                     Cancel <i class="bi bi-reply-fill"></i>
                                 </button>
                                 <button class="editor-btn editor-btn-delete" @click="removeItem()">
                                     Delete <i class="bi bi-x-lg"></i>
                                 </button>
-                                <!-- TODO -->
                                 <button class="editor-btn editor-btn-plus" v-if="editor.status == 'create'"
                                     @click="addItem();selectTabs('list')">ADD
                                     Task</button>
