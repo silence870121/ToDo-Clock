@@ -17,7 +17,7 @@ Vue.createApp({
                 playing: false, // true || false
                 dasharray: 786, //clock progress full
                 dashoffset: 0, //clock progress playing
-                ringtone: "ringtone3" //setting's ringtone
+                ringtone: "ringtone1" //setting's ringtone
             },
             //?Date
             date: {
@@ -27,14 +27,14 @@ Vue.createApp({
             //? Working Task
             working: {
                 id: "000", //項目建立時之時間戳
-                title: "項目名稱",
-                clock_expect: 5, //預期時間
-                clock_spend: 3, //花費時間
+                title: "無指定項目",
+                clock_expect: 8, //預期時間
+                clock_spend: 0, //花費時間
                 clock_over: 0, //超出時間
                 completed: false, //項目完成狀態 完成: true | 未完成: false
-                date_create: "yyyy/mm/dd", //建立日期
+                date_create: "2021-01-01", //建立日期
                 date_limit: "2022-01-01", // 項目期限
-                date_complete: "yyyy/mm/dd", //完成日期
+                date_complete: "", //完成日期
             },
             //? filter
             filter: {
@@ -51,9 +51,9 @@ Vue.createApp({
                     clock_spend: 1, //花費時間
                     clock_over: 0, //超出時間
                     completed: false, //項目完成狀態 完成: true | 未完成: false
-                    date_create: "yyyy/mm/dd", //建立日期
+                    date_create: "2021-01-01", //建立日期
                     date_limit: "2022-01-01", //項目期限
-                    date_complete: "yyyy/mm/dd", //完成日期
+                    date_complete: "2021-11-02", //完成日期
                 },
                 //?
                 {
@@ -63,9 +63,9 @@ Vue.createApp({
                     clock_spend: 2, //花費時間
                     clock_over: 0, //超出時間
                     completed: true, //項目完成狀態 完成: true | 未完成: false
-                    date_create: "yyyy/mm/dd", //建立日期
+                    date_create: "2021-01-01", //建立日期
                     date_limit: "2022-01-01", //項目期限
-                    date_complete: "yyyy/mm/dd", //完成日期
+                    date_complete: "2021-11-02", //完成日期
                 },
                 {
                     id: "003", //項目建立時之時間戳
@@ -74,9 +74,9 @@ Vue.createApp({
                     clock_spend: 4, //花費時間
                     clock_over: 0, //超出時間
                     completed: false, //項目完成狀態 完成: true | 未完成: false
-                    date_create: "yyyy/mm/dd", //建立日期
+                    date_create: "2021-01-01", //建立日期
                     date_limit: "2022-01-01", //項目期限
-                    date_complete: "yyyy/mm/dd", //完成日期
+                    date_complete: "2021-11-02", //完成日期
                 },
                 {
                     id: "004", //項目建立時之時間戳
@@ -85,9 +85,9 @@ Vue.createApp({
                     clock_spend: 8, //花費時間
                     clock_over: 0, //超出時間
                     completed: true, //項目完成狀態 完成: true | 未完成: false
-                    date_create: "yyyy/mm/dd", //建立日期
+                    date_create: "2021-01-01", //建立日期
                     date_limit: "2022-01-01", //項目期限
-                    date_complete: "yyyy/mm/dd", //完成日期
+                    date_complete: "2021-11-02", //完成日期
                 },
                 {
                     id: "005", //項目建立時之時間戳
@@ -96,9 +96,9 @@ Vue.createApp({
                     clock_spend: 4, //花費時間
                     clock_over: 4, //超出時間
                     completed: true, //項目完成狀態 完成: true | 未完成: false
-                    date_create: "yyyy/mm/dd", //建立日期
+                    date_create: "2021-01-01", //建立日期
                     date_limit: "2022-01-01", //項目期限
-                    date_complete: "yyyy/mm/dd", //完成日期
+                    date_complete: "2021-11-02", //完成日期
                 },
                 {
                     id: "006", //項目建立時之時間戳
@@ -107,9 +107,9 @@ Vue.createApp({
                     clock_spend: 1, //花費時間
                     clock_over: 0, //超出時間
                     completed: false, //項目完成狀態 完成: true | 未完成: false
-                    date_create: "yyyy/mm/dd", //建立日期
+                    date_create: "2021-01-01", //建立日期
                     date_limit: "2022-01-01", //項目期限
-                    date_complete: "yyyy/mm/dd", //完成日期
+                    date_complete: "2021-11-02", //完成日期
                 },
                 //?
                 {
@@ -119,9 +119,9 @@ Vue.createApp({
                     clock_spend: 2, //花費時間
                     clock_over: 0, //超出時間
                     completed: true, //項目完成狀態 完成: true | 未完成: false
-                    date_create: "yyyy/mm/dd", //建立日期
+                    date_create: "2021-01-01", //建立日期
                     date_limit: "2022-01-01", //項目期限
-                    date_complete: "yyyy/mm/dd", //完成日期
+                    date_complete: "2021-11-02", //完成日期
                 },
                 {
                     id: "008", //項目建立時之時間戳
@@ -130,9 +130,9 @@ Vue.createApp({
                     clock_spend: 4, //花費時間
                     clock_over: 0, //超出時間
                     completed: false, //項目完成狀態 完成: true | 未完成: false
-                    date_create: "yyyy/mm/dd", //建立日期
+                    date_create: "2021-01-01", //建立日期
                     date_limit: "2022-01-01", //項目期限
-                    date_complete: "yyyy/mm/dd", //完成日期
+                    date_complete: "2021-11-02", //完成日期
                 },
                 {
                     id: "009", //項目建立時之時間戳
@@ -141,9 +141,9 @@ Vue.createApp({
                     clock_spend: 8, //花費時間
                     clock_over: 0, //超出時間
                     completed: true, //項目完成狀態 完成: true | 未完成: false
-                    date_create: "yyyy/mm/dd", //建立日期
+                    date_create: "2021-01-01", //建立日期
                     date_limit: "2022-01-01", //項目期限
-                    date_complete: "yyyy/mm/dd", //完成日期
+                    date_complete: "2021-11-02", //完成日期
                 },
                 {
                     id: "010", //項目建立時之時間戳
@@ -152,9 +152,9 @@ Vue.createApp({
                     clock_spend: 4, //花費時間
                     clock_over: 4, //超出時間
                     completed: true, //項目完成狀態 完成: true | 未完成: false
-                    date_create: "yyyy/mm/dd", //建立日期
+                    date_create: "2021-01-01", //建立日期
                     date_limit: "2022-01-01", //項目期限
-                    date_complete: "yyyy/mm/dd", //完成日期
+                    date_complete: "2021-11-02", //完成日期
                 },
                 {
                     id: "011", //項目建立時之時間戳
@@ -163,9 +163,9 @@ Vue.createApp({
                     clock_spend: 1, //花費時間
                     clock_over: 0, //超出時間
                     completed: false, //項目完成狀態 完成: true | 未完成: false
-                    date_create: "yyyy/mm/dd", //建立日期
+                    date_create: "2021-01-01", //建立日期
                     date_limit: "2022-01-01", //項目期限
-                    date_complete: "yyyy/mm/dd", //完成日期
+                    date_complete: "2021-11-02", //完成日期
                 },
                 //?
                 {
@@ -175,9 +175,9 @@ Vue.createApp({
                     clock_spend: 2, //花費時間
                     clock_over: 0, //超出時間
                     completed: true, //項目完成狀態 完成: true | 未完成: false
-                    date_create: "yyyy/mm/dd", //建立日期
+                    date_create: "2021-01-01", //建立日期
                     date_limit: "2022-01-01", //項目期限
-                    date_complete: "yyyy/mm/dd", //完成日期
+                    date_complete: "2021-11-02", //完成日期
                 },
                 {
                     id: "013", //項目建立時之時間戳
@@ -186,9 +186,9 @@ Vue.createApp({
                     clock_spend: 4, //花費時間
                     clock_over: 0, //超出時間
                     completed: false, //項目完成狀態 完成: true | 未完成: false
-                    date_create: "yyyy/mm/dd", //建立日期
+                    date_create: "2021-01-01", //建立日期
                     date_limit: "2022-01-01", //項目期限
-                    date_complete: "yyyy/mm/dd", //完成日期
+                    date_complete: "2021-11-02", //完成日期
                 },
                 {
                     id: "014", //項目建立時之時間戳
@@ -197,9 +197,9 @@ Vue.createApp({
                     clock_spend: 8, //花費時間
                     clock_over: 0, //超出時間
                     completed: true, //項目完成狀態 完成: true | 未完成: false
-                    date_create: "yyyy/mm/dd", //建立日期
+                    date_create: "2021-01-01", //建立日期
                     date_limit: "2022-01-01", //項目期限
-                    date_complete: "yyyy/mm/dd", //完成日期
+                    date_complete: "2021-11-02", //完成日期
                 },
                 {
                     id: "015", //項目建立時之時間戳
@@ -208,9 +208,9 @@ Vue.createApp({
                     clock_spend: 4, //花費時間
                     clock_over: 4, //超出時間
                     completed: true, //項目完成狀態 完成: true | 未完成: false
-                    date_create: "yyyy/mm/dd", //建立日期
+                    date_create: "2021-01-01", //建立日期
                     date_limit: "2022-01-01", //項目期限
-                    date_complete: "yyyy/mm/dd", //完成日期
+                    date_complete: "2021-11-02", //完成日期
                 },
             ],
             temp: {},
@@ -555,7 +555,7 @@ Vue.createApp({
                     month: 9,
                     day: 8,
                 },
-                date_complete: "yyyy/mm/dd", //完成日期
+                date_complete: "2021-11-02", //完成日期
             }
             this.setLocalWorking()
         },
@@ -671,7 +671,7 @@ Vue.createApp({
         skipClock() {
             this.clock.playing = false
             if (this.clock.status == "working") {
-                this.updateTodayCompleted('clock')
+                this.updateTodayClock()
                 if (this.working.clock_spend < this.working.clock_expect) {
                     this.working.clock_spend++
                 } else {
@@ -727,6 +727,8 @@ Vue.createApp({
                 console.log('List Index undefined');
             }
             this.resetWorking()
+            this.resetEditor()
+            this.editor.status = 'create'
         },
         editWork() {
             this.editor.item = {
@@ -744,6 +746,7 @@ Vue.createApp({
             if (this.working.id == item.id) {
                 this.resetWorking()
             }
+            item.date_complete = this.date.today
         },
         removeItem() {
             const Index = this.list.findIndex(item => item.id === this.editor.item.id)
@@ -752,7 +755,7 @@ Vue.createApp({
                 console.log('REMOVE  ' + this.list[Index].id);
                 this.list.splice(Index, 1)
             } else {
-                console.log('List Index undefined');
+                console.log('CLEAR EDIROR DATA');
             }
             this.resetEditor()
         },
@@ -797,7 +800,6 @@ Vue.createApp({
             this.getChartWeekData()
         },
         getChartWeekData() {
-            console.log("getChartWeekData()");
             this.analysis.chart.week.forEach(day => {
                 let Index = this.analysis.data.findIndex(item => item.date === day.date)
                 if (Index !== -1) {
@@ -853,31 +855,43 @@ Vue.createApp({
         plusData(item) {
             item.data += 1
         },
-        updateTodayCompleted(data) {
+        updateTodayClock() {
             let Index = this.analysis.data.findIndex(data => data.date === this.date.today)
-            console.log(Index);
+            // console.log(Index);
             if (Index == -1) {
                 //? this.analysis.data haven't today's Data
                 this.analysis.data.push({
                     date: this.data.today,
                     task: 0,
-                    clock: 0
+                    clock: 1
                 })
             } else {
                 //? this.analysis.data have today's Data
-                switch (data) {
-                    case "task":
-                        console.log("task " + this.analysis.data[Index].task);
-                        this.analysis.data[Index].task += 1
-                        console.log("task " + this.analysis.data[Index].task);
-                        break;
-                    case "clock":
-                        console.log("clock " + this.analysis.data[Index].clock);
-                        this.analysis.data[Index].clock += 1
-                        console.log("clock " + this.analysis.data[Index].clock);
-                        break;
-                }
+                // console.log("clock " + this.analysis.data[Index].clock);
+                this.analysis.data[Index].clock += 1
+                // console.log("clock " + this.analysis.data[Index].clock);
             }
+            this.getChartWeekData()
+        },
+        updateDailyTask() {
+            //? Reset analysis.data.task
+            this.analysis.data.forEach(item => {
+                item.task = 0
+            })
+            this.list.filter(el => el.completed == true).forEach(item => {
+                // console.log(item.title);
+                let Index = this.analysis.data.findIndex(el => el.date === item.date_complete)
+                // console.log(this.analysis.data[Index]);
+                if (Index == -1) {
+                    this.analysis.data.push({
+                        date: this.data.today,
+                        task: 1,
+                        clock: 0
+                    })
+                } else {
+                    this.analysis.data[Index].task += 1
+                }
+            })
             this.getChartWeekData()
         }
     },
@@ -893,6 +907,7 @@ Vue.createApp({
         this.resetFilter()
         this.resetAnalysis()
         this.renderAnalysis()
+        this.updateDailyTask()
     },
     computed() {}
 }).mount('#app');
