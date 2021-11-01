@@ -18,7 +18,10 @@
             <div class="container">
                 <div class="nav-bar">
                     <div class="logo">
-                        <a href="index.html"><i class="fas fa-clock"></i>TODO CLOCK</a>
+                        <a href="index.html"><i class="fas fa-clock"></i>
+                            TODO CLOCK
+                        </a>
+                        <span class="version">ver. {{version}}</span>
                     </div>
                     <ul class="tab-header">
                         <li data-tab-target="home" data-tab-index="0" @click="selectTabs('home')"
@@ -44,13 +47,13 @@
             </div>
         </nav>
         <div class="title">
-            <h1>TODO CLOCK <span class="version">ver. 0.1028.1600</span></h1>
+            <h1>TODO CLOCK <span class="version">ver. {{version}}</span></h1>
         </div>
         <!--? Content -->
         <!--? Clock Modal -->
         <div class="container">
             <div class="row">
-                <div class="col-6">
+                <div class="col-6 display">
                     <!--? Task Working Clock -->
                     <div id="clock">
                         <div class="clock">
@@ -112,7 +115,7 @@
                         <!--? ---------- ---------- Home Page ---------- ---------- -->
                         <!--? ---------- ---------- Home Page ---------- ---------- -->
                         <!--? ---------- ---------- Home Page ---------- ---------- -->
-                        <div data-tab-content="home" class="tab-content ">
+                        <div data-tab-content="home" class="tab-content active">
                             <!--? Complete Area -->
                             <div class="area">
                                 <h2>complete task</h2>
@@ -243,11 +246,10 @@
                                         <template v-for="item in list" :key="item.id">
                                             <!--? task item -->
                                             <li class="surface" v-if="!item.completed">
-                                                <button class="btn" @click="playItem(item)"
-                                                    v-if="item.id == working.id">
+                                                <button class="btn" v-if="item.id == working.id">
                                                     <i class="bi bi-play-circle"></i>
                                                 </button>
-                                                <button class="btn" @click="playItem(item)" v-else>
+                                                <button class="btn" @click="playItem(item);callClock()" v-else>
                                                     <i class="bi bi-play-circle-fill"></i>
                                                 </button>
 
@@ -370,7 +372,7 @@
                         <!--? ---------- ---------- Analysis Page ---------- ---------- -->
                         <!--? ---------- ---------- Analysis Page ---------- ---------- -->
                         <!--? ---------- ---------- Analysis Page ---------- ---------- -->
-                        <div data-tab-content="analysis" class="tab-content active">
+                        <div data-tab-content="analysis" class="tab-content ">
                             <div class="area">
                                 <h2>completed</h2>
                                 <div class="filter">

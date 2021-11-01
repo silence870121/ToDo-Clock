@@ -2,6 +2,7 @@ Vue.createApp({
     data() {
         return {
             //? ---------- ---------- tab Data ---------- ----------
+            version: "0.1102.0400",
             tabAnimation: {
                 enter: "",
                 leave: ""
@@ -361,6 +362,15 @@ Vue.createApp({
         }
     },
     methods: {
+        //? ---------- ---------- display ---------- ----------
+        callClock() {
+            let clockContent = document.querySelector(".display")
+            clockContent.classList.add("show")
+        },
+        closeClock() {
+            let clockContent = document.querySelector(".display")
+            clockContent.classList.remove("show")
+        },
         //? ---------- ---------- tab ---------- ----------
         tabAnimationPosition(position) {
             switch (position) {
@@ -432,6 +442,7 @@ Vue.createApp({
                     tab_content_active.classList.remove(this.tabAnimation.leave)
                 }, 200);
             }
+            this.closeClock()
         },
         //? ---------- ---------- filter ---------- ----------
         filterBtn(e) {
