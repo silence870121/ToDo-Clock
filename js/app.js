@@ -738,7 +738,6 @@ Vue.createApp({
         },
         playItem(item) {
             this.working = item
-
             console.log(item);
         },
         completeItem(item) {
