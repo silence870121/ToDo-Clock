@@ -92,7 +92,7 @@
                                 <li class="clock-btn" v-else @click="pauseClock()">
                                     <i class="bi bi-pause-circle-fill"></i>
                                 </li>
-                                <li class="clock-btn" @click="skipClock()">
+                                <li class="clock-btn" @click="skipClock();">
                                     <i class="bi bi-skip-end-circle-fill"></i>
                                 </li>
                             </ul>
@@ -100,7 +100,7 @@
                         <div class="clock">
                             <!--? Complete Task -->
                             <button class="clock-complete" data-tab-target="list" data-filter-target="done"
-                                @click="selectTabs('list'); workingComplete();">
+                                @click="selectTabs('list'); workingComplete();updateTodayCompleted('task');">
                                 Task complete
                                 <i class="bi bi-check-circle-fill"></i>
                             </button>
@@ -169,7 +169,8 @@
                                             {{clock.timerText}}
                                         </p>
                                     </div>
-                                    <button class="working-complete" data-tab-target="list" @click="selectTabs('list')">
+                                    <button class="working-complete" data-tab-target="list"
+                                        @click="selectTabs('list');updateTodayCompleted('task');">
                                         Task complete
                                         <i class="bi bi-check-circle-fill"></i>
                                     </button>
