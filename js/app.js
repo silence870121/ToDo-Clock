@@ -671,6 +671,7 @@ Vue.createApp({
         skipClock() {
             this.clock.playing = false
             if (this.clock.status == "working") {
+                this.updateTodayCompleted('clock')
                 if (this.working.clock_spend < this.working.clock_expect) {
                     this.working.clock_spend++
                 } else {
@@ -782,9 +783,8 @@ Vue.createApp({
             let newday = new Date(time + dayTime * range)
             this.analysis.chart.dateFrom = this.dateFormat(newday)
             this.updateWeekRange()
-            this.renderAnalysis()
         },
-        //? Change Week[Data]
+        //? Change Week Range
         updateWeekRange() {
             const dayTime = 60 * 60 * 24 * 1000
             let time = new Date(this.analysis.chart.dateFrom).getTime()
@@ -794,6 +794,10 @@ Vue.createApp({
                 this.analysis.chart.week[i].date = this.dateFormat(newday)
             }
             this.analysis.chart.dateTo = this.dateFormat(new Date(time + dayTime * 6))
+            this.getChartWeekData()
+        },
+        getChartWeekData() {
+            console.log("getChartWeekData()");
             this.analysis.chart.week.forEach(day => {
                 let Index = this.analysis.data.findIndex(item => item.date === day.date)
                 if (Index !== -1) {
@@ -805,7 +809,9 @@ Vue.createApp({
                 }
             })
             this.getWeekCompleted()
+            this.renderAnalysis()
         },
+
         getWeekCompleted() {
             switch (this.filter.analysis) {
                 case "task":
@@ -847,6 +853,33 @@ Vue.createApp({
         plusData(item) {
             item.data += 1
         },
+        updateTodayCompleted(data) {
+            let Index = this.analysis.data.findIndex(data => data.date === this.date.today)
+            console.log(Index);
+            if (Index == -1) {
+                //? this.analysis.data haven't today's Data
+                this.analysis.data.push({
+                    date: this.data.today,
+                    task: 0,
+                    clock: 0
+                })
+            } else {
+                //? this.analysis.data have today's Data
+                switch (data) {
+                    case "task":
+                        console.log("task " + this.analysis.data[Index].task);
+                        this.analysis.data[Index].task += 1
+                        console.log("task " + this.analysis.data[Index].task);
+                        break;
+                    case "clock":
+                        console.log("clock " + this.analysis.data[Index].clock);
+                        this.analysis.data[Index].clock += 1
+                        console.log("clock " + this.analysis.data[Index].clock);
+                        break;
+                }
+            }
+            this.getChartWeekData()
+        }
     },
     mounted() {
         this.getLocalClock()
