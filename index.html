@@ -100,7 +100,7 @@
                         <div class="clock">
                             <!--? Complete Task -->
                             <button class="clock-complete" data-tab-target="list" data-filter-target="done"
-                                @click="selectTabs('list'); workingComplete();updateTodayCompleted('task');">
+                                @click="selectTabs('list'); workingComplete();updateDailyTask()">
                                 Task complete
                                 <i class="bi bi-check-circle-fill"></i>
                             </button>
@@ -170,7 +170,7 @@
                                         </p>
                                     </div>
                                     <button class="working-complete" data-tab-target="list"
-                                        @click="selectTabs('list');updateTodayCompleted('task');">
+                                        @click="selectTabs('list');">
                                         Task complete
                                         <i class="bi bi-check-circle-fill"></i>
                                     </button>
@@ -209,7 +209,7 @@
                                                 @click="item.completed = false">
                                                 <i class="bi bi-reply-fill"></i>
                                             </button>
-                                            <button v-else class="btn" @click="item.completed = true">
+                                            <button v-else class="btn" @click="item.completed = true;updateDailyTask()">
                                                 <i class="bi bi-check-circle-fill"></i>
                                             </button>
                                             <button class=" btn" @click="editItem(item); selectTabs('editor');">
@@ -270,7 +270,7 @@
                                                     </ul>
                                                 </div>
 
-                                                <button class="btn" @click="completeItem(item)">
+                                                <button class="btn" @click="completeItem(item);updateDailyTask()">
                                                     <i class="bi bi-check-circle-fill"></i>
                                                 </button>
                                                 <button class=" btn" @click="editItem(item); selectTabs('editor');">
@@ -302,8 +302,7 @@
                                                         </li>
                                                     </ul>
                                                 </div>
-                                                <button v-if="item.completed == true" class="btn"
-                                                    @click="item.completed = false">
+                                                <button class="btn" @click="item.completed = false;updateDailyTask()">
                                                     <i class="bi bi-reply-fill"></i>
                                                 </button>
 
