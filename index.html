@@ -92,7 +92,7 @@
                                 <li class="clock-btn" v-else @click="pauseClock()">
                                     <i class="bi bi-pause-circle-fill"></i>
                                 </li>
-                                <li class="clock-btn" @click="skipClock()">
+                                <li class="clock-btn" @click="skipClock();">
                                     <i class="bi bi-skip-end-circle-fill"></i>
                                 </li>
                             </ul>
@@ -100,7 +100,7 @@
                         <div class="clock">
                             <!--? Complete Task -->
                             <button class="clock-complete" data-tab-target="list" data-filter-target="done"
-                                @click="selectTabs('list'); workingComplete();">
+                                @click="selectTabs('list'); workingComplete();updateDailyTask()">
                                 Task complete
                                 <i class="bi bi-check-circle-fill"></i>
                             </button>
@@ -112,7 +112,7 @@
                         <!--? ---------- ---------- Home Page ---------- ---------- -->
                         <!--? ---------- ---------- Home Page ---------- ---------- -->
                         <!--? ---------- ---------- Home Page ---------- ---------- -->
-                        <div data-tab-content="home" class="tab-content active">
+                        <div data-tab-content="home" class="tab-content ">
                             <!--? Complete Area -->
                             <div class="area">
                                 <h2>complete task</h2>
@@ -169,7 +169,8 @@
                                             {{clock.timerText}}
                                         </p>
                                     </div>
-                                    <button class="working-complete" data-tab-target="list" @click="selectTabs('list')">
+                                    <button class="working-complete" data-tab-target="list"
+                                        @click="selectTabs('list');">
                                         Task complete
                                         <i class="bi bi-check-circle-fill"></i>
                                     </button>
@@ -208,7 +209,7 @@
                                                 @click="item.completed = false">
                                                 <i class="bi bi-reply-fill"></i>
                                             </button>
-                                            <button v-else class="btn" @click="item.completed = true">
+                                            <button v-else class="btn" @click="item.completed = true;updateDailyTask()">
                                                 <i class="bi bi-check-circle-fill"></i>
                                             </button>
                                             <button class=" btn" @click="editItem(item); selectTabs('editor');">
@@ -269,7 +270,7 @@
                                                     </ul>
                                                 </div>
 
-                                                <button class="btn" @click="completeItem(item)">
+                                                <button class="btn" @click="completeItem(item);updateDailyTask()">
                                                     <i class="bi bi-check-circle-fill"></i>
                                                 </button>
                                                 <button class=" btn" @click="editItem(item); selectTabs('editor');">
@@ -301,8 +302,7 @@
                                                         </li>
                                                     </ul>
                                                 </div>
-                                                <button v-if="item.completed == true" class="btn"
-                                                    @click="item.completed = false">
+                                                <button class="btn" @click="item.completed = false;updateDailyTask()">
                                                     <i class="bi bi-reply-fill"></i>
                                                 </button>
 
@@ -352,13 +352,12 @@
                                 </div>
                             </div>
                             <div class="editor">
-                                <button class="editor-btn editor-btn-cancel">
+                                <button class="editor-btn editor-btn-cancel" @click="selectTabs('list')">
                                     Cancel <i class="bi bi-reply-fill"></i>
                                 </button>
                                 <button class="editor-btn editor-btn-delete" @click="removeItem()">
                                     Delete <i class="bi bi-x-lg"></i>
                                 </button>
-                                <!-- TODO -->
                                 <button class="editor-btn editor-btn-plus" v-if="editor.status == 'create'"
                                     @click="addItem();selectTabs('list')">ADD
                                     Task</button>
@@ -371,27 +370,27 @@
                         <!--? ---------- ---------- Analysis Page ---------- ---------- -->
                         <!--? ---------- ---------- Analysis Page ---------- ---------- -->
                         <!--? ---------- ---------- Analysis Page ---------- ---------- -->
-                        <div data-tab-content="analysis" class="tab-content ">
+                        <div data-tab-content="analysis" class="tab-content active">
                             <div class="area">
                                 <h2>completed</h2>
                                 <div class="filter">
                                     <ul class="filter-bar">
                                         <li class="filter-btn filter-btn-active" data-filter="analysis"
-                                            data-filter-target="today" @click="[filterBtn,renderAnalysis]">Today</li>
-                                        <li class="filter-btn" data-filter="analysis" data-filter-target="week"
+                                            data-filter-target="task" @click="[filterBtn,renderAnalysis]">task</li>
+                                        <li class="filter-btn" data-filter="analysis" data-filter-target="clock"
                                             @click="[filterBtn,renderAnalysis]">
-                                            Week</li>
+                                            clock</li>
                                         <li class="slider-bar"> </li>
                                     </ul>
                                 </div>
                                 <div class="complete">
                                     <div class="surface-left">
-                                        <p>8</p>
-                                        <span>task</span>
+                                        <p>{{analysis.completed.today}}</p>
+                                        <span>today</span>
                                     </div>
                                     <div class="surface-right">
-                                        <p>24</p>
-                                        <span>clock</span>
+                                        <p>{{analysis.completed.week}}</p>
+                                        <span>week</span>
                                     </div>
                                 </div>
                             </div>
@@ -401,89 +400,70 @@
                                 <div class="task-chart">
                                     <div class="surface">
                                         <div class="chart-date">
-                                            <button>&lt;</button>
-                                            <p>2021 <span>8/29</span> - <span>9/4</span></p>
-                                            <button>&gt;</button>
+                                            <button class="chart-btn" @click="updateDate(-7)">&lt;&lt;</button>
+                                            <button class="chart-btn" @click="updateDate(-1)">&lt;</button>
+                                            <p>
+                                                <span>
+                                                    {{analysis.chart.dateFrom.split("-")[0]}}
+                                                    {{analysis.chart.dateFrom.split("-")[1]}}/{{analysis.chart.dateFrom.split("-")[2]}}
+                                                </span>
+                                                -
+                                                <span>
+                                                    <template
+                                                        v-if="analysis.chart.dateFrom.split('-')[0] !== analysis.chart.dateTo.split('-')[0]">
+                                                        {{analysis.chart.dateTo.split("-")[0]}}
+                                                    </template>
+                                                    {{analysis.chart.dateTo.split("-")[1]}}/{{analysis.chart.dateTo.split("-")[2]}}
+                                                </span>
+                                            </p>
+                                            <button class="chart-btn" @click="updateDate(1)">&gt;</button>
+                                            <button class="chart-btn" @click="updateDate(7)">&gt;&gt;</button>
                                         </div>
+
                                         <table class="chart-body">
                                             <thead>
                                                 <tr>
-                                                    <th>50</th>
-                                                    <th>40</th>
-                                                    <th>30</th>
-                                                    <th>20</th>
-                                                    <th>10</th>
-                                                    <th>0</th>
+                                                    <th v-for="num in 6">
+                                                        <template v-if="filter.analysis == 'clock'">
+                                                            {{(6-num)*10}}
+                                                        </template>
+                                                        <template v-else>
+                                                            {{(6-num)*5}}
+                                                        </template>
+                                                    </th>
                                                 </tr>
                                             </thead>
                                             <tbody>
-                                                <tr>
+                                                <tr v-for="item in analysis.chart.week" :key="item.date">
                                                     <th class="chart-text">
-                                                        24
-                                                        <span>Sun.</span>
+                                                        <p v-if="item.date.split('-')[2] =='01'">
+                                                            {{item.date.split('-')[1]}}/1
+                                                        </p>
+                                                        <p v-else>
+                                                            <template v-if="new Date(item.date).getDate()<10">
+                                                                {{item.date.split('-')[2].split('')[1]}}
+                                                            </template>
+                                                            <template v-else>
+                                                                {{item.date.split('-')[2]}}
+                                                            </template>
+                                                        </p>
+                                                        <span>
+                                                            {{weekName[new Date(item.date).getDay()]}}
+                                                        </span>
                                                     </th>
-                                                    <td class="chart-bar" style="height: calc(0.3rem * 20);">
-                                                        <p>20</p>
-                                                    </td>
+                                                    <template v-if="item.date == date.today">
+                                                        <td class="chart-bar chart-bar-today"
+                                                            :style="{height: item.data *  analysis.chart.height +'rem'}">
+                                                            <p>{{item.data}}</p>
+                                                        </td>
+                                                    </template>
+                                                    <template v-else>
+                                                        <td class="chart-bar"
+                                                            :style="{height: item.data *  analysis.chart.height +'rem'}">
+                                                            <p>{{item.data}}</p>
+                                                        </td>
+                                                    </template>
                                                 </tr>
-                                                <tr>
-                                                    <th class="chart-text">
-                                                        25
-                                                        <span>Mon.</span>
-                                                    </th>
-                                                    <td class="chart-bar" style="height: calc(0.3rem * 15);">
-                                                        <p>15</p>
-                                                    </td>
-                                                </tr>
-                                                <tr>
-                                                    <th class="chart-text">
-                                                        26
-                                                        <span>Tue.</span>
-                                                    </th>
-                                                    <td class="chart-bar" style="height: calc(0.3rem * 25);">
-                                                        <p>25</p>
-                                                    </td>
-                                                </tr>
-                                                <tr>
-                                                    <th class="chart-text">
-                                                        27
-                                                        <span>Wed.</span>
-                                                    </th>
-                                                    <td class="chart-bar" style="height: calc(0.3rem * 35);">
-                                                        <p>35</p>
-                                                    </td>
-                                                </tr>
-                                                <tr>
-                                                    <th class="chart-text">
-                                                        28
-                                                        <span>Thu.</span>
-                                                    </th>
-                                                    <td class="chart-bar chart-bar-today"
-                                                        style="height: calc(0.3rem * 10);">
-                                                        <p>10</p>
-                                                    </td>
-                                                </tr>
-                                                <tr>
-                                                    <th class="chart-text">
-                                                        29
-                                                        <span>Fri.</span>
-                                                    </th>
-                                                    <td class="chart-bar" style="height: calc(0.3rem * 15);">
-                                                        <p>15</p>
-                                                    </td>
-                                                </tr>
-                                                <tr>
-                                                    <th class="chart-text">
-                                                        30
-                                                        <span>Sat.</span>
-                                                    </th>
-                                                    <td class="chart-bar" style="height: calc(0.3rem * 10);">
-                                                        <p>10</p>
-                                                    </td>
-                                                </tr>
-
-
-
                                             </tbody>
 
 

@@ -909,11 +909,17 @@ svg circle {
 
 .chart-bar {
     text-align: center;
-    width: 3rem;
+    /* width: 3rem; */
+    width: 50%;
     height: 5rem;
+    max-height: 15rem;
     background-color: var(--color-on-background);
     color: var(--color-primary);
-    position: relative;
+    position: absolute;
+    left: 50%;
+    bottom: 0;
+    transform: translateX(-50%);
+    transition: all 200ms ease;
 }
 
 .chart-bar-today {

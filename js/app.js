@@ -17,7 +17,7 @@ Vue.createApp({
                 playing: false, // true || false
                 dasharray: 786, //clock progress full
                 dashoffset: 0, //clock progress playing
-                ringtone: "ringtone3" //setting's ringtone
+                ringtone: "ringtone1" //setting's ringtone
             },
             //?Date
             date: {
@@ -27,18 +27,18 @@ Vue.createApp({
             //? Working Task
             working: {
                 id: "000", //項目建立時之時間戳
-                title: "項目名稱",
-                clock_expect: 5, //預期時間
-                clock_spend: 3, //花費時間
+                title: "無指定項目",
+                clock_expect: 8, //預期時間
+                clock_spend: 0, //花費時間
                 clock_over: 0, //超出時間
                 completed: false, //項目完成狀態 完成: true | 未完成: false
-                date_create: "yyyy/mm/dd", //建立日期
+                date_create: "2021-01-01", //建立日期
                 date_limit: "2022-01-01", // 項目期限
-                date_complete: "yyyy/mm/dd", //完成日期
+                date_complete: "", //完成日期
             },
             //? filter
             filter: {
-                analysis: "week",
+                analysis: "task",
                 setting: "breaking"
             },
             //? TODO list Data 
@@ -51,9 +51,9 @@ Vue.createApp({
                     clock_spend: 1, //花費時間
                     clock_over: 0, //超出時間
                     completed: false, //項目完成狀態 完成: true | 未完成: false
-                    date_create: "yyyy/mm/dd", //建立日期
+                    date_create: "2021-01-01", //建立日期
                     date_limit: "2022-01-01", //項目期限
-                    date_complete: "yyyy/mm/dd", //完成日期
+                    date_complete: "2021-11-02", //完成日期
                 },
                 //?
                 {
@@ -63,9 +63,9 @@ Vue.createApp({
                     clock_spend: 2, //花費時間
                     clock_over: 0, //超出時間
                     completed: true, //項目完成狀態 完成: true | 未完成: false
-                    date_create: "yyyy/mm/dd", //建立日期
+                    date_create: "2021-01-01", //建立日期
                     date_limit: "2022-01-01", //項目期限
-                    date_complete: "yyyy/mm/dd", //完成日期
+                    date_complete: "2021-11-02", //完成日期
                 },
                 {
                     id: "003", //項目建立時之時間戳
@@ -74,9 +74,9 @@ Vue.createApp({
                     clock_spend: 4, //花費時間
                     clock_over: 0, //超出時間
                     completed: false, //項目完成狀態 完成: true | 未完成: false
-                    date_create: "yyyy/mm/dd", //建立日期
+                    date_create: "2021-01-01", //建立日期
                     date_limit: "2022-01-01", //項目期限
-                    date_complete: "yyyy/mm/dd", //完成日期
+                    date_complete: "2021-11-02", //完成日期
                 },
                 {
                     id: "004", //項目建立時之時間戳
@@ -85,9 +85,9 @@ Vue.createApp({
                     clock_spend: 8, //花費時間
                     clock_over: 0, //超出時間
                     completed: true, //項目完成狀態 完成: true | 未完成: false
-                    date_create: "yyyy/mm/dd", //建立日期
+                    date_create: "2021-01-01", //建立日期
                     date_limit: "2022-01-01", //項目期限
-                    date_complete: "yyyy/mm/dd", //完成日期
+                    date_complete: "2021-11-02", //完成日期
                 },
                 {
                     id: "005", //項目建立時之時間戳
@@ -96,9 +96,9 @@ Vue.createApp({
                     clock_spend: 4, //花費時間
                     clock_over: 4, //超出時間
                     completed: true, //項目完成狀態 完成: true | 未完成: false
-                    date_create: "yyyy/mm/dd", //建立日期
+                    date_create: "2021-01-01", //建立日期
                     date_limit: "2022-01-01", //項目期限
-                    date_complete: "yyyy/mm/dd", //完成日期
+                    date_complete: "2021-11-02", //完成日期
                 },
                 {
                     id: "006", //項目建立時之時間戳
@@ -107,9 +107,9 @@ Vue.createApp({
                     clock_spend: 1, //花費時間
                     clock_over: 0, //超出時間
                     completed: false, //項目完成狀態 完成: true | 未完成: false
-                    date_create: "yyyy/mm/dd", //建立日期
+                    date_create: "2021-01-01", //建立日期
                     date_limit: "2022-01-01", //項目期限
-                    date_complete: "yyyy/mm/dd", //完成日期
+                    date_complete: "2021-11-02", //完成日期
                 },
                 //?
                 {
@@ -119,9 +119,9 @@ Vue.createApp({
                     clock_spend: 2, //花費時間
                     clock_over: 0, //超出時間
                     completed: true, //項目完成狀態 完成: true | 未完成: false
-                    date_create: "yyyy/mm/dd", //建立日期
+                    date_create: "2021-01-01", //建立日期
                     date_limit: "2022-01-01", //項目期限
-                    date_complete: "yyyy/mm/dd", //完成日期
+                    date_complete: "2021-11-02", //完成日期
                 },
                 {
                     id: "008", //項目建立時之時間戳
@@ -130,9 +130,9 @@ Vue.createApp({
                     clock_spend: 4, //花費時間
                     clock_over: 0, //超出時間
                     completed: false, //項目完成狀態 完成: true | 未完成: false
-                    date_create: "yyyy/mm/dd", //建立日期
+                    date_create: "2021-01-01", //建立日期
                     date_limit: "2022-01-01", //項目期限
-                    date_complete: "yyyy/mm/dd", //完成日期
+                    date_complete: "2021-11-02", //完成日期
                 },
                 {
                     id: "009", //項目建立時之時間戳
@@ -141,9 +141,9 @@ Vue.createApp({
                     clock_spend: 8, //花費時間
                     clock_over: 0, //超出時間
                     completed: true, //項目完成狀態 完成: true | 未完成: false
-                    date_create: "yyyy/mm/dd", //建立日期
+                    date_create: "2021-01-01", //建立日期
                     date_limit: "2022-01-01", //項目期限
-                    date_complete: "yyyy/mm/dd", //完成日期
+                    date_complete: "2021-11-02", //完成日期
                 },
                 {
                     id: "010", //項目建立時之時間戳
@@ -152,9 +152,9 @@ Vue.createApp({
                     clock_spend: 4, //花費時間
                     clock_over: 4, //超出時間
                     completed: true, //項目完成狀態 完成: true | 未完成: false
-                    date_create: "yyyy/mm/dd", //建立日期
+                    date_create: "2021-01-01", //建立日期
                     date_limit: "2022-01-01", //項目期限
-                    date_complete: "yyyy/mm/dd", //完成日期
+                    date_complete: "2021-11-02", //完成日期
                 },
                 {
                     id: "011", //項目建立時之時間戳
@@ -163,9 +163,9 @@ Vue.createApp({
                     clock_spend: 1, //花費時間
                     clock_over: 0, //超出時間
                     completed: false, //項目完成狀態 完成: true | 未完成: false
-                    date_create: "yyyy/mm/dd", //建立日期
+                    date_create: "2021-01-01", //建立日期
                     date_limit: "2022-01-01", //項目期限
-                    date_complete: "yyyy/mm/dd", //完成日期
+                    date_complete: "2021-11-02", //完成日期
                 },
                 //?
                 {
@@ -175,9 +175,9 @@ Vue.createApp({
                     clock_spend: 2, //花費時間
                     clock_over: 0, //超出時間
                     completed: true, //項目完成狀態 完成: true | 未完成: false
-                    date_create: "yyyy/mm/dd", //建立日期
+                    date_create: "2021-01-01", //建立日期
                     date_limit: "2022-01-01", //項目期限
-                    date_complete: "yyyy/mm/dd", //完成日期
+                    date_complete: "2021-11-02", //完成日期
                 },
                 {
                     id: "013", //項目建立時之時間戳
@@ -186,9 +186,9 @@ Vue.createApp({
                     clock_spend: 4, //花費時間
                     clock_over: 0, //超出時間
                     completed: false, //項目完成狀態 完成: true | 未完成: false
-                    date_create: "yyyy/mm/dd", //建立日期
+                    date_create: "2021-01-01", //建立日期
                     date_limit: "2022-01-01", //項目期限
-                    date_complete: "yyyy/mm/dd", //完成日期
+                    date_complete: "2021-11-02", //完成日期
                 },
                 {
                     id: "014", //項目建立時之時間戳
@@ -197,9 +197,9 @@ Vue.createApp({
                     clock_spend: 8, //花費時間
                     clock_over: 0, //超出時間
                     completed: true, //項目完成狀態 完成: true | 未完成: false
-                    date_create: "yyyy/mm/dd", //建立日期
+                    date_create: "2021-01-01", //建立日期
                     date_limit: "2022-01-01", //項目期限
-                    date_complete: "yyyy/mm/dd", //完成日期
+                    date_complete: "2021-11-02", //完成日期
                 },
                 {
                     id: "015", //項目建立時之時間戳
@@ -208,9 +208,9 @@ Vue.createApp({
                     clock_spend: 4, //花費時間
                     clock_over: 4, //超出時間
                     completed: true, //項目完成狀態 完成: true | 未完成: false
-                    date_create: "yyyy/mm/dd", //建立日期
+                    date_create: "2021-01-01", //建立日期
                     date_limit: "2022-01-01", //項目期限
-                    date_complete: "yyyy/mm/dd", //完成日期
+                    date_complete: "2021-11-02", //完成日期
                 },
             ],
             temp: {},
@@ -233,16 +233,112 @@ Vue.createApp({
             analysis: {
                 data: [ // Daily Complete Colck
                     {
-                        date: "2021-01-01",
-                        task: 0,
-                        clock: 0,
+                        date: "2021-11-01",
+                        task: 1,
+                        clock: 5,
+                    },
+                    {
+                        date: "2021-11-02",
+                        task: 2,
+                        clock: 10,
+                    },
+                    {
+                        date: "2021-11-03",
+                        task: 3,
+                        clock: 15,
+                    },
+                    {
+                        date: "2021-11-04",
+                        task: 4,
+                        clock: 20,
+                    },
+                    {
+                        date: "2021-11-05",
+                        task: 5,
+                        clock: 25,
+                    },
+                    {
+                        date: "2021-11-06",
+                        task: 6,
+                        clock: 30,
+                    },
+                    {
+                        date: "2021-11-07",
+                        task: 7,
+                        clock: 35,
+                    },
+                    {
+                        date: "2021-11-08",
+                        task: 8,
+                        clock: 40,
+                    },
+                    {
+                        date: "2021-11-09",
+                        task: 9,
+                        clock: 45,
+                    },
+                    {
+                        date: "2021-11-10",
+                        task: 10,
+                        clock: 50,
                     },
                 ],
                 completed: {
-                    task: 0,
-                    clock: 0
+                    today: 0,
+                    week: 0
+                },
+                chart: {
+                    dateFrom: "2021-01-01",
+                    dateTo: "2022-10-30",
+                    height: 0.3,
+                    week: [{
+                            date: "2021-10-24",
+                            task: 10,
+                            clock: 24,
+                            data: 0
+                        },
+                        {
+                            date: "2021-10-25",
+                            task: 9,
+                            clock: 25,
+                            data: 0
+                        },
+                        {
+                            date: "2021-10-26",
+                            task: 8,
+                            clock: 26,
+                            data: 0
+                        },
+                        {
+                            date: "2021-10-27",
+                            task: 7,
+                            clock: 27,
+                            data: 0
+                        },
+                        {
+                            date: "2021-10-28",
+                            task: 6,
+                            clock: 28,
+                            data: 0
+                        },
+                        {
+                            date: "2021-10-29",
+                            task: 5,
+                            clock: 29,
+                            data: 0
+                        },
+                        {
+                            date: "2021-10-30",
+                            task: 4,
+                            clock: 30,
+                            data: 0
+                        },
+                    ],
                 }
             },
+            weekName: [
+                "Sun.", "Mon.", "Tue.", "Wed", "Thu.", "Fri.", "Sat."
+            ],
             //? Setting Data
             setting: {
                 work: [
@@ -356,12 +452,9 @@ Vue.createApp({
             }
             switch (e.target.dataset.filter) {
                 case "analysis":
-                    console.log("set filter.analysis");
-                    console.log(e.target.dataset.filterTarget);
                     this.filter.analysis = e.target.dataset.filterTarget
                     break;
                 case "setting":
-                    console.log("set filter.setting");
                     this.filter.setting = e.target.dataset.filterTarget
                     break;
 
@@ -426,8 +519,8 @@ Vue.createApp({
         getLocallist() {},
         //? ---------- ---------- reset data ---------- ----------
         resetFilter() {
-            this.filter.analysis = "today"
-            this.filter.setting = "working"
+            this.filter.analysis = "task"
+            this.filter.setting = "clock"
         },
         resetClock() {
             this.clock = {
@@ -462,7 +555,7 @@ Vue.createApp({
                     month: 9,
                     day: 8,
                 },
-                date_complete: "yyyy/mm/dd", //完成日期
+                date_complete: "2021-11-02", //完成日期
             }
             this.setLocalWorking()
         },
@@ -493,6 +586,25 @@ Vue.createApp({
                 date_limit: '',
                 date_complete: '', //完成日期
             }
+        },
+        resetAnalysis() {
+            this.analysis.chart.week.forEach(item => {
+                item.data = item.task
+            })
+            this.analysis.chart.height = 0.6
+        },
+        //? ---------- ---------- Data Format ---------- ----------
+        dateFormat(date) {
+            let year = date.getFullYear()
+            let month = date.getMonth() + 1
+            let day = date.getDate()
+            if ((date.getMonth() + 1) < 10) {
+                month = `0${date.getMonth()+1}`
+            }
+            if (date.getDate() < 10) {
+                day = `0${date.getDate()}`
+            }
+            return `${year}-${month}-${day}`
         },
         //? ---------- ---------- Clock Action ---------- ----------
         getstrock() {
@@ -559,6 +671,7 @@ Vue.createApp({
         skipClock() {
             this.clock.playing = false
             if (this.clock.status == "working") {
+                this.updateTodayClock()
                 if (this.working.clock_spend < this.working.clock_expect) {
                     this.working.clock_spend++
                 } else {
@@ -588,10 +701,7 @@ Vue.createApp({
         },
         //? ---------- ---------- Editor Action ---------- ----------
         getTodayDate() {
-            let newdate = new Date()
-            console.log(new Date().getTime());
-            this.date.today = `${newdate.getFullYear()}-${newdate.getMonth() + 1}-${newdate.getDate()}`
-            this.date.time = newdate.getTime()
+            this.date.today = this.dateFormat(new Date)
         },
         addItem() {
             this.editor.item.id = new Date().getTime()
@@ -617,6 +727,8 @@ Vue.createApp({
                 console.log('List Index undefined');
             }
             this.resetWorking()
+            this.resetEditor()
+            this.editor.status = 'create'
         },
         editWork() {
             this.editor.item = {
@@ -626,7 +738,6 @@ Vue.createApp({
         },
         playItem(item) {
             this.working = item
-
             console.log(item);
         },
         completeItem(item) {
@@ -634,6 +745,7 @@ Vue.createApp({
             if (this.working.id == item.id) {
                 this.resetWorking()
             }
+            item.date_complete = this.date.today
         },
         removeItem() {
             const Index = this.list.findIndex(item => item.id === this.editor.item.id)
@@ -642,7 +754,7 @@ Vue.createApp({
                 console.log('REMOVE  ' + this.list[Index].id);
                 this.list.splice(Index, 1)
             } else {
-                console.log('List Index undefined');
+                console.log('CLEAR EDIROR DATA');
             }
             this.resetEditor()
         },
@@ -657,23 +769,129 @@ Vue.createApp({
             }
             this.resetWorking()
         },
-        // TODO
-        //? Analysis Part
-        renderAnalysis(e) {
-            console.log(e.target);
-            console.log(e.target.dataset.filterTarget);
-            switch (e.target.dataset.filterTarget) {
-                case "today":
+        //? ---------- ---------- Analysis Action ---------- ----------
+        //? Render This Week Data
+        getThisWeek() {
+            const dayTime = 60 * 60 * 24 * 1000
+            let time = new Date(this.date.today).getTime()
+            let day = new Date(this.date.today).getDay()
+            this.analysis.chart.dateFrom = this.dateFormat(new Date(time - dayTime * day))
+            this.updateWeekRange()
+        },
+        //? Change DateFrom
+        updateDate(range) {
+            const dayTime = 60 * 60 * 24 * 1000
+            let time = new Date(this.analysis.chart.dateFrom).getTime()
+            let newday = new Date(time + dayTime * range)
+            this.analysis.chart.dateFrom = this.dateFormat(newday)
+            this.updateWeekRange()
+        },
+        //? Change Week Range
+        updateWeekRange() {
+            const dayTime = 60 * 60 * 24 * 1000
+            let time = new Date(this.analysis.chart.dateFrom).getTime()
+            for (let i = 0; i < 7; i++) {
+                let newday = new Date(time + dayTime * i)
+                this.dateFormat(newday)
+                this.analysis.chart.week[i].date = this.dateFormat(newday)
+            }
+            this.analysis.chart.dateTo = this.dateFormat(new Date(time + dayTime * 6))
+            this.getChartWeekData()
+        },
+        getChartWeekData() {
+            this.analysis.chart.week.forEach(day => {
+                let Index = this.analysis.data.findIndex(item => item.date === day.date)
+                if (Index !== -1) {
+                    day.task = this.analysis.data[Index].task
+                    day.clock = this.analysis.data[Index].clock
+                } else {
+                    day.task = 0
+                    day.clock = 0
+                }
+            })
+            this.getWeekCompleted()
+            this.renderAnalysis()
+        },
 
+        getWeekCompleted() {
+            switch (this.filter.analysis) {
+                case "task":
+                    this.analysis.completed.week = this.analysis.chart.week.map(el => el.task).reduce((a, b) => a + b)
+                    break
+                case "clock":
+                    this.analysis.completed.week = this.analysis.chart.week.map(el => el.clock).reduce((a, b) => a + b)
+                    break
+            }
+        },
+        renderAnalysis() {
+            let Index = this.analysis.data.findIndex(item => item.date === this.date.today)
+            if (Index !== -1) {
+                switch (this.filter.analysis) {
+                    case "task":
+                        this.analysis.completed.today = this.analysis.data[Index].task
+                        break
+                    case "clock":
+                        this.analysis.completed.today = this.analysis.data[Index].clock
+                        break
+                }
+            }
+            switch (this.filter.analysis) {
+                case "task":
+                    this.analysis.chart.week.forEach(item => {
+                        item.data = item.task
+                    })
+                    this.analysis.chart.height = 0.6
                     break;
-                case "week":
-
-                    break;
-
-                default:
+                case "clock":
+                    this.analysis.chart.week.forEach(item => {
+                        item.data = item.clock
+                    })
+                    this.analysis.chart.height = 0.3
                     break;
             }
-
+            this.getWeekCompleted()
+        },
+        plusData(item) {
+            item.data += 1
+        },
+        updateTodayClock() {
+            let Index = this.analysis.data.findIndex(data => data.date === this.date.today)
+            // console.log(Index);
+            if (Index == -1) {
+                //? this.analysis.data haven't today's Data
+                this.analysis.data.push({
+                    date: this.data.today,
+                    task: 0,
+                    clock: 1
+                })
+            } else {
+                //? this.analysis.data have today's Data
+                // console.log("clock " + this.analysis.data[Index].clock);
+                this.analysis.data[Index].clock += 1
+                // console.log("clock " + this.analysis.data[Index].clock);
+            }
+            this.getChartWeekData()
+        },
+        updateDailyTask() {
+            //? Reset analysis.data.task
+            this.analysis.data.forEach(item => {
+                item.task = 0
+            })
+            this.list.filter(el => el.completed == true).forEach(item => {
+                // console.log(item.title);
+                let Index = this.analysis.data.findIndex(el => el.date === item.date_complete)
+                // console.log(this.analysis.data[Index]);
+                if (Index == -1) {
+                    this.analysis.data.push({
+                        date: this.data.today,
+                        task: 1,
+                        clock: 0
+                    })
+                } else {
+                    this.analysis.data[Index].task += 1
+                }
+            })
+            this.getChartWeekData()
         }
     },
     mounted() {
@@ -684,6 +902,11 @@ Vue.createApp({
         this.renderClock()
         this.timer = setInterval(this.playingClock, 1000);
         this.getTodayDate()
+        this.getThisWeek()
         this.resetFilter()
-    }
+        this.resetAnalysis()
+        this.renderAnalysis()
+        this.updateDailyTask()
+    },
+    computed() {}
 }).mount('#app');
