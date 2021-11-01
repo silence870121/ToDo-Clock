@@ -767,7 +767,33 @@ Vue.createApp({
             this.resetWorking()
         },
         //? ---------- ---------- Analysis Action ---------- ----------
-        renderWeekDay() {
+        //? Render This Week Data
+        getThisWeek() {
+            const dayTime = 60 * 60 * 24 * 1000
+            let time = new Date(this.date.today).getTime()
+            let day = new Date(this.date.today).getDay()
+            this.analysis.chart.dateFrom = this.dateFormat(new Date(time - dayTime * day))
+            this.updateWeekRange()
+        },
+        //? Change DateFrom
+        updateDate(range) {
+            const dayTime = 60 * 60 * 24 * 1000
+            let time = new Date(this.analysis.chart.dateFrom).getTime()
+            let newday = new Date(time + dayTime * range)
+            this.analysis.chart.dateFrom = this.dateFormat(newday)
+            this.updateWeekRange()
+            this.renderAnalysis()
+        },
+        //? Change Week[Data]
+        updateWeekRange() {
+            const dayTime = 60 * 60 * 24 * 1000
+            let time = new Date(this.analysis.chart.dateFrom).getTime()
+            for (let i = 0; i < 7; i++) {
+                let newday = new Date(time + dayTime * i)
+                this.dateFormat(newday)
+                this.analysis.chart.week[i].date = this.dateFormat(newday)
+            }
+            this.analysis.chart.dateTo = this.dateFormat(new Date(time + dayTime * 6))
             this.analysis.chart.week.forEach(day => {
                 let Index = this.analysis.data.findIndex(item => item.date === day.date)
                 if (Index !== -1) {
@@ -778,37 +804,30 @@ Vue.createApp({
                     day.clock = 0
                 }
             })
+            this.getWeekCompleted()
         },
-        //? Render This Week Data
-        getThisWeek() {
-            const dayTime = 60 * 60 * 24 * 1000
-            let time = new Date(this.date.today).getTime()
-            let day = new Date(this.date.today).getDay()
-            this.analysis.chart.dateFrom = this.dateFormat(new Date(time - dayTime * day))
-            this.updateWeek()
-        },
-        //? Change Week[Data]
-        updateWeek() {
-            const dayTime = 60 * 60 * 24 * 1000
-            let time = new Date(this.analysis.chart.dateFrom).getTime()
-            for (let i = 0; i < 7; i++) {
-                let newday = new Date(time + dayTime * i)
-                this.dateFormat(newday)
-                this.analysis.chart.week[i].date = this.dateFormat(newday)
+        getWeekCompleted() {
+            switch (this.filter.analysis) {
+                case "task":
+                    this.analysis.completed.week = this.analysis.chart.week.map(el => el.task).reduce((a, b) => a + b)
+                    break
+                case "clock":
+                    this.analysis.completed.week = this.analysis.chart.week.map(el => el.clock).reduce((a, b) => a + b)
+                    break
             }
-            this.analysis.chart.dateTo = this.dateFormat(new Date(time + dayTime * 6))
-        },
-        //? Change DateFrom
-        updateDate(range) {
-            const dayTime = 60 * 60 * 24 * 1000
-            let time = new Date(this.analysis.chart.dateFrom).getTime()
-            let newday = new Date(time + dayTime * range)
-            this.analysis.chart.dateFrom = this.dateFormat(newday)
-            this.updateWeek()
-            this.renderAnalysis()
         },
         renderAnalysis() {
-            this.renderWeekDay()
+            let Index = this.analysis.data.findIndex(item => item.date === this.date.today)
+            if (Index !== -1) {
+                switch (this.filter.analysis) {
+                    case "task":
+                        this.analysis.completed.today = this.analysis.data[Index].task
+                        break
+                    case "clock":
+                        this.analysis.completed.today = this.analysis.data[Index].clock
+                        break
+                }
+            }
             switch (this.filter.analysis) {
                 case "task":
                     this.analysis.chart.week.forEach(item => {
@@ -823,11 +842,11 @@ Vue.createApp({
                     this.analysis.chart.height = 0.3
                     break;
             }
+            this.getWeekCompleted()
         },
         plusData(item) {
             item.data += 1
         },
-
     },
     mounted() {
         this.getLocalClock()
@@ -842,7 +861,5 @@ Vue.createApp({
         this.resetAnalysis()
         this.renderAnalysis()
     },
-    computed() {
-
-    }
+    computed() {}
 }).mount('#app');
