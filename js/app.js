@@ -233,9 +233,54 @@ Vue.createApp({
             analysis: {
                 data: [ // Daily Complete Colck
                     {
-                        date: "2021-01-01",
-                        task: 0,
-                        clock: 0,
+                        date: "2021-11-01",
+                        task: 1,
+                        clock: 5,
+                    },
+                    {
+                        date: "2021-11-02",
+                        task: 2,
+                        clock: 10,
+                    },
+                    {
+                        date: "2021-11-03",
+                        task: 3,
+                        clock: 15,
+                    },
+                    {
+                        date: "2021-11-04",
+                        task: 4,
+                        clock: 20,
+                    },
+                    {
+                        date: "2021-11-05",
+                        task: 5,
+                        clock: 25,
+                    },
+                    {
+                        date: "2021-11-06",
+                        task: 6,
+                        clock: 30,
+                    },
+                    {
+                        date: "2021-11-07",
+                        task: 7,
+                        clock: 35,
+                    },
+                    {
+                        date: "2021-11-08",
+                        task: 8,
+                        clock: 40,
+                    },
+                    {
+                        date: "2021-11-09",
+                        task: 9,
+                        clock: 45,
+                    },
+                    {
+                        date: "2021-11-10",
+                        task: 10,
+                        clock: 50,
                     },
                 ],
                 completed: {
@@ -722,6 +767,19 @@ Vue.createApp({
             this.resetWorking()
         },
         //? ---------- ---------- Analysis Action ---------- ----------
+        renderWeekDay() {
+            this.analysis.chart.week.forEach(day => {
+                let Index = this.analysis.data.findIndex(item => item.date === day.date)
+                if (Index !== -1) {
+                    day.task = this.analysis.data[Index].task
+                    day.clock = this.analysis.data[Index].clock
+                } else {
+                    day.task = 0
+                    day.clock = 0
+                }
+            })
+        },
+        //? Render This Week Data
         getThisWeek() {
             const dayTime = 60 * 60 * 24 * 1000
             let time = new Date(this.date.today).getTime()
@@ -729,6 +787,7 @@ Vue.createApp({
             this.analysis.chart.dateFrom = this.dateFormat(new Date(time - dayTime * day))
             this.updateWeek()
         },
+        //? Change Week[Data]
         updateWeek() {
             const dayTime = 60 * 60 * 24 * 1000
             let time = new Date(this.analysis.chart.dateFrom).getTime()
@@ -739,18 +798,18 @@ Vue.createApp({
             }
             this.analysis.chart.dateTo = this.dateFormat(new Date(time + dayTime * 6))
         },
+        //? Change DateFrom
         updateDate(range) {
             const dayTime = 60 * 60 * 24 * 1000
             let time = new Date(this.analysis.chart.dateFrom).getTime()
             let newday = new Date(time + dayTime * range)
             this.analysis.chart.dateFrom = this.dateFormat(newday)
             this.updateWeek()
+            this.renderAnalysis()
         },
-
-        renderAnalysis(e) {
-            // console.log(e.target);
-            // console.log(e.target.dataset.filterTarget);
-            switch (e.target.dataset.filterTarget) {
+        renderAnalysis() {
+            this.renderWeekDay()
+            switch (this.filter.analysis) {
                 case "task":
                     this.analysis.chart.week.forEach(item => {
                         item.data = item.task
@@ -763,14 +822,12 @@ Vue.createApp({
                     })
                     this.analysis.chart.height = 0.3
                     break;
-
-                default:
-                    break;
             }
         },
         plusData(item) {
             item.data += 1
-        }
+        },
+
     },
     mounted() {
         this.getLocalClock()
@@ -783,7 +840,9 @@ Vue.createApp({
         this.getThisWeek()
         this.resetFilter()
         this.resetAnalysis()
+        this.renderAnalysis()
+    },
+    computed() {
 
-        // this.updateWeek()
     }
 }).mount('#app');
