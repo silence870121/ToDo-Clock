@@ -133,12 +133,12 @@ body {
 
 .version {
     font-size: 0.5rem;
-    float: right;
     text-transform: lowercase;
     color: var(--color-on-background);
 }
 
 .logo .version {
+    flex: 1;
     font-size: 1rem;
     padding-left: 0.5rem;
     padding-bottom: 0.5rem;
@@ -394,6 +394,15 @@ body {
 .clock-spend--over {
     border-color: var(--color-error);
     background-color: var(--color-error);
+    margin-right: 0.25rem;
+}
+
+.clock-spend--num {
+    height: 0.5rem;
+    /* margin: 0.5rem; */
+    color: var(--color-error);
+    font-size: 0.875rem;
+    line-height: 0.5rem;
 }
 
 .clock-date {
@@ -644,14 +653,41 @@ svg circle {
     z-index: -1; */
 }
 
-.task-list .surface {
+
+/*? ---------- task list item ---------- */
+.task-body {
+    width: 100%;
+    display: flex;
     flex-wrap: nowrap;
 }
 
-/*? ---------- task list item ---------- */
+.task-footer {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    font-size: 0.875rem;
+    text-transform: uppercase;
+    color: var(--color-on-background);
+    margin-top: 0.5rem;
+    padding-top: 0.5rem;
+    padding-left: 0.5rem;
+}
+
+.task-footer>* {
+    white-space: nowrap
+}
+
 .task-title {
     flex: 1;
     padding-left: 0.5rem;
+}
+
+.task-title--over {
+    color: var(--color-error);
+    text-transform: uppercase;
+    font-weight: bold;
 }
 
 .task-expect {
@@ -665,7 +701,8 @@ svg circle {
 .task-spend {
     width: 0.5rem;
     height: 0.5rem;
-    margin: 0.5rem;
+    /* margin: 0.5rem 0.35rem; */
+    margin: 0.5rem 2.5%;
     border-radius: 50%;
     background-color: var(--color-on-background);
 }
@@ -677,6 +714,14 @@ svg circle {
 .task-spend--over {
     border-color: var(--color-error);
     background-color: var(--color-error);
+    margin-right: 0.25rem;
+}
+
+.task-spend--num {
+    height: 0.5rem;
+    /* margin: 0.5rem; */
+    color: var(--color-error);
+    font-size: 0.875rem;
 }
 
 .btn {
@@ -1060,14 +1105,12 @@ svg circle {
     flex-wrap: wrap;
 }
 
-.reset li {
-    display: block;
+.reset-btn {
     width: 100%;
     color: var(--color-error);
     background-color: var(--color-on-error);
     border-radius: 0.5rem;
     font-size: 1.25rem;
-    text-align: center;
     text-transform: uppercase;
     cursor: pointer;
     padding: 0.5rem;
@@ -1075,6 +1118,18 @@ svg circle {
     cursor: pointer;
     transition: color 0.3s ease,
         background-color 0.3s ease;
+}
+
+.reset-btn i {
+    padding-right: 0.5rem;
+}
+
+.reset-btn span {
+    display: flex;
+    margin: auto;
+    max-width: 9rem;
+    text-align: center;
+    /* border: 1px solid var(--color-error); */
 }
 
 /*? ---------- Setting End ---------- */
@@ -1153,9 +1208,14 @@ svg circle {
 
 /** Responsive Web Design */
 /* ? mobile first */
+@media screen and (min-width:576px) {
+    .container {
+        max-width: 540px;
+    }
+}
+
 @media screen and (min-width:768px) {
 
-    /*? Change Nav Bar */
     /*? ipad size */
     .container {
         max-width: 720px;
@@ -1163,40 +1223,9 @@ svg circle {
 
     .col-6 {
         width: calc(100%/12*6);
-
     }
 
-    .filter-btn {
-        font-size: 1.25rem;
-        height: 2.5rem;
-    }
-
-    .clock-player {
-        width: 20rem;
-    }
-
-    .clock-complete {
-        width: 20rem;
-    }
-
-    .display {
-        position: relative;
-        top: 0;
-    }
-
-}
-
-@media screen and (min-width:992px) {
-
-    /*? table */
-    .chart-body thead tr, .chart-body tbody {
-        height: 16rem;
-    }
-
-    .container {
-        max-width: 960px;
-    }
-
+    /*? Change Nav Bar */
     .nav {
         top: 0;
         bottom: auto;
@@ -1213,6 +1242,48 @@ svg circle {
     .tab-header {
         width: 50%;
     }
+
+    .display {
+        position: relative;
+        top: 0;
+    }
+
+    /*? Nav Bar End*/
+    .filter-btn {
+        font-size: 1.25rem;
+        height: 2.5rem;
+    }
+
+    .clock-player {
+        width: 20rem;
+    }
+
+    .clock-complete {
+        width: 20rem;
+    }
+
+
+
+}
+
+@media screen and (min-width:992px) {
+
+
+    /*? table */
+
+    .container {
+        max-width: 960px;
+    }
+
+
+    .task-spend {
+        margin: 0.5rem;
+    }
+
+    .chart-body thead tr, .chart-body tbody {
+        height: 16rem;
+    }
+
 }
 
 @media screen and (min-width:1200px) {

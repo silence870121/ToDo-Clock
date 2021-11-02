@@ -2,7 +2,7 @@ Vue.createApp({
     data() {
         return {
             //? ---------- ---------- tab Data ---------- ----------
-            version: "0.1102.0400",
+            version: "1.0.0",
             tabAnimation: {
                 enter: "",
                 leave: ""
@@ -30,8 +30,7 @@ Vue.createApp({
                 id: "000", //項目建立時之時間戳
                 title: "無指定項目",
                 clock_expect: 8, //預期時間
-                clock_spend: 0, //花費時間
-                clock_over: 0, //超出時間
+                clock_spend: 25, //花費時間
                 completed: false, //項目完成狀態 完成: true | 未完成: false
                 date_create: "2021-01-01", //建立日期
                 date_limit: "2022-01-01", // 項目期限
@@ -40,249 +39,233 @@ Vue.createApp({
             //? filter
             filter: {
                 analysis: "task",
-                setting: "breaking"
+                setting: "working"
             },
             //? TODO list Data 
-            list: [
+            list: [ // list data
                 //?
-                {
-                    id: "001", //項目建立時之時間戳
-                    title: "測試項目 001",
-                    clock_expect: 8, //預期時間
-                    clock_spend: 1, //花費時間
-                    clock_over: 0, //超出時間
-                    completed: false, //項目完成狀態 完成: true | 未完成: false
-                    date_create: "2021-01-01", //建立日期
-                    date_limit: "2022-01-01", //項目期限
-                    date_complete: "2021-11-02", //完成日期
-                },
-                //?
-                {
-                    id: "002", //項目建立時之時間戳
-                    title: "測試項目 002",
-                    clock_expect: 8, //預期時間
-                    clock_spend: 2, //花費時間
-                    clock_over: 0, //超出時間
-                    completed: true, //項目完成狀態 完成: true | 未完成: false
-                    date_create: "2021-01-01", //建立日期
-                    date_limit: "2022-01-01", //項目期限
-                    date_complete: "2021-11-02", //完成日期
-                },
-                {
-                    id: "003", //項目建立時之時間戳
-                    title: "測試項目 003",
-                    clock_expect: 8, //預期時間
-                    clock_spend: 4, //花費時間
-                    clock_over: 0, //超出時間
-                    completed: false, //項目完成狀態 完成: true | 未完成: false
-                    date_create: "2021-01-01", //建立日期
-                    date_limit: "2022-01-01", //項目期限
-                    date_complete: "2021-11-02", //完成日期
-                },
-                {
-                    id: "004", //項目建立時之時間戳
-                    title: "測試項目 004",
-                    clock_expect: 8, //預期時間
-                    clock_spend: 8, //花費時間
-                    clock_over: 0, //超出時間
-                    completed: true, //項目完成狀態 完成: true | 未完成: false
-                    date_create: "2021-01-01", //建立日期
-                    date_limit: "2022-01-01", //項目期限
-                    date_complete: "2021-11-02", //完成日期
-                },
-                {
-                    id: "005", //項目建立時之時間戳
-                    title: "測試項目 005",
-                    clock_expect: 4, //預期時間
-                    clock_spend: 4, //花費時間
-                    clock_over: 4, //超出時間
-                    completed: true, //項目完成狀態 完成: true | 未完成: false
-                    date_create: "2021-01-01", //建立日期
-                    date_limit: "2022-01-01", //項目期限
-                    date_complete: "2021-11-02", //完成日期
-                },
-                {
-                    id: "006", //項目建立時之時間戳
-                    title: "測試項目 006",
-                    clock_expect: 8, //預期時間
-                    clock_spend: 1, //花費時間
-                    clock_over: 0, //超出時間
-                    completed: false, //項目完成狀態 完成: true | 未完成: false
-                    date_create: "2021-01-01", //建立日期
-                    date_limit: "2022-01-01", //項目期限
-                    date_complete: "2021-11-02", //完成日期
-                },
-                //?
-                {
-                    id: "007", //項目建立時之時間戳
-                    title: "測試項目 007",
-                    clock_expect: 8, //預期時間
-                    clock_spend: 2, //花費時間
-                    clock_over: 0, //超出時間
-                    completed: true, //項目完成狀態 完成: true | 未完成: false
-                    date_create: "2021-01-01", //建立日期
-                    date_limit: "2022-01-01", //項目期限
-                    date_complete: "2021-11-02", //完成日期
-                },
-                {
-                    id: "008", //項目建立時之時間戳
-                    title: "測試項目 008",
-                    clock_expect: 8, //預期時間
-                    clock_spend: 4, //花費時間
-                    clock_over: 0, //超出時間
-                    completed: false, //項目完成狀態 完成: true | 未完成: false
-                    date_create: "2021-01-01", //建立日期
-                    date_limit: "2022-01-01", //項目期限
-                    date_complete: "2021-11-02", //完成日期
-                },
-                {
-                    id: "009", //項目建立時之時間戳
-                    title: "測試項目 009",
-                    clock_expect: 8, //預期時間
-                    clock_spend: 8, //花費時間
-                    clock_over: 0, //超出時間
-                    completed: true, //項目完成狀態 完成: true | 未完成: false
-                    date_create: "2021-01-01", //建立日期
-                    date_limit: "2022-01-01", //項目期限
-                    date_complete: "2021-11-02", //完成日期
-                },
-                {
-                    id: "010", //項目建立時之時間戳
-                    title: "測試項目 010",
-                    clock_expect: 4, //預期時間
-                    clock_spend: 4, //花費時間
-                    clock_over: 4, //超出時間
-                    completed: true, //項目完成狀態 完成: true | 未完成: false
-                    date_create: "2021-01-01", //建立日期
-                    date_limit: "2022-01-01", //項目期限
-                    date_complete: "2021-11-02", //完成日期
-                },
-                {
-                    id: "011", //項目建立時之時間戳
-                    title: "測試項目 011",
-                    clock_expect: 8, //預期時間
-                    clock_spend: 1, //花費時間
-                    clock_over: 0, //超出時間
-                    completed: false, //項目完成狀態 完成: true | 未完成: false
-                    date_create: "2021-01-01", //建立日期
-                    date_limit: "2022-01-01", //項目期限
-                    date_complete: "2021-11-02", //完成日期
-                },
-                //?
-                {
-                    id: "012", //項目建立時之時間戳
-                    title: "測試項目 012",
-                    clock_expect: 8, //預期時間
-                    clock_spend: 2, //花費時間
-                    clock_over: 0, //超出時間
-                    completed: true, //項目完成狀態 完成: true | 未完成: false
-                    date_create: "2021-01-01", //建立日期
-                    date_limit: "2022-01-01", //項目期限
-                    date_complete: "2021-11-02", //完成日期
-                },
-                {
-                    id: "013", //項目建立時之時間戳
-                    title: "測試項目 013",
-                    clock_expect: 8, //預期時間
-                    clock_spend: 4, //花費時間
-                    clock_over: 0, //超出時間
-                    completed: false, //項目完成狀態 完成: true | 未完成: false
-                    date_create: "2021-01-01", //建立日期
-                    date_limit: "2022-01-01", //項目期限
-                    date_complete: "2021-11-02", //完成日期
-                },
-                {
-                    id: "014", //項目建立時之時間戳
-                    title: "測試項目 014",
-                    clock_expect: 8, //預期時間
-                    clock_spend: 8, //花費時間
-                    clock_over: 0, //超出時間
-                    completed: true, //項目完成狀態 完成: true | 未完成: false
-                    date_create: "2021-01-01", //建立日期
-                    date_limit: "2022-01-01", //項目期限
-                    date_complete: "2021-11-02", //完成日期
-                },
-                {
-                    id: "015", //項目建立時之時間戳
-                    title: "測試項目 015",
-                    clock_expect: 4, //預期時間
-                    clock_spend: 4, //花費時間
-                    clock_over: 4, //超出時間
-                    completed: true, //項目完成狀態 完成: true | 未完成: false
-                    date_create: "2021-01-01", //建立日期
-                    date_limit: "2022-01-01", //項目期限
-                    date_complete: "2021-11-02", //完成日期
-                },
+                // {
+                //     id: "001", //項目建立時之時間戳
+                //     title: "測試項目 001",
+                //     clock_expect: 8, //預期時間
+                //     clock_spend: 9, //花費時間
+                //     completed: false, //項目完成狀態 完成: true | 未完成: false
+                //     date_create: "2021-01-01", //建立日期
+                //     date_limit: "2021-01-01", //項目期限
+                //     date_complete: "2021-11-02", //完成日期
+                // },
+                // //?
+                // {
+                //     id: "002", //項目建立時之時間戳
+                //     title: "測試項目 002",
+                //     clock_expect: 8, //預期時間
+                //     clock_spend: 20, //花費時間
+                //     completed: true, //項目完成狀態 完成: true | 未完成: false
+                //     date_create: "2021-01-01", //建立日期
+                //     date_limit: "2022-01-01", //項目期限
+                //     date_complete: "2021-11-02", //完成日期
+                // },
+                // {
+                //     id: "003", //項目建立時之時間戳
+                //     title: "測試項目 003",
+                //     clock_expect: 8, //預期時間
+                //     clock_spend: 4, //花費時間
+                //     completed: false, //項目完成狀態 完成: true | 未完成: false
+                //     date_create: "2021-01-01", //建立日期
+                //     date_limit: "2022-01-01", //項目期限
+                //     date_complete: "2021-11-02", //完成日期
+                // },
+                // {
+                //     id: "004", //項目建立時之時間戳
+                //     title: "測試項目 004",
+                //     clock_expect: 8, //預期時間
+                //     clock_spend: 8, //花費時間
+                //     completed: true, //項目完成狀態 完成: true | 未完成: false
+                //     date_create: "2021-01-01", //建立日期
+                //     date_limit: "2022-01-01", //項目期限
+                //     date_complete: "2021-11-02", //完成日期
+                // },
+                // {
+                //     id: "005", //項目建立時之時間戳
+                //     title: "測試項目 005",
+                //     clock_expect: 4, //預期時間
+                //     clock_spend: 4, //花費時間
+                //     clock_over: 4, //超出時間
+                //     completed: true, //項目完成狀態 完成: true | 未完成: false
+                //     date_create: "2021-01-01", //建立日期
+                //     date_limit: "2022-01-01", //項目期限
+                //     date_complete: "2021-11-02", //完成日期
+                // },
+                // {
+                //     id: "006", //項目建立時之時間戳
+                //     title: "測試項目 006",
+                //     clock_expect: 8, //預期時間
+                //     clock_spend: 1, //花費時間
+                //     completed: false, //項目完成狀態 完成: true | 未完成: false
+                //     date_create: "2021-01-01", //建立日期
+                //     date_limit: "2022-01-01", //項目期限
+                //     date_complete: "2021-11-02", //完成日期
+                // },
+                // //?
+                // {
+                //     id: "007", //項目建立時之時間戳
+                //     title: "測試項目 007",
+                //     clock_expect: 8, //預期時間
+                //     clock_spend: 2, //花費時間
+                //     completed: true, //項目完成狀態 完成: true | 未完成: false
+                //     date_create: "2021-01-01", //建立日期
+                //     date_limit: "2022-01-01", //項目期限
+                //     date_complete: "2021-11-02", //完成日期
+                // },
+                // {
+                //     id: "008", //項目建立時之時間戳
+                //     title: "測試項目 008",
+                //     clock_expect: 8, //預期時間
+                //     clock_spend: 4, //花費時間
+                //     completed: false, //項目完成狀態 完成: true | 未完成: false
+                //     date_create: "2021-01-01", //建立日期
+                //     date_limit: "2022-01-01", //項目期限
+                //     date_complete: "2021-11-02", //完成日期
+                // },
+                // {
+                //     id: "009", //項目建立時之時間戳
+                //     title: "測試項目 009",
+                //     clock_expect: 8, //預期時間
+                //     clock_spend: 8, //花費時間
+                //     completed: true, //項目完成狀態 完成: true | 未完成: false
+                //     date_create: "2021-01-01", //建立日期
+                //     date_limit: "2022-01-01", //項目期限
+                //     date_complete: "2021-11-02", //完成日期
+                // },
+                // {
+                //     id: "010", //項目建立時之時間戳
+                //     title: "測試項目 010",
+                //     clock_expect: 4, //預期時間
+                //     clock_spend: 4, //花費時間
+                //     clock_over: 4, //超出時間
+                //     completed: true, //項目完成狀態 完成: true | 未完成: false
+                //     date_create: "2021-01-01", //建立日期
+                //     date_limit: "2022-01-01", //項目期限
+                //     date_complete: "2021-11-02", //完成日期
+                // },
+                // {
+                //     id: "011", //項目建立時之時間戳
+                //     title: "測試項目 011",
+                //     clock_expect: 8, //預期時間
+                //     clock_spend: 1, //花費時間
+                //     completed: false, //項目完成狀態 完成: true | 未完成: false
+                //     date_create: "2021-01-01", //建立日期
+                //     date_limit: "2022-01-01", //項目期限
+                //     date_complete: "2021-11-02", //完成日期
+                // },
+                // {
+                //     id: "012", //項目建立時之時間戳
+                //     title: "測試項目 012",
+                //     clock_expect: 8, //預期時間
+                //     clock_spend: 2, //花費時間
+                //     completed: true, //項目完成狀態 完成: true | 未完成: false
+                //     date_create: "2021-01-01", //建立日期
+                //     date_limit: "2022-01-01", //項目期限
+                //     date_complete: "2021-11-02", //完成日期
+                // },
+                // {
+                //     id: "013", //項目建立時之時間戳
+                //     title: "測試項目 013",
+                //     clock_expect: 8, //預期時間
+                //     clock_spend: 4, //花費時間
+                //     completed: false, //項目完成狀態 完成: true | 未完成: false
+                //     date_create: "2021-01-01", //建立日期
+                //     date_limit: "2022-01-01", //項目期限
+                //     date_complete: "2021-11-02", //完成日期
+                // },
+                // {
+                //     id: "014", //項目建立時之時間戳
+                //     title: "測試項目 014",
+                //     clock_expect: 8, //預期時間
+                //     clock_spend: 8, //花費時間
+                //     completed: true, //項目完成狀態 完成: true | 未完成: false
+                //     date_create: "2021-01-01", //建立日期
+                //     date_limit: "2022-01-01", //項目期限
+                //     date_complete: "2021-11-02", //完成日期
+                // },
+                // {
+                //     id: "015", //項目建立時之時間戳
+                //     title: "測試項目 015",
+                //     clock_expect: 4, //預期時間
+                //     clock_spend: 4, //花費時間
+                //     completed: true, //項目完成狀態 完成: true | 未完成: false
+                //     date_create: "2021-01-01", //建立日期
+                //     date_limit: "2022-01-01", //項目期限
+                //     date_complete: "2021-11-02", //完成日期
+                // },
             ],
-            temp: {},
             //? Editor Data
             editor: {
                 status: 'create', //create | edit
                 item: {
                     id: "", //項目建立時之時間戳
-                    title: "無輸入文字",
+                    title: "",
                     clock_expect: 0, //預期時間
                     clock_spend: 0, //花費時間
-                    clock_over: 0, //超出時間
                     completed: false, //項目完成狀態 完成: true | 未完成: false
                     date_create: '', //建立日期
                     date_limit: '',
-                    date_complete: '2021-10-20', //完成日期
+                    date_complete: '', //完成日期
                 }
             },
             //? Analysis Data
             analysis: {
                 data: [ // Daily Complete Colck
-                    {
-                        date: "2021-11-01",
-                        task: 1,
-                        clock: 5,
-                    },
-                    {
-                        date: "2021-11-02",
-                        task: 2,
-                        clock: 10,
-                    },
-                    {
-                        date: "2021-11-03",
-                        task: 3,
-                        clock: 15,
-                    },
-                    {
-                        date: "2021-11-04",
-                        task: 4,
-                        clock: 20,
-                    },
-                    {
-                        date: "2021-11-05",
-                        task: 5,
-                        clock: 25,
-                    },
-                    {
-                        date: "2021-11-06",
-                        task: 6,
-                        clock: 30,
-                    },
-                    {
-                        date: "2021-11-07",
-                        task: 7,
-                        clock: 35,
-                    },
-                    {
-                        date: "2021-11-08",
-                        task: 8,
-                        clock: 40,
-                    },
-                    {
-                        date: "2021-11-09",
-                        task: 9,
-                        clock: 45,
-                    },
-                    {
-                        date: "2021-11-10",
-                        task: 10,
-                        clock: 50,
-                    },
+                    // {
+                    //     date: "2021-11-01",
+                    //     task: 1,
+                    //     clock: 5,
+                    // },
+                    // {
+                    //     date: "2021-11-02",
+                    //     task: 2,
+                    //     clock: 10,
+                    // },
+                    // {
+                    //     date: "2021-11-03",
+                    //     task: 3,
+                    //     clock: 15,
+                    // },
+                    // {
+                    //     date: "2021-11-04",
+                    //     task: 4,
+                    //     clock: 20,
+                    // },
+                    // {
+                    //     date: "2021-11-05",
+                    //     task: 5,
+                    //     clock: 25,
+                    // },
+                    // {
+                    //     date: "2021-11-06",
+                    //     task: 6,
+                    //     clock: 30,
+                    // },
+                    // {
+                    //     date: "2021-11-07",
+                    //     task: 7,
+                    //     clock: 35,
+                    // },
+                    // {
+                    //     date: "2021-11-08",
+                    //     task: 8,
+                    //     clock: 40,
+                    // },
+                    // {
+                    //     date: "2021-11-09",
+                    //     task: 9,
+                    //     clock: 45,
+                    // },
+                    // {
+                    //     date: "2021-11-10",
+                    //     task: 10,
+                    //     clock: 50,
+                    // },
                 ],
                 completed: {
                     today: 0,
@@ -293,45 +276,45 @@ Vue.createApp({
                     dateTo: "2022-10-30",
                     height: 0.3,
                     week: [{
-                            date: "2021-10-24",
-                            task: 10,
-                            clock: 24,
+                            date: "",
+                            task: 0,
+                            clock: 0,
                             data: 0
                         },
                         {
-                            date: "2021-10-25",
-                            task: 9,
-                            clock: 25,
+                            date: "",
+                            task: 0,
+                            clock: 0,
                             data: 0
                         },
                         {
-                            date: "2021-10-26",
-                            task: 8,
-                            clock: 26,
+                            date: "",
+                            task: 0,
+                            clock: 0,
                             data: 0
                         },
                         {
-                            date: "2021-10-27",
-                            task: 7,
-                            clock: 27,
+                            date: "",
+                            task: 0,
+                            clock: 0,
                             data: 0
                         },
                         {
-                            date: "2021-10-28",
-                            task: 6,
-                            clock: 28,
+                            date: "",
+                            task: 0,
+                            clock: 0,
                             data: 0
                         },
                         {
-                            date: "2021-10-29",
-                            task: 5,
-                            clock: 29,
+                            date: "",
+                            task: 0,
+                            clock: 0,
                             data: 0
                         },
                         {
-                            date: "2021-10-30",
-                            task: 4,
-                            clock: 30,
+                            date: "",
+                            task: 0,
+                            clock: 0,
                             data: 0
                         },
                     ],
@@ -378,7 +361,6 @@ Vue.createApp({
                     this.tabAnimation.enter = "slide-left-enter"
                     this.tabAnimation.leave = "slide-right-leave"
                     break;
-
                 case "left":
                     this.tabAnimation.enter = "slide-right-enter"
                     this.tabAnimation.leave = "slide-left-leave"
@@ -400,7 +382,6 @@ Vue.createApp({
                     selectIndex = item.dataset.tabIndex
                 }
             })
-
             //? 判斷動畫方向
             if (tab_active.dataset.tabIndex < selectIndex) {
                 //right to left |<<<|
@@ -468,9 +449,6 @@ Vue.createApp({
                 case "setting":
                     this.filter.setting = e.target.dataset.filterTarget
                     break;
-
-                default:
-                    break;
             }
         },
         filterContent(e) {
@@ -485,7 +463,6 @@ Vue.createApp({
                         this.tabAnimationPosition("right");
                         break;
                 }
-
                 //? content
                 filter_content.forEach(item => {
                     item.classList.remove("filter-content-active")
@@ -494,7 +471,6 @@ Vue.createApp({
                     }
                 })
                 filter_content_active.classList.add(this.tabAnimation.leave)
-
                 setTimeout(() => {
                     filter_content.forEach((item) => {
                         if (item.dataset.filterContent == e.target.dataset.filterTarget) {
@@ -506,8 +482,13 @@ Vue.createApp({
                 }, 200);
             }
         },
-
         //? ---------- ---------- localstorage ---------- ----------
+        resetLocalStorage() {
+            localStorage.removeItem('clock')
+            localStorage.removeItem('working')
+            localStorage.removeItem('todolist')
+            localStorage.removeItem('completed')
+        },
         setLocalClock() {
             localStorage.setItem('clock', JSON.stringify(this.clock))
         },
@@ -526,12 +507,28 @@ Vue.createApp({
                 this.resetWorking()
             }
         },
-        setLocallist() {},
-        getLocallist() {},
+        setLocallist() {
+            localStorage.setItem('todolist', JSON.stringify(this.list))
+        },
+        getLocallist() {
+            this.list = JSON.parse(localStorage.getItem('todolist'));
+            if (this.list == null) {
+                this.resetList()
+            }
+        },
+        setLocalCompleted() {
+            localStorage.setItem('completed', JSON.stringify(this.analysis.data))
+        },
+        getLocalCompleted() {
+            this.analysis.data = JSON.parse(localStorage.getItem('completed'));
+            if (this.analysis.data == null) {
+                this.resetCompletedData()
+            }
+        },
         //? ---------- ---------- reset data ---------- ----------
         resetFilter() {
             this.filter.analysis = "task"
-            this.filter.setting = "clock"
+            this.filter.setting = "working"
         },
         resetClock() {
             this.clock = {
@@ -554,36 +551,31 @@ Vue.createApp({
             this.clock.status = "working"
             this.setClockTime()
             this.working = {
-                id: "000", //項目建立時之時間戳
+                id: "", //項目建立時之時間戳
                 title: "無指定項目",
                 clock_expect: 8, //預期時間
                 clock_spend: 0, //花費時間
-                clock_over: 0, //超出時間
                 completed: false, //項目完成狀態 完成: true | 未完成: false
-                date_create: null, //建立日期
-                date_limit: { //項目期限
-                    year: 2021,
-                    month: 9,
-                    day: 8,
-                },
-                date_complete: "2021-11-02", //完成日期
+                date_create: "", //建立日期
+                date_limit: "",
+                date_complete: "", //完成日期
             }
             this.setLocalWorking()
         },
         resetList() {
             this.list = [{
-                id: "000", //項目建立時之時間戳
+                id: 0, //項目建立時之時間戳
                 title: "第一個項目",
                 clock_expect: 8, //預期時間
                 clock_spend: 0, //花費時間
-                clock_over: 0, //超出時間
-                completed: true, //項目完成狀態 完成: true | 未完成: false
+                completed: false, //項目完成狀態 完成: true | 未完成: false
                 date_create: '', //建立日期
                 date_limit: '',
                 date_complete: '', //完成日期
             }];
             this.resetWorking()
             this.setLocallist()
+            this.updateDailyTask()
         },
         resetEditor() {
             this.editor.item = {
@@ -591,7 +583,6 @@ Vue.createApp({
                 title: "",
                 clock_expect: 0, //預期時間
                 clock_spend: 0, //花費時間
-                clock_over: 0, //超出時間
                 completed: false, //項目完成狀態 完成: true | 未完成: false
                 date_create: '', //建立日期
                 date_limit: '',
@@ -603,6 +594,10 @@ Vue.createApp({
                 item.data = item.task
             })
             this.analysis.chart.height = 0.6
+        },
+        resetCompletedData() {
+            this.analysis.data = []
+            this.updateDailyTask()
         },
         //? ---------- ---------- Data Format ---------- ----------
         dateFormat(date) {
@@ -683,18 +678,13 @@ Vue.createApp({
             this.clock.playing = false
             if (this.clock.status == "working") {
                 this.updateTodayClock()
-                if (this.working.clock_spend < this.working.clock_expect) {
-                    this.working.clock_spend++
-                } else {
-                    if (this.working.clock_over < (8 - this.working.clock_expect)) {
-                        this.working.clock_over++
-                    }
-                }
+                this.working.clock_spend++
             }
             this.setLocalWorking()
             this.switchClock()
             this.setClockTime()
             this.renderClock()
+            this.setLocalCompleted()
         },
         //? setting part
         setWorkTime(item) {
@@ -719,6 +709,7 @@ Vue.createApp({
             this.editor.item.date_create = this.date.today
             this.list.push(this.editor.item)
             this.resetEditor()
+            this.setLocallist()
         },
         editItem(item) {
             this.editor.status = 'edit'
@@ -732,7 +723,6 @@ Vue.createApp({
             console.log(Index);
             if (this.list[Index] !== undefined) {
                 this.list[Index] = this.editor.item
-
                 console.log('SAVE TASK ' + this.list[Index].id);
             } else {
                 console.log('List Index undefined');
@@ -740,16 +730,24 @@ Vue.createApp({
             this.resetWorking()
             this.resetEditor()
             this.editor.status = 'create'
+            this.setLocallist()
         },
         editWork() {
+            const Index = this.list.findIndex(item => item.id === this.working.id)
+            console.log(Index);
+            if (this.list[Index] !== undefined) {
+                this.editor.status = 'edit'
+            } else {
+                this.editor.status = 'create'
+            }
             this.editor.item = {
                 ...this.working
             }
-            console.log(this.working);
         },
         playItem(item) {
             this.working = item
             console.log(item);
+            this.setLocalWorking()
         },
         completeItem(item) {
             item.completed = true
@@ -757,6 +755,15 @@ Vue.createApp({
                 this.resetWorking()
             }
             item.date_complete = this.date.today
+            this.setLocallist()
+        },
+        replyItem(item) {
+            item.completed = false
+            if (this.working.id == item.id) {
+                this.resetWorking()
+            }
+            item.date_complete = ""
+            this.setLocallist()
         },
         removeItem() {
             const Index = this.list.findIndex(item => item.id === this.editor.item.id)
@@ -768,6 +775,7 @@ Vue.createApp({
                 console.log('CLEAR EDIROR DATA');
             }
             this.resetEditor()
+            this.setLocallist()
         },
         workingComplete() {
             const Index = this.list.findIndex(item => item.id === this.working.id)
@@ -779,6 +787,7 @@ Vue.createApp({
                 console.log('List Index undefined');
             }
             this.resetWorking()
+            this.setLocallist()
         },
         //? ---------- ---------- Analysis Action ---------- ----------
         //? Render This Week Data
@@ -894,7 +903,7 @@ Vue.createApp({
                 // console.log(this.analysis.data[Index]);
                 if (Index == -1) {
                     this.analysis.data.push({
-                        date: this.data.today,
+                        date: this.date.today,
                         task: 1,
                         clock: 0
                     })
@@ -903,17 +912,26 @@ Vue.createApp({
                 }
             })
             this.getChartWeekData()
+            this.setLocalCompleted()
         }
     },
     mounted() {
+        //? get real date data
+        this.getTodayDate()
+        this.getThisWeek()
+        //? get localStorage data
         this.getLocalClock()
         this.getLocalWorking()
         this.getstrock()
+        this.getLocallist()
+        this.getLocalCompleted()
+
+        //? get clock player setting
         this.setClockTime()
         this.renderClock()
         this.timer = setInterval(this.playingClock, 1000);
-        this.getTodayDate()
-        this.getThisWeek()
+
+        //? Reset Analysis Data
         this.resetFilter()
         this.resetAnalysis()
         this.renderAnalysis()

@@ -59,9 +59,15 @@
                         <div class="clock">
                             <h2 class="clock-title">{{working.title}}</h2>
                             <ul class="clock-expect">
-                                <li v-for="item in working.clock_spend" class="clock-spend clock-spend--active"></li>
-                                <li v-for="item in working.clock_expect-working.clock_spend" class="clock-spend"></li>
-                                <li v-for="item in working.clock_over" class="clock-spend clock-spend--over"></li>
+                                <template v-for="num in working.clock_expect">
+                                    <li v-if="num <= working.clock_spend" class="clock-spend clock-spend--active"></li>
+                                    <li v-else class="task-spend"></li>
+                                </template>
+                                <template v-if="working.clock_spend > working.clock_expect">
+                                    <li class="clock-spend clock-spend--over"></li>
+                                    <li class="clock-spend--num ">+{{working.clock_spend -
+                                        working.clock_expect}}</li>
+                                </template>
                             </ul>
                             <p v-if="working.date_create == null" class="clock-date">{{working.date_create}}
                             <p v-else class="clock-date">Create On {{working.date_create}}
@@ -86,9 +92,16 @@
                         <!--? Clock Control -->
                         <div class="clock">
                             <ul class="clock-player">
-                                <li class="clock-btn" @click="stopClock()">
-                                    <i class="bi bi-stop-circle-fill"></i>
-                                </li>
+                                <template v-if="clock.playing">
+                                    <li class="clock-btn" @click="stopClock()">
+                                        <i class="bi bi-stop-circle-fill"></i>
+                                    </li>
+                                </template>
+                                <template v-else>
+                                    <li class="clock-btn" @click="resetWorking()">
+                                        <i class="bi bi-stop-circle-fill"></i>
+                                    </li>
+                                </template>
                                 <li class="clock-btn" v-if="clock.playing == false" @click="playClock()">
                                     <i class="bi bi-play-circle-fill"></i>
                                 </li>
@@ -102,11 +115,13 @@
                         </div>
                         <div class="clock">
                             <!--? Complete Task -->
-                            <button class="clock-complete" data-tab-target="list" data-filter-target="done"
-                                @click="selectTabs('list'); workingComplete();updateDailyTask()">
-                                Task complete
-                                <i class="bi bi-check-circle-fill"></i>
-                            </button>
+                            <template v-if="list.findIndex(item => item.id === working.id) !== -1">
+                                <button class="clock-complete" data-tab-target="list" data-filter-target="done"
+                                    @click="selectTabs('list'); workingComplete();updateDailyTask()">
+                                    Task complete
+                                    <i class="bi bi-check-circle-fill"></i>
+                                </button>
+                            </template>
                         </div>
                     </div>
                 </div>
@@ -137,27 +152,36 @@
                                     <div class="working">
                                         <div class="working-title">
                                             <h3>{{working.title}}</h3>
-                                            <ul class="task-expect">
-                                                <li v-for="item in working.clock_spend"
-                                                    class="task-spend task-spend--active">
-                                                </li>
-                                                <li v-for="item in working.clock_expect-working.clock_spend"
-                                                    class="task-spend">
-                                                </li>
-                                                <li v-for="item in working.clock_over"
-                                                    class="task-spend task-spend--over">
-                                                </li>
+
+                                            <ul class="clock-expect">
+                                                <template v-for="num in working.clock_expect">
+                                                    <li v-if="num <= working.clock_spend"
+                                                        class="clock-spend clock-spend--active"></li>
+                                                    <li v-else class="clock-spend"></li>
+                                                </template>
+                                                <template v-if="working.clock_spend > working.clock_expect">
+                                                    <li class="clock-spend clock-spend--over"></li>
+                                                    <li class="clock-spend--num ">+{{working.clock_spend -
+                                                        working.clock_expect}}</li>
+                                                </template>
                                             </ul>
                                         </div>
-                                        <button class="btn" @click="selectTabs('editor')">
+                                        <button class="btn" @click="selectTabs('editor');editWork();">
                                             <i class="fas fa-ellipsis-h"></i>
                                         </button>
                                     </div>
                                     <div class="working">
                                         <ul class="working-player">
-                                            <li class=" working-btn" @click="stopClock()">
-                                                <i class="bi bi-stop-circle-fill"></i>
-                                            </li>
+                                            <template v-if="clock.playing">
+                                                <li class="working-btn" @click="stopClock()">
+                                                    <i class="bi bi-stop-circle-fill"></i>
+                                                </li>
+                                            </template>
+                                            <template v-else>
+                                                <li class="working-btn" @click="resetWorking()">
+                                                    <i class="bi bi-stop-circle-fill"></i>
+                                                </li>
+                                            </template>
                                             <li class=" working-btn" v-if="clock.playing == false" @click="playClock()">
                                                 <i class="bi bi-play-circle-fill"></i>
                                             </li>
@@ -172,11 +196,13 @@
                                             {{clock.timerText}}
                                         </p>
                                     </div>
-                                    <button class="working-complete" data-tab-target="list"
-                                        @click="selectTabs('list');">
-                                        Task complete
-                                        <i class="bi bi-check-circle-fill"></i>
-                                    </button>
+                                    <template v-if="list.findIndex(item => item.id === working.id) !== -1">
+                                        <button class="working-complete" data-tab-target="list"
+                                            @click="selectTabs('list');">
+                                            Task complete
+                                            <i class="bi bi-check-circle-fill"></i>
+                                        </button>
+                                    </template>
                                 </div>
                             </div>
                             <!--? ToDoList Area -->
@@ -186,8 +212,8 @@
                                     <!--? task item -->
                                     <template v-for="(item, index) in list.filter(list => list.completed == false)"
                                         :key="item.id">
-                                        <li class="surface" v-if="index <= 2">
-                                            <button class="btn" @click="playItem(item)" v-if="item.id == working.id">
+                                        <li class="surface task-body" v-if="index <= 2">
+                                            <button class="btn" @click="playItem(item)" v-if="item.id === working.id">
                                                 <i class="bi bi-play-circle"></i>
                                             </button>
                                             <button class="btn" @click="playItem(item)" v-else>
@@ -196,23 +222,22 @@
                                             <div class="task-title">
                                                 <h3 class="task-text">
                                                     {{item.title}}
-                                                    <span v-if="item.id == working.id"> working...</span>
+                                                    <span v-if="item.id === working.id"> working...</span>
                                                 </h3>
                                                 <ul class="task-expect">
-                                                    <li v-for="item in item.clock_spend"
-                                                        class="task-spend task-spend--active"></li>
-                                                    <li v-for="item in  item.clock_expect - item.clock_spend"
-                                                        class="task-spend"></li>
-                                                    <li v-for="item in item.clock_over"
-                                                        class="task-spend task-spend--over">
-                                                    </li>
+                                                    <template v-for="num in item.clock_expect">
+                                                        <li v-if="num <= item.clock_spend"
+                                                            class="task-spend task-spend--active"></li>
+                                                        <li v-else class="task-spend"></li>
+                                                    </template>
+                                                    <template v-if="item.clock_spend > item.clock_expect">
+                                                        <li class="task-spend task-spend--over"></li>
+                                                        <li class="task-spend--num ">+{{item.clock_spend -
+                                                            item.clock_expect}}</li>
+                                                    </template>
                                                 </ul>
                                             </div>
-                                            <button v-if="item.completed == true" class="btn"
-                                                @click="item.completed = false">
-                                                <i class="bi bi-reply-fill"></i>
-                                            </button>
-                                            <button v-else class="btn" @click="item.completed = true;updateDailyTask()">
+                                            <button class="btn" @click="completeItem(item);updateDailyTask()">
                                                 <i class="bi bi-check-circle-fill"></i>
                                             </button>
                                             <button class=" btn" @click="editItem(item); selectTabs('editor');">
@@ -245,8 +270,8 @@
                                     <ul class="task-list">
                                         <template v-for="item in list" :key="item.id">
                                             <!--? task item -->
-                                            <li class="surface" v-if="!item.completed">
-                                                <button class="btn" v-if="item.id == working.id">
+                                            <li class="surface task-body" v-if="!item.completed">
+                                                <button class="btn" v-if="item.id === working.id">
                                                     <i class="bi bi-play-circle"></i>
                                                 </button>
                                                 <button class="btn" @click="playItem(item);callClock()" v-else>
@@ -256,18 +281,22 @@
                                                 <div class="task-title">
                                                     <h3 class="task-text">
                                                         {{item.title}}
-                                                        <span v-if="item.id == working.id"> working...</span>
+                                                        <span v-if="item.id === working.id"> working...</span>
+                                                        <span class="task-title--over "
+                                                            v-if="new Date(date.today) >new Date(item.date_limit)">
+                                                            Overdue</span>
                                                     </h3>
                                                     <!--? TASK SPENDED CLOCK -->
                                                     <ul class="task-expect">
-                                                        <li v-for="item in item.clock_spend"
-                                                            class="task-spend task-spend--active"></li>
-                                                        <li v-for="item in  item.clock_expect - item.clock_spend"
-                                                            class="task-spend"></li>
-                                                        <template v-if="item.clock_spend >= item.clock_expect">
-                                                            <li v-for="item in item.clock_over"
-                                                                class="task-spend task-spend--over">
-                                                            </li>
+                                                        <template v-for="num in item.clock_expect">
+                                                            <li v-if="num <= item.clock_spend"
+                                                                class="task-spend task-spend--active"></li>
+                                                            <li v-else class="task-spend"></li>
+                                                        </template>
+                                                        <template v-if="item.clock_spend > item.clock_expect">
+                                                            <li class="task-spend task-spend--over"></li>
+                                                            <li class="task-spend--num ">+{{item.clock_spend -
+                                                                item.clock_expect}}</li>
                                                         </template>
                                                     </ul>
                                                 </div>
@@ -288,30 +317,42 @@
                                         <template v-for="item in list" :key="item.id">
                                             <!--? task item -->
                                             <li class="surface" v-if="item.completed">
-                                                <button class="btn btn-disabled">
-                                                    <i class="bi bi-check-circle"></i>
-                                                </button>
-
-                                                <div class="task-title">
-                                                    <h3 class="task-text">{{item.title}}</h3>
-                                                    <ul class="task-expect">
-                                                        <li v-for="item in item.clock_spend"
-                                                            class="task-spend task-spend--active"></li>
-                                                        <li v-for="item in  item.clock_expect - item.clock_spend"
-                                                            class="task-spend"></li>
-                                                        <li v-for="item in item.clock_over"
-                                                            class="task-spend task-spend--over">
-                                                        </li>
-                                                    </ul>
+                                                <div class="task-body">
+                                                    <button class="btn btn-disabled">
+                                                        <i class="bi bi-check-circle"></i>
+                                                    </button>
+                                                    <div class="task-title">
+                                                        <h3 class="task-text">{{item.title}}
+                                                            <span class="task-title--over "
+                                                                v-if="new Date(date.today) >new Date(item.date_limit)">
+                                                                Overdue</span>
+                                                        </h3>
+                                                        <ul class="task-expect">
+                                                            <template v-for="num in item.clock_expect">
+                                                                <li v-if="num <= item.clock_spend"
+                                                                    class="task-spend task-spend--active"></li>
+                                                                <li v-else class="task-spend"></li>
+                                                            </template>
+                                                            <template v-if="item.clock_spend > item.clock_expect">
+                                                                <li class="task-spend task-spend--over"></li>
+                                                                <li class="task-spend--num ">+{{item.clock_spend -
+                                                                    item.clock_expect}}</li>
+                                                            </template>
+                                                        </ul>
+                                                    </div>
+                                                    <button class="btn" @click="replyItem(item);updateDailyTask()">
+                                                        <i class="bi bi-reply-fill"></i>
+                                                    </button>
+                                                    <button class=" btn" data-tab-target="editor"
+                                                        @click="editItem(item);selectTabs('editor')">
+                                                        <i class="fas fa-ellipsis-h"></i>
+                                                    </button>
                                                 </div>
-                                                <button class="btn" @click="item.completed = false;updateDailyTask()">
-                                                    <i class="bi bi-reply-fill"></i>
-                                                </button>
-
-                                                <button class=" btn" data-tab-target="editor"
-                                                    @click="editItem(item);selectTabs('editor')">
-                                                    <i class="fas fa-ellipsis-h"></i>
-                                                </button>
+                                                <div class="task-footer">
+                                                    <span>created: {{item.date_create}}</span>
+                                                    <span>completed:
+                                                        {{item.date_complete}}</span>
+                                                </div>
                                             </li>
                                         </template>
                                     </ul>
@@ -533,9 +574,21 @@
                             <div class="setting-reset">
                                 <h2>Reset</h2>
                                 <ul class="reset">
-                                    <li class="reset-btn" @click="resetClock()">clock</li>
-                                    <li class="reset-btn" @click="resetWorking()">working</li>
-                                    <li class="reset-btn" @click="resetList()">Task list</li>
+                                    <li class="reset-btn" @click="resetList()"> <span>
+                                            <i class="fas fa-list"></i>
+                                            Task list
+                                        </span> </li>
+                                    <li class="reset-btn" @click="resetClock()"> <span>
+                                            <i class="fas fa-cog"></i>
+                                            setting
+                                        </span> </li>
+                                    <li class="reset-btn" @click="resetCompletedData()"> <span>
+                                            <i class="fas fa-clock"></i>
+                                            Completed
+                                        </span> </li>
+                                    <li class="reset-btn" @click="resetLocalStorage()"> <span>
+                                            localStorage
+                                        </span> </li>
                                 </ul>
                             </div>
                             <!--? Setting Page End -->
