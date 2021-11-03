@@ -880,7 +880,7 @@ Vue.createApp({
             if (Index == -1) {
                 //? this.analysis.data haven't today's Data
                 this.analysis.data.push({
-                    date: this.data.today,
+                    date: this.date.today,
                     task: 0,
                     clock: 1
                 })
