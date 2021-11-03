@@ -716,14 +716,14 @@ Vue.createApp({
             this.editor.item = {
                 ...item
             }
-            console.log(item);
+            // console.log(item);
         },
         updateItem() {
             const Index = this.list.findIndex(item => item.id === this.editor.item.id)
-            console.log(Index);
+            // console.log(Index);
             if (this.list[Index] !== undefined) {
                 this.list[Index] = this.editor.item
-                console.log('SAVE TASK ' + this.list[Index].id);
+                // console.log('SAVE TASK ' + this.list[Index].id);
             } else {
                 console.log('List Index undefined');
             }
@@ -746,7 +746,7 @@ Vue.createApp({
         },
         playItem(item) {
             this.working = item
-            console.log(item);
+            // console.log(item);
             this.setLocalWorking()
         },
         completeItem(item) {
@@ -767,22 +767,23 @@ Vue.createApp({
         },
         removeItem() {
             const Index = this.list.findIndex(item => item.id === this.editor.item.id)
-            console.log(Index);
+            // console.log(Index);
             if (this.list[Index] !== undefined) {
-                console.log('REMOVE  ' + this.list[Index].id);
+                console.log('REMOVE Item:');
+                console.log(this.list[Index]);
                 this.list.splice(Index, 1)
             } else {
-                console.log('CLEAR EDIROR DATA');
+                // console.log('CLEAR EDIROR DATA');
             }
             this.resetEditor()
             this.setLocallist()
         },
         workingComplete() {
             const Index = this.list.findIndex(item => item.id === this.working.id)
-            console.log(Index);
+            // console.log(Index);
             if (this.list[Index] !== undefined) {
                 this.list[Index].completed = true
-                console.log('COMPLETE WORKING  ' + this.list[Index].id);
+                // console.log('COMPLETE WORKING  ' + this.list[Index].id);
             } else {
                 console.log('List Index undefined');
             }
