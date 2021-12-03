@@ -494,18 +494,17 @@
                                                             {{weekName[new Date(item.date).getDay()]}}
                                                         </span>
                                                     </th>
-                                                    <template v-if="item.date == date.today">
-                                                        <td class="chart-bar chart-bar-today"
-                                                            :style="{height: item.data *  analysis.chart.height +'rem'}">
-                                                            <p>{{item.data}}</p>
-                                                        </td>
-                                                    </template>
-                                                    <template v-else>
-                                                        <td class="chart-bar"
-                                                            :style="{height: item.data *  analysis.chart.height +'rem'}">
-                                                            <p>{{item.data}}</p>
-                                                        </td>
-                                                    </template>
+
+                                                    <td class="chart-bar chart-bar-today" v-if="item.date == date.today"
+                                                        :style="{height: item.data *  analysis.chart.height +'rem'}">
+                                                        <p>{{item.data}}</p>
+                                                    </td>
+
+                                                    <td class="chart-bar" v-else
+                                                        :style="{height: item.data *  analysis.chart.height +'rem'}">
+                                                        <p>{{item.data}}</p>
+                                                    </td>
+
                                                 </tr>
                                             </tbody>
 

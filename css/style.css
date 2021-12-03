@@ -973,6 +973,7 @@ svg circle {
 }
 
 .chart-bar {
+    position: absolute;
     text-align: center;
     /* width: 3rem; */
     width: 50%;
@@ -980,11 +981,18 @@ svg circle {
     max-height: 15rem;
     background-color: var(--color-on-background);
     color: var(--color-primary);
-    position: absolute;
     left: 50%;
     bottom: 0;
     transform: translateX(-50%);
+    -ms-transform: translateX(-50%);
+    -moz-transform: translateX(-50%);
+    -webkit-transform: translateX(-50%);
+    -o-transform: translateX(-50%);
     transition: all 200ms ease;
+    -ms-transition: all 200ms ease;
+    -moz-transition: all 200ms ease;
+    -webkit-transition: all 200ms ease;
+    -o-transition: all 200ms ease;
 }
 
 .chart-bar-today {
@@ -997,6 +1005,10 @@ svg circle {
     top: -1.5rem;
     left: 50%;
     transform: translateX(-50%);
+    -ms-transform: translateX(-50%);
+    -moz-transform: translateX(-50%);
+    -webkit-transform: translateX(-50%);
+    -o-transform: translateX(-50%);
     font-weight: bold;
 }
 
@@ -1004,6 +1016,10 @@ svg circle {
     position: absolute;
     left: 50%;
     transform: translateX(-50%);
+    -ms-transform: translateX(-50%);
+    -moz-transform: translateX(-50%);
+    -webkit-transform: translateX(-50%);
+    -o-transform: translateX(-50%);
     color: var(--color-on-surface);
     text-align: center;
     bottom: -2.5rem;
