@@ -462,7 +462,6 @@
                                             <button class="chart-btn" @click="updateDate(1)">&gt;</button>
                                             <button class="chart-btn" @click="updateDate(7)">&gt;&gt;</button>
                                         </div>
-
                                         <table class="chart-body">
                                             <thead>
                                                 <tr>
@@ -478,6 +477,7 @@
                                             </thead>
                                             <tbody>
                                                 <tr v-for="item in analysis.chart.week" :key="item.date">
+                                                    <!--? Date -->
                                                     <th class="chart-text">
                                                         <p v-if="item.date.split('-')[2] =='01'">
                                                             {{item.date.split('-')[1]}}/1
@@ -494,7 +494,7 @@
                                                             {{weekName[new Date(item.date).getDay()]}}
                                                         </span>
                                                     </th>
-
+                                                    <!--? Date Bar -->
                                                     <td class="chart-bar chart-bar-today" v-if="item.date == date.today"
                                                         :style="{height: item.data *  analysis.chart.height +'rem'}">
                                                         <p>{{item.data}}</p>

@@ -967,32 +967,32 @@ svg circle {
 
 .chart-body tbody tr {
     width: calc(100%/7);
-    padding: 0 2.5%;
+    height: 100%;
     color: var(--color-primary);
-    position: relative;
+
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    flex-direction: column;
+    /* border: 1px dashed black; */
 }
 
+
+
 .chart-bar {
-    position: absolute;
     text-align: center;
-    /* width: 3rem; */
-    width: 50%;
+    width: 75%;
     height: 5rem;
+    max-width: 2rem;
     max-height: 15rem;
     background-color: var(--color-on-background);
     color: var(--color-primary);
-    left: 50%;
-    bottom: 0;
-    transform: translateX(-50%);
-    -ms-transform: translateX(-50%);
-    -moz-transform: translateX(-50%);
-    -webkit-transform: translateX(-50%);
-    -o-transform: translateX(-50%);
-    transition: all 200ms ease;
-    -ms-transition: all 200ms ease;
-    -moz-transition: all 200ms ease;
-    -webkit-transition: all 200ms ease;
-    -o-transition: all 200ms ease;
+
+    /* border: 1px dashed black; */
+    /*! position */
+    order: 1;
+    position: relative;
+    bottom: -2rem;
 }
 
 .chart-bar-today {
@@ -1001,29 +1001,25 @@ svg circle {
 }
 
 .chart-bar p {
+    font-weight: bold;
+
+    /* border: 1px dashed black; */
+    /*! position */
     position: absolute;
     top: -1.5rem;
-    left: 50%;
-    transform: translateX(-50%);
-    -ms-transform: translateX(-50%);
-    -moz-transform: translateX(-50%);
-    -webkit-transform: translateX(-50%);
-    -o-transform: translateX(-50%);
-    font-weight: bold;
+    right: 0;
+    left: 0;
+
 }
 
 .chart-text {
-    position: absolute;
-    left: 50%;
-    transform: translateX(-50%);
-    -ms-transform: translateX(-50%);
-    -moz-transform: translateX(-50%);
-    -webkit-transform: translateX(-50%);
-    -o-transform: translateX(-50%);
     color: var(--color-on-surface);
     text-align: center;
-    bottom: -2.5rem;
     font-weight: bold;
+    /*! position */
+    order: 2;
+    position: relative;
+    bottom: -2.5rem;
 }
 
 .chart-text span {
