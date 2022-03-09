@@ -2,7 +2,7 @@ Vue.createApp({
     data() {
         return {
             //? ---------- ---------- tab Data ---------- ----------
-            version: "1.0.1",
+            version: "0.0.3",
             tabAnimation: {
                 enter: "",
                 leave: ""
