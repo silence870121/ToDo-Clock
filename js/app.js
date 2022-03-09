@@ -425,7 +425,6 @@ Vue.createApp({
                     break;
             }
         },
-
         renderClock() {
             if (this.clock.time % 60 < 10) {
                 this.clock.timerText = `${parseInt(this.clock.time / 60)}:0${this.clock.time % 60}`
@@ -511,14 +510,12 @@ Vue.createApp({
             this.editor.item = {
                 ...item
             }
-            // console.log(item);
         },
         updateItem() {
             const Index = this.list.findIndex(item => item.id === this.editor.item.id)
             // console.log(Index);
             if (this.list[Index] !== undefined) {
                 this.list[Index] = this.editor.item
-                // console.log('SAVE TASK ' + this.list[Index].id);
             } else {
                 console.log('List Index undefined');
             }
@@ -541,7 +538,6 @@ Vue.createApp({
         },
         playItem(item) {
             this.working = item
-            // console.log(item);
             this.setLocalWorking()
         },
         completeItem(item) {
@@ -562,23 +558,18 @@ Vue.createApp({
         },
         removeItem() {
             const Index = this.list.findIndex(item => item.id === this.editor.item.id)
-            // console.log(Index);
             if (this.list[Index] !== undefined) {
                 console.log('REMOVE Item:');
                 console.log(this.list[Index]);
                 this.list.splice(Index, 1)
-            } else {
-                // console.log('CLEAR EDIROR DATA');
             }
             this.resetEditor()
             this.setLocallist()
         },
         workingComplete() {
             const Index = this.list.findIndex(item => item.id === this.working.id)
-            // console.log(Index);
             if (this.list[Index] !== undefined) {
                 this.list[Index].completed = true
-                // console.log('COMPLETE WORKING  ' + this.list[Index].id);
             } else {
                 console.log('List Index undefined');
             }
@@ -672,7 +663,6 @@ Vue.createApp({
         },
         updateTodayClock() {
             let Index = this.analysis.data.findIndex(data => data.date === this.date.today)
-            // console.log(Index);
             if (Index == -1) {
                 //? this.analysis.data haven't today's Data
                 this.analysis.data.push({
@@ -682,9 +672,7 @@ Vue.createApp({
                 })
             } else {
                 //? this.analysis.data have today's Data
-                // console.log("clock " + this.analysis.data[Index].clock);
                 this.analysis.data[Index].clock += 1
-                // console.log("clock " + this.analysis.data[Index].clock);
             }
             this.getChartWeekData()
         },
@@ -694,9 +682,7 @@ Vue.createApp({
                 item.task = 0
             })
             this.list.filter(el => el.completed == true).forEach(item => {
-                // console.log(item.title);
                 let Index = this.analysis.data.findIndex(el => el.date === item.date_complete)
-                // console.log(this.analysis.data[Index]);
                 if (Index == -1) {
                     this.analysis.data.push({
                         date: this.date.today,
@@ -721,12 +707,10 @@ Vue.createApp({
         this.getstrock()
         this.getLocallist()
         this.getLocalCompleted()
-
         //? get clock player setting
         this.setClockTime()
         this.renderClock()
         this.timer = setInterval(this.playingClock, 1000);
-
         //? Reset Analysis Data
         this.resetFilter()
         this.resetAnalysis()
